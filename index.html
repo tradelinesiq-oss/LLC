@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="TradeLine Marketplace — The smartest way to access authorized user tradelines. Build credit, unlock opportunity, and take control of your financial future.">
+<meta property="og:title" content="TradeLine Marketplace | Authorized User Tradelines">
+<meta property="og:description" content="The smartest marketplace for authorized user tradelines. Guaranteed to post. Shop online in minutes.">
+<meta name="twitter:card" content="summary">
+<title>TradeLine Marketplace | Authorized User Tradelines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0D0F1A;
+    --ink-light: #3A3D52;
+    --sky: #1B4FD8;
+    --sky-pale: #EEF3FF;
+    --gold: #F0A500;
+    --gold-light: #FFF8E6;
+    --mint: #00C48C;
+    --surface: #F7F8FC;
+    --white: #FFFFFF;
+    --border: #E2E6F0;
+    --radius: 12px;
+    --shadow: 0 4px 24px rgba(13,15,26,0.08);
+    --shadow-lg: 0 12px 48px rgba(13,15,26,0.14);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Space Grotesk', sans-serif; color: var(--ink); background: var(--white); line-height: 1.6; }
+  h1,h2,h3,h4 { font-family: 'Outfit', sans-serif; line-height: 1.2; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; }
+
+  /* ===== TOP ANNOUNCEMENT BAR ===== */
+  .topbar {
+    background: var(--sky);
+    color: var(--white);
+    text-align: center;
+    padding: 9px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+  .topbar a { color: var(--gold); text-decoration: underline; }
+
+  /* ===== HEADER / NAV ===== */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--ink);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+  }
+  nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    height: 68px;
+  }
+  .logo {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: auto;
+    flex-shrink: 0;
+  }
+  .logo-icon {
+    width: 34px; height: 34px;
+    background: var(--sky);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+  }
+  .logo span { color: var(--gold); }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    font-size: 13.5px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 7px;
+    transition: all 0.18s;
+    white-space: nowrap;
+  }
+  .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.08); }
+  .nav-links .active a { color: var(--white); }
+
+  /* Dropdown */
+  .has-dropdown { position: relative; }
+  .has-dropdown > a::after { content: ' ▾'; font-size: 10px; }
+  .dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    min-width: 230px;
+    padding: 8px;
+    z-index: 200;
+  }
+  .has-dropdown:hover .dropdown { display: block; }
+  .dropdown a {
+    display: block;
+    color: var(--ink) !important;
+    background: none !important;
+    padding: 9px 14px !important;
+    font-size: 13.5px !important;
+    border-radius: 7px;
+    transition: background 0.15s;
+  }
+  .dropdown a:hover { background: var(--sky-pale) !important; color: var(--sky) !important; }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--ink) !important;
+    font-weight: 600 !important;
+    padding: 9px 20px !important;
+    border-radius: 8px !important;
+    margin-left: 10px;
+    transition: transform 0.15s, box-shadow 0.15s !important;
+  }
+  .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(240,165,0,0.4) !important; background: var(--gold) !important; color: var(--ink) !important; }
+
+  .cart-btn {
+    color: rgba(255,255,255,0.75);
+    font-size: 13.5px;
+    display: flex; align-items: center; gap: 6px;
+    padding: 8px 12px;
+    border-radius: 7px;
+    transition: all 0.18s;
+    cursor: pointer;
+    position: relative;
+  }
+  .cart-btn:hover { background: rgba(255,255,255,0.08); color: var(--white); }
+  .cart-count {
+    background: var(--gold);
+    color: var(--ink);
+    font-size: 10px;
+    font-weight: 700;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* Hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 6px;
+    margin-left: 12px;
+  }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.25s; }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: var(--ink);
+    min-height: 88vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 80px 24px 80px;
+  }
+  .hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(27,79,216,0.12) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(27,79,216,0.12) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at 60% 40%, black 40%, transparent 80%);
+  }
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(27,79,216,0.22) 0%, transparent 70%);
+    top: -100px; right: -100px;
+    pointer-events: none;
+  }
+  .hero-glow2 {
+    position: absolute;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(240,165,0,0.1) 0%, transparent 70%);
+    bottom: 0; left: 100px;
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(27,79,216,0.15);
+    border: 1px solid rgba(27,79,216,0.3);
+    color: #7BA7FF;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 50px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .hero-tag::before { content: '●'; font-size: 8px; color: var(--mint); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .hero h1 {
+    font-size: clamp(38px, 5vw, 64px);
+    color: var(--white);
+    font-weight: 800;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 em { font-style: normal; color: var(--gold); }
+  .hero p {
+    color: rgba(255,255,255,0.65);
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 480px;
+  }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--ink);
+    font-weight: 700;
+    font-size: 15px;
+    padding: 14px 30px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    font-family: 'Outfit', sans-serif;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(240,165,0,0.35); }
+  .btn-ghost {
+    background: transparent;
+    color: rgba(255,255,255,0.8);
+    font-weight: 500;
+    font-size: 15px;
+    padding: 14px 28px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.2);
+    cursor: pointer;
+    transition: all 0.15s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.5); color: var(--white); background: rgba(255,255,255,0.05); }
+
+  /* Hero stats */
+  .hero-stats {
+    display: flex;
+    gap: 28px;
+    margin-top: 48px;
+    padding-top: 36px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .hero-stat-num {
+    font-family: 'Outfit', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--white);
+  }
+  .hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+
+  /* Hero card mockup */
+  .hero-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .tradeline-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: all 0.2s;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+  }
+  .tradeline-card:hover { background: rgba(255,255,255,0.08); border-color: rgba(27,79,216,0.5); transform: translateX(-4px); }
+  .tradeline-card.featured { border-color: var(--gold); background: rgba(240,165,0,0.06); }
+  .card-bank {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .card-bank.chase { background: rgba(0,80,170,0.2); }
+  .card-bank.disc { background: rgba(255,102,0,0.2); }
+  .card-bank.barc { background: rgba(0,90,160,0.2); }
+  .card-info { flex: 1; }
+  .card-info-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+  .card-bank-name { color: var(--white); font-weight: 600; font-size: 14px; }
+  .card-price { color: var(--gold); font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 16px; }
+  .card-meta { display: flex; gap: 16px; }
+  .card-meta span { font-size: 12px; color: rgba(255,255,255,0.45); }
+  .card-meta strong { color: rgba(255,255,255,0.7); }
+  .card-badge {
+    background: rgba(0,196,140,0.15);
+    color: var(--mint);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 50px;
+    border: 1px solid rgba(0,196,140,0.25);
+    flex-shrink: 0;
+  }
+
+  /* ===== SECTION WRAPPER ===== */
+  .section { padding: 100px 24px; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sky);
+    margin-bottom: 12px;
+    display: block;
+  }
+  .section-title {
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+  .section-sub {
+    font-size: 17px;
+    color: var(--ink-light);
+    max-width: 560px;
+    line-height: 1.7;
+  }
+  .section-header { margin-bottom: 56px; }
+
+  /* ===== HOW IT WORKS ===== */
+  .how-section { background: var(--surface); }
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    position: relative;
+  }
+  .steps-grid::before {
+    content: '';
+    position: absolute;
+    top: 38px; left: 12.5%; right: 12.5%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), var(--border), var(--border), transparent);
+    z-index: 0;
+  }
+  .step-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px 24px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .step-card:hover { box-shadow: var(--shadow); transform: translateY(-4px); }
+  .step-num {
+    width: 56px; height: 56px;
+    background: var(--sky-pale);
+    border: 2px solid var(--sky);
+    color: var(--sky);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+  }
+  .step-card:nth-child(2) .step-num { background: rgba(240,165,0,0.1); border-color: var(--gold); color: var(--gold); }
+  .step-card:nth-child(3) .step-num { background: rgba(0,196,140,0.1); border-color: var(--mint); color: var(--mint); }
+  .step-card:nth-child(4) .step-num { background: var(--ink); border-color: var(--ink); color: var(--white); }
+  .step-title { font-size: 16px; font-weight: 700; margin-bottom: 10px; color: var(--ink); }
+  .step-desc { font-size: 14px; color: var(--ink-light); line-height: 1.6; }
+
+  /* ===== USE CASES ===== */
+  .uses-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 48px;
+  }
+  .use-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .use-card:hover { border-color: var(--sky); box-shadow: var(--shadow); }
+  .use-icon { font-size: 36px; margin-bottom: 16px; }
+  .use-title { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+  .use-desc { font-size: 14px; color: var(--ink-light); line-height: 1.6; }
+
+  /* ===== WHY CREDITVAULT ===== */
+  .why-section { background: var(--ink); }
+  .why-section .section-title { color: var(--white); }
+  .why-section .section-sub { color: rgba(255,255,255,0.55); }
+  .why-section .section-tag { color: var(--gold); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .why-list { display: flex; flex-direction: column; gap: 20px; }
+  .why-item {
+    display: flex;
+    gap: 18px;
+    padding: 24px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    transition: border-color 0.2s;
+  }
+  .why-item:hover { border-color: rgba(27,79,216,0.5); }
+  .why-item-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: rgba(27,79,216,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .why-item-title { font-weight: 600; color: var(--white); margin-bottom: 6px; font-size: 15px; }
+  .why-item-desc { font-size: 13.5px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+  .trust-panel {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 40px;
+  }
+  .trust-panel-title { font-family: 'Outfit', sans-serif; font-size: 22px; color: var(--white); font-weight: 700; margin-bottom: 28px; }
+  .trust-stat { margin-bottom: 24px; }
+  .trust-stat-label { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 8px; display: flex; justify-content: space-between; }
+  .trust-bar { height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; }
+  .trust-bar-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(--sky), var(--mint)); }
+  .trust-badges { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); }
+  .trust-badge {
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 500;
+  }
+
+  /* ===== OPPORTUNITIES ===== */
+  .opp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .opp-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 36px 28px;
+    text-align: center;
+    transition: all 0.2s;
+  }
+  .opp-card:hover { border-color: var(--sky); box-shadow: var(--shadow); transform: translateY(-4px); }
+  .opp-card.highlight { background: var(--sky); border-color: var(--sky); }
+  .opp-card.highlight .opp-title, .opp-card.highlight .opp-tag { color: var(--white); }
+  .opp-card.highlight .opp-desc { color: rgba(255,255,255,0.75); }
+  .opp-card.highlight .opp-link { color: var(--gold); }
+  .opp-icon { font-size: 44px; margin-bottom: 20px; }
+  .opp-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sky); margin-bottom: 10px; display: block; }
+  .opp-title { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+  .opp-desc { font-size: 14px; color: var(--ink-light); line-height: 1.7; margin-bottom: 20px; }
+  .opp-link { font-size: 14px; font-weight: 600; color: var(--sky); display: flex; align-items: center; justify-content: center; gap: 6px; }
+
+  /* ===== FEATURED ARTICLES ===== */
+  .articles-section { background: var(--surface); }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .article-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+    cursor: pointer;
+  }
+  .article-card:hover { box-shadow: var(--shadow); transform: translateY(-3px); }
+  .article-thumb {
+    height: 160px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 48px;
+  }
+  .article-thumb.blue { background: var(--sky-pale); }
+  .article-thumb.gold { background: var(--gold-light); }
+  .article-thumb.mint { background: rgba(0,196,140,0.1); }
+  .article-body { padding: 24px; }
+  .article-cat { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--sky); margin-bottom: 10px; display: block; }
+  .article-title { font-size: 16px; font-weight: 700; margin-bottom: 10px; color: var(--ink); line-height: 1.4; }
+  .article-desc { font-size: 13.5px; color: var(--ink-light); line-height: 1.6; }
+
+  /* ===== CTA BAND ===== */
+  .cta-band {
+    background: linear-gradient(135deg, var(--sky) 0%, #0D3BA8 100%);
+    padding: 80px 24px;
+    text-align: center;
+  }
+  .cta-band h2 { font-size: clamp(28px, 3.5vw, 44px); color: var(--white); font-weight: 800; margin-bottom: 16px; letter-spacing: -0.02em; }
+  .cta-band p { color: rgba(255,255,255,0.7); font-size: 17px; margin-bottom: 36px; }
+  .cta-band .btn-primary { font-size: 16px; padding: 16px 36px; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: #080A14;
+    color: rgba(255,255,255,0.6);
+    padding: 70px 24px 32px;
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 60px;
+  }
+  .footer-brand .logo { margin-bottom: 16px; }
+  .footer-brand p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.45); }
+  .footer-contact { margin-top: 20px; font-size: 13.5px; }
+  .footer-contact div { margin-bottom: 6px; color: rgba(255,255,255,0.5); }
+  .footer-contact strong { color: rgba(255,255,255,0.8); }
+  .footer-col h4 { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 18px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul li a { font-size: 13.5px; color: rgba(255,255,255,0.45); transition: color 0.15s; }
+  .footer-col ul li a:hover { color: var(--white); }
+  .footer-socials { display: flex; gap: 12px; margin-top: 20px; }
+  .social-btn {
+    width: 36px; height: 36px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    transition: all 0.15s;
+    cursor: pointer;
+  }
+  .social-btn:hover { background: var(--sky); border-color: var(--sky); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 13px;
+  }
+  .footer-bottom a { color: rgba(255,255,255,0.45); transition: color 0.15s; }
+  .footer-bottom a:hover { color: var(--white); }
+
+  /* ===== STICKY PHONE ===== */
+  .sticky-phone {
+    position: fixed;
+    bottom: 24px; right: 24px;
+    background: var(--sky);
+    color: var(--white);
+    border-radius: 50px;
+    padding: 14px 22px;
+    display: flex; align-items: center; gap: 10px;
+    font-weight: 600; font-size: 14px;
+    box-shadow: var(--shadow-lg);
+    z-index: 900;
+    transition: transform 0.15s;
+    cursor: pointer;
+  }
+  .sticky-phone:hover { transform: translateY(-2px); }
+
+  /* ===== MOBILE NAV ===== */
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--ink);
+    z-index: 999;
+    flex-direction: column;
+    padding: 80px 32px 40px;
+    overflow-y: auto;
+  }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav-close {
+    position: absolute;
+    top: 20px; right: 24px;
+    background: none; border: none;
+    color: var(--white); font-size: 28px; cursor: pointer;
+  }
+  .mobile-nav a {
+    color: rgba(255,255,255,0.8);
+    font-size: 20px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: block;
+    transition: color 0.15s;
+  }
+  .mobile-nav a:hover { color: var(--gold); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+    .hero-visual { display: none; }
+    .steps-grid { grid-template-columns: repeat(2, 1fr); }
+    .steps-grid::before { display: none; }
+    .why-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .uses-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .hero { min-height: auto; padding: 60px 24px; }
+    .section { padding: 70px 24px; }
+    .steps-grid { grid-template-columns: 1fr; }
+    .uses-grid { grid-template-columns: 1fr; }
+    .opp-grid { grid-template-columns: 1fr; }
+    .articles-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; gap: 28px; }
+    .hero-stats { flex-wrap: wrap; gap: 20px; }
+    .sticky-phone span:not(.phone-icon) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Announcement Bar -->
+<div class="topbar">
+  🎉 New customers: get <strong>$15 off</strong> your first tradeline — <a href="marketplace.html">use code SCORE15 at checkout</a>
+</div>
+
+<!-- Header -->
+<header>
+  <nav>
+    <div class="logo">
+      <div class="logo-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 2L3 5V10C3 13.87 6.13 17.48 10 18C13.87 17.48 17 13.87 17 10V5L10 2Z" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="1.4" stroke-linejoin="round"/><path d="M7 11.5L9.5 8.5L10 10L12.5 7" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12.5" cy="7" r="1" fill="white"/></svg></div>
+      TradeLine <span>Marketplace</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="marketplace.html">Buy Tradelines</a></li>
+      <li><a href="sell.html">Sell Tradelines</a></li>
+      <li><a href="brokers.html">Brokers</a></li>
+      <li class="has-dropdown">
+        <a href="#">Resources</a>
+        <div class="dropdown">
+          <a href="resources.html#what-is">What Is a Tradeline?</a>
+          <a href="resources.html#guide">Buyer's Guide</a>
+          <a href="calculator.html">Tradeline Calculator</a>
+          <a href="resources.html#how-to-order">How to Place an Order</a>
+          <a href="resources.html#faq">FAQs</a>
+          <a href="resources.html#guarantees">Our Guarantees</a>
+          <a href="resources.html#non-posting">Report Non-Posting</a>
+          <a href="blog.html">Knowledge Center</a>
+          <a href="resources.html#store-credit">Purchase Store Credit</a>
+        </div>
+      </li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="account.html">My Account</a></li>
+    </ul>
+    <a href="cart.html" class="cart-btn">
+      🛒 <span class="cart-count" id="cartCount">0</span>
+    </a>
+    <a href="marketplace.html" class="nav-cta">View Tradelines →</a>
+    <div class="hamburger" id="menuBtn" onclick="openMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+</header>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" onclick="closeMenu()">✕</button>
+  <a href="index.html">Home</a>
+  <a href="marketplace.html">Buy Tradelines</a>
+  <a href="sell.html">Sell Tradelines</a>
+  <a href="brokers.html">Brokers</a>
+  <a href="blog.html">Knowledge Center</a>
+  <a href="calculator.html">Calculator</a>
+  <a href="resources.html#faq">FAQs</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="account.html">My Account</a>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag">Largest Authorized User Marketplace</div>
+      <h1>Credit Access<br>for <em>Everyone</em></h1>
+      <p>TradeLine Marketplace connects you with the most extensive selection of authorized user tradelines — fully verified, guaranteed to post, and available to purchase 100% online.</p>
+      <div class="hero-btns">
+        <a href="marketplace.html" class="btn-primary">Browse Tradelines →</a>
+        <a href="resources.html#what-is" class="btn-ghost">What is a Tradeline?</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">200+</div>
+          <div class="hero-stat-label">Live Tradelines</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">99.4%</div>
+          <div class="hero-stat-label">Post Rate</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">$690</div>
+          <div class="hero-stat-label">Starting Price</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="tradeline-card featured">
+        <div class="card-bank chase">🏦</div>
+        <div class="card-info">
+          <div class="card-info-top">
+            <span class="card-bank-name">Chase — #30672</span>
+            <span class="card-price">$1,020</span>
+          </div>
+          <div class="card-meta">
+            <span>Limit: <strong>$20,700</strong></span>
+            <span>Opened: <strong>May 2013</strong></span>
+            <span>Stock: <strong>2</strong></span>
+          </div>
+        </div>
+        <div class="card-badge">★ Top Pick</div>
+      </div>
+      <div class="tradeline-card">
+        <div class="card-bank disc">🔶</div>
+        <div class="card-info">
+          <div class="card-info-top">
+            <span class="card-bank-name">Discover — #21094</span>
+            <span class="card-price">$840</span>
+          </div>
+          <div class="card-meta">
+            <span>Limit: <strong>$16,500</strong></span>
+            <span>Opened: <strong>Jan 2016</strong></span>
+            <span>Stock: <strong>1</strong></span>
+          </div>
+        </div>
+        <div class="card-badge">In Stock</div>
+      </div>
+      <div class="tradeline-card">
+        <div class="card-bank barc">🌐</div>
+        <div class="card-info">
+          <div class="card-info-top">
+            <span class="card-bank-name">Barclays — #28107</span>
+            <span class="card-price">$1,440</span>
+          </div>
+          <div class="card-meta">
+            <span>Limit: <strong>$41,100</strong></span>
+            <span>Opened: <strong>Mar 2015</strong></span>
+            <span>Stock: <strong>4</strong></span>
+          </div>
+        </div>
+        <div class="card-badge">In Stock</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section class="section how-section">
+  <div class="section-inner">
+    <div class="section-header" style="text-align:center">
+      <span class="section-tag">Simple Process</span>
+      <h2 class="section-title">Up and running in four steps</h2>
+      <p class="section-sub" style="margin:0 auto">We've made the tradeline process faster and more transparent than anywhere else.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-title">Browse the Vault</div>
+        <p class="step-desc">Filter by age, credit limit, price, and bank. Sort in real time. Find the perfect match for your credit situation.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-title">Add to Cart</div>
+        <p class="step-desc">Enter your authorized user details. Review your purchase deadline and reporting period before confirming.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-title">Crypto Checkout</div>
+        <p class="step-desc">Pay with Bitcoin, Ethereum, USDT, or Solana. Paste your transaction hash to confirm. No identity documents needed.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-title">Tradeline Posts</div>
+        <p class="step-desc">Guaranteed to post to at least 2 credit bureaus within your reporting window. Track everything from your dashboard.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Use Cases -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Why Clients Use Us</span>
+      <h2 class="section-title">Credit opens every door</h2>
+      <p class="section-sub">From mortgages to business funding — a stronger credit profile changes what's available to you.</p>
+    </div>
+    <div class="uses-grid">
+      <div class="use-card">
+        <div class="use-icon">🏠</div>
+        <div class="use-title">Mortgage Approval</div>
+        <p class="use-desc">Lenders check both your score and tradeline count. Thin files get rejected daily — even with good payment history.</p>
+      </div>
+      <div class="use-card">
+        <div class="use-icon">🚗</div>
+        <div class="use-title">Auto Financing</div>
+        <p class="use-desc">Interest rates swing from 2% to 19% based on credit. A few points can mean thousands in savings over the loan term.</p>
+      </div>
+      <div class="use-card">
+        <div class="use-icon">💼</div>
+        <div class="use-title">Business Funding</div>
+        <p class="use-desc">Lenders want to see an established personal credit history before extending business lines of credit or SBA loans.</p>
+      </div>
+      <div class="use-card">
+        <div class="use-icon">💳</div>
+        <div class="use-title">Premium Cards</div>
+        <p class="use-desc">Access rewards cards, travel perks, and high limits that aren't offered to applicants with thin or damaged credit profiles.</p>
+      </div>
+      <div class="use-card">
+        <div class="use-icon">📊</div>
+        <div class="use-title">Credit Score</div>
+        <p class="use-desc">Your FICO score influences insurance premiums, rental applications, utility deposits, and even some job opportunities.</p>
+      </div>
+      <div class="use-card">
+        <div class="use-icon">💰</div>
+        <div class="use-title">Personal Loans</div>
+        <p class="use-desc">Emergency funds, investment opportunities, and debt consolidation all rely on lenders trusting your creditworthiness.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why TradeLine Marketplace -->
+<section class="section why-section">
+  <div class="section-inner">
+    <div class="why-grid">
+      <div>
+        <span class="section-tag">Why TradeLine Marketplace</span>
+        <h2 class="section-title" style="color:var(--white)">Built for fairness, powered by technology</h2>
+        <p class="section-sub" style="margin-bottom:36px">Roughly one-third of all credit profiles in the U.S. already carry authorized user tradelines. We make sure that advantage isn't limited to those with the right connections.</p>
+        <div class="why-list">
+          <div class="why-item">
+            <div class="why-item-icon">🔒</div>
+            <div>
+              <div class="why-item-title">Guaranteed to Post</div>
+              <p class="why-item-desc">Every tradeline is verified to report to at least 2 of the 3 major bureaus within its stated reporting period.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-item-icon">⚡</div>
+            <div>
+              <div class="why-item-title">100% Online & Automated</div>
+              <p class="why-item-desc">Shop, checkout, and pay with crypto entirely online. Bitcoin, Ethereum, USDT, and Solana accepted. No phone calls or documents required.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-item-icon">🎯</div>
+            <div>
+              <div class="why-item-title">Largest Selection</div>
+              <p class="why-item-desc">Filter across hundreds of live tradelines by credit limit, age, bank, and price. Updated in real time.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="trust-panel">
+        <div class="trust-panel-title">Our Track Record</div>
+        <div class="trust-stat">
+          <div class="trust-stat-label"><span>Post Rate</span><span>99.4%</span></div>
+          <div class="trust-bar"><div class="trust-bar-fill" style="width:99.4%"></div></div>
+        </div>
+        <div class="trust-stat">
+          <div class="trust-stat-label"><span>Customer Satisfaction</span><span>97%</span></div>
+          <div class="trust-bar"><div class="trust-bar-fill" style="width:97%"></div></div>
+        </div>
+        <div class="trust-stat">
+          <div class="trust-stat-label"><span>Orders Processed on Time</span><span>98.8%</span></div>
+          <div class="trust-bar"><div class="trust-bar-fill" style="width:98.8%"></div></div>
+        </div>
+        <div class="trust-stat">
+          <div class="trust-stat-label"><span>Broker Retention</span><span>91%</span></div>
+          <div class="trust-bar"><div class="trust-bar-fill" style="width:91%"></div></div>
+        </div>
+        <div class="trust-badges">
+          <div class="trust-badge">🛡️ SSL Secured</div>
+          <div class="trust-badge">📋 Licensed Business</div>
+          <div class="trust-badge">🔐 KYC Verified</div>
+          <div class="trust-badge">⚖️ FCRA Compliant</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Opportunities -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header" style="text-align:center">
+      <span class="section-tag">Ways to Participate</span>
+      <h2 class="section-title">There's a role for everyone</h2>
+      <p class="section-sub" style="margin:0 auto">Whether you're buying, selling, or reselling — TradeLine Marketplace has a path for you.</p>
+    </div>
+    <div class="opp-grid">
+      <div class="opp-card">
+        <div class="opp-icon">🛒</div>
+        <span class="opp-tag">Buyers</span>
+        <div class="opp-title">Build Your Credit Profile</div>
+        <p class="opp-desc">Browse the full marketplace, pick the tradelines that fit your goals, and check out in minutes. Guaranteed to post.</p>
+        <a href="marketplace.html" class="opp-link">Shop Tradelines →</a>
+      </div>
+      <div class="opp-card highlight">
+        <div class="opp-icon">💼</div>
+        <span class="opp-tag" style="color:rgba(255,255,255,0.6)">Brokers</span>
+        <div class="opp-title">Resell Under Your Brand</div>
+        <p class="opp-desc">Set your own prices. Use our wholesale rates, API access, and white-label tools to build a credit services business.</p>
+        <a href="brokers.html" class="opp-link">Join the Program →</a>
+      </div>
+      <div class="opp-card">
+        <div class="opp-icon">💳</div>
+        <span class="opp-tag">Cardholders</span>
+        <div class="opp-title">Earn from Your Credit</div>
+        <p class="opp-desc">If you have aged credit cards with good history, earn passive income by renting authorized user spots to verified buyers.</p>
+        <a href="sell.html" class="opp-link">Start Earning →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Articles -->
+<section class="section articles-section">
+  <div class="section-inner">
+    <div class="section-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px; margin-bottom:40px">
+      <div>
+        <span class="section-tag">Knowledge Center</span>
+        <h2 class="section-title" style="margin-bottom:0">Learn before you buy</h2>
+      </div>
+      <a href="blog.html" style="color:var(--sky); font-weight:600; font-size:14px">View all articles →</a>
+    </div>
+    <div class="articles-grid">
+      <div class="article-card" onclick="location.href='blog.html'">
+        <div class="article-thumb blue">📘</div>
+        <div class="article-body">
+          <span class="article-cat">Buyer's Guide</span>
+          <div class="article-title">How to Choose the Right Tradeline for Your Situation</div>
+          <p class="article-desc">Age vs. limit — which matters more? We break down every factor so you pick with confidence.</p>
+        </div>
+      </div>
+      <div class="article-card" onclick="location.href='blog.html'">
+        <div class="article-thumb gold">⚠️</div>
+        <div class="article-body">
+          <span class="article-cat">Common Mistakes</span>
+          <div class="article-title">5 Mistakes First-Time Tradeline Buyers Make</div>
+          <p class="article-desc">Buying without a plan, ignoring reporting windows, and more — avoid the pitfalls before they cost you.</p>
+        </div>
+      </div>
+      <div class="article-card" onclick="location.href='blog.html'">
+        <div class="article-thumb mint">📈</div>
+        <div class="article-body">
+          <span class="article-cat">Strategy</span>
+          <div class="article-title">Credit Repair vs. Tradelines: What Actually Works</div>
+          <p class="article-desc">Two very different tools for two very different credit problems. Learn which fits your goal.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Band -->
+<div class="cta-band">
+  <div style="max-width:600px; margin:0 auto">
+    <h2>Your credit journey starts today</h2>
+    <p>Join thousands of Americans who've used authorized user tradelines to access fairer financial opportunities.</p>
+    <a href="marketplace.html" class="btn-primary" style="display:inline-flex">Browse the Full Vault →</a>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo" style="margin-bottom:14px">
+          <div class="logo-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 2L3 5V10C3 13.87 6.13 17.48 10 18C13.87 17.48 17 13.87 17 10V5L10 2Z" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="1.4" stroke-linejoin="round"/><path d="M7 11.5L9.5 8.5L10 10L12.5 7" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12.5" cy="7" r="1" fill="white"/></svg></div>
+          TradeLine <span>Marketplace</span>
+        </div>
+        <p>TradeLine Marketplace is a fintech platform dedicated to equal credit access. We are not a credit repair company and do not guarantee improvements to credit scores. We provide authorized user tradeline placement services.</p>
+        <div class="footer-contact">
+          <div>📍 <strong>1800 Vine St, Suite 220, Los Angeles, CA 90028</strong></div>
+          <div>📞 <strong>(310) 555-0192</strong></div>
+          <div>✉️ <strong>support@tradelinemarketplace.io</strong></div>
+          <div>License #: TLM-2024-US-001</div>
+        </div>
+        <div class="footer-socials">
+          <div class="social-btn">▶</div>
+          <div class="social-btn">f</div>
+          <div class="social-btn">𝕏</div>
+          <div class="social-btn">📷</div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="marketplace.html">Buy Tradelines</a></li>
+          <li><a href="sell.html">Sell Tradelines</a></li>
+          <li><a href="brokers.html">Broker Program</a></li>
+          <li><a href="resources.html#store-credit">Store Credit</a></li>
+          <li><a href="calculator.html">Tradeline Calculator</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="resources.html#what-is">What Is a Tradeline?</a></li>
+          <li><a href="resources.html#guide">Buyer's Guide</a></li>
+          <li><a href="resources.html#how-to-order">How to Order</a></li>
+          <li><a href="resources.html#faq">FAQs</a></li>
+          <li><a href="resources.html#guarantees">Our Guarantees</a></li>
+          <li><a href="blog.html">Knowledge Center</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="resources.html#non-posting">Report Non-Posting</a></li>
+          <li><a href="legal.html#privacy">Privacy Policy</a></li>
+          <li><a href="legal.html#fraud">Fraud Policy</a></li>
+          <li><a href="legal.html#terms">Terms & Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>©2026 TradeLine Marketplace LLC. All Rights Reserved. We do not sell tradelines in Georgia.</div>
+      <div style="display:flex;gap:20px">
+        <a href="legal.html#privacy">Privacy</a>
+        <a href="legal.html#terms">Terms</a>
+        <a href="legal.html#fraud">Fraud Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Sticky Phone -->
+<a href="tel:3105550192" class="sticky-phone">
+  <span class="phone-icon">📞</span>
+  <span>(310) 555-0192</span>
+</a>
+
+<script>
+  function openMenu() { document.getElementById('mobileNav').classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeMenu() { document.getElementById('mobileNav').classList.remove('open'); document.body.style.overflow = ''; }
+  // Cart count from localStorage
+  function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem('tlmCart') || '[]');
+    document.getElementById('cartCount').textContent = cart.length;
+  }
+  updateCartCount();
+</script>
+</body>
+</html>

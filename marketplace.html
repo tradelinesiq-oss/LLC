@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Browse TradeLine Marketplace's full marketplace of authorized user tradelines. Filter by age, limit, price, and bank. Buy online instantly.">
+<title>Buy Tradelines | TradeLine Marketplace Marketplace</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:#0D0F1A;--ink-light:#3A3D52;--sky:#1B4FD8;--sky-pale:#EEF3FF;
+    --gold:#F0A500;--gold-light:#FFF8E6;--mint:#00C48C;--surface:#F7F8FC;
+    --white:#FFFFFF;--border:#E2E6F0;--radius:12px;
+    --shadow:0 4px 24px rgba(13,15,26,0.08);--shadow-lg:0 12px 48px rgba(13,15,26,0.14);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Space Grotesk',sans-serif;color:var(--ink);background:var(--white);line-height:1.6}
+  h1,h2,h3,h4{font-family:'Outfit',sans-serif;line-height:1.2}
+  a{color:inherit;text-decoration:none}
+
+  .topbar{background:var(--sky);color:var(--white);text-align:center;padding:9px 20px;font-size:13px;font-weight:500}
+  .topbar a{color:var(--gold);text-decoration:underline}
+
+  header{position:sticky;top:0;z-index:1000;background:var(--ink);border-bottom:1px solid rgba(255,255,255,0.08);box-shadow:0 2px 16px rgba(0,0,0,0.18)}
+  nav{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:68px;gap:0}
+  .logo{font-family:'Outfit',sans-serif;font-weight:700;font-size:22px;color:var(--white);display:flex;align-items:center;gap:8px;margin-right:auto;flex-shrink:0}
+  .logo-icon{width:34px;height:34px;background:linear-gradient(135deg,#1B4FD8 0%,#0D3BA8 100%);border-radius:9px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(27,79,216,0.35)}
+  .logo span{color:var(--gold)}
+  .nav-links{display:flex;align-items:center;gap:2px;list-style:none}
+  .nav-links a{color:rgba(255,255,255,0.75);font-size:13.5px;font-weight:500;padding:8px 14px;border-radius:7px;transition:all 0.18s;white-space:nowrap}
+  .nav-links a:hover,.nav-links .active a{color:var(--white);background:rgba(255,255,255,0.08)}
+  .has-dropdown{position:relative}
+  .has-dropdown>a::after{content:' ▾';font-size:10px}
+  .dropdown{display:none;position:absolute;top:calc(100% + 8px);left:0;background:var(--white);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-lg);min-width:220px;padding:8px;z-index:200}
+  .has-dropdown:hover .dropdown{display:block}
+  .dropdown a{display:block;color:var(--ink)!important;background:none!important;padding:9px 14px!important;font-size:13.5px!important;border-radius:7px;transition:background 0.15s}
+  .dropdown a:hover{background:var(--sky-pale)!important;color:var(--sky)!important}
+  .nav-cta{background:var(--gold);color:var(--ink)!important;font-weight:600!important;padding:9px 20px!important;border-radius:8px!important;margin-left:10px}
+  .cart-btn{color:rgba(255,255,255,0.75);font-size:13.5px;display:flex;align-items:center;gap:6px;padding:8px 12px;border-radius:7px;transition:all 0.18s;cursor:pointer}
+  .cart-btn:hover{background:rgba(255,255,255,0.08);color:var(--white)}
+  .cart-count{background:var(--gold);color:var(--ink);font-size:10px;font-weight:700;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;margin-left:12px}
+  .hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px}
+  .mobile-nav{display:none;position:fixed;inset:0;background:var(--ink);z-index:999;flex-direction:column;padding:80px 32px 40px;overflow-y:auto}
+  .mobile-nav.open{display:flex}
+  .mobile-nav-close{position:absolute;top:20px;right:24px;background:none;border:none;color:var(--white);font-size:28px;cursor:pointer}
+  .mobile-nav a{color:rgba(255,255,255,0.8);font-size:20px;font-family:'Outfit',sans-serif;font-weight:600;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.08);display:block}
+
+  /* PAGE HERO */
+  .page-hero{background:var(--ink);padding:56px 24px 48px;position:relative;overflow:hidden}
+  .page-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(27,79,216,0.1) 1px,transparent 1px),linear-gradient(90deg,rgba(27,79,216,0.1) 1px,transparent 1px);background-size:50px 50px;mask-image:radial-gradient(ellipse at 50% 100%,black 30%,transparent 80%)}
+  .page-hero-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1}
+  .breadcrumb{font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:16px}
+  .breadcrumb a{color:rgba(255,255,255,0.4);transition:color 0.15s}
+  .breadcrumb a:hover{color:rgba(255,255,255,0.7)}
+  .breadcrumb span{margin:0 8px}
+  .page-hero h1{font-size:clamp(28px,4vw,48px);color:var(--white);font-weight:800;margin-bottom:12px;letter-spacing:-0.02em}
+  .page-hero p{color:rgba(255,255,255,0.55);font-size:16px;max-width:560px}
+
+  /* LEAD CAPTURE */
+  .lead-bar{background:var(--gold-light);border-bottom:1px solid rgba(240,165,0,0.3);padding:20px 24px}
+  .lead-bar-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+  .lead-bar-text{flex:1;min-width:200px}
+  .lead-bar-text strong{display:block;font-size:15px;color:var(--ink);margin-bottom:3px}
+  .lead-bar-text span{font-size:13px;color:var(--ink-light)}
+  .lead-form{display:flex;gap:10px;flex-wrap:wrap}
+  .lead-form input{padding:10px 16px;border:1px solid var(--border);border-radius:8px;font-size:14px;font-family:'Space Grotesk',sans-serif;outline:none;width:220px;transition:border-color 0.15s}
+  .lead-form input:focus{border-color:var(--sky)}
+  .lead-form button{background:var(--gold);color:var(--ink);border:none;padding:10px 20px;border-radius:8px;font-weight:600;font-size:14px;cursor:pointer;white-space:nowrap;transition:transform 0.15s}
+  .lead-form button:hover{transform:translateY(-1px)}
+
+  /* MAIN LAYOUT */
+  .main-layout{max-width:1200px;margin:0 auto;padding:40px 24px 80px;display:grid;grid-template-columns:260px 1fr;gap:32px;align-items:start}
+
+  /* FILTER SIDEBAR */
+  .filter-sidebar{position:sticky;top:88px}
+  .filter-box{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:16px}
+  .filter-box-title{font-family:'Outfit',sans-serif;font-weight:700;font-size:14px;color:var(--ink);margin-bottom:16px;display:flex;justify-content:space-between;align-items:center}
+  .filter-clear{font-size:11px;font-weight:500;color:var(--sky);cursor:pointer;font-family:'Space Grotesk',sans-serif}
+  .filter-group{margin-bottom:20px}
+  .filter-group-label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-light);margin-bottom:10px;display:block}
+  .filter-options{display:flex;flex-direction:column;gap:8px}
+  .filter-option{display:flex;align-items:center;gap:10px;cursor:pointer}
+  .filter-option input[type=checkbox]{width:16px;height:16px;accent-color:var(--sky);cursor:pointer}
+  .filter-option label{font-size:13.5px;color:var(--ink);cursor:pointer;flex:1}
+  .filter-option .count{font-size:11px;color:var(--ink-light);background:var(--surface);padding:2px 7px;border-radius:50px}
+  .apply-btn{width:100%;background:var(--sky);color:var(--white);border:none;padding:12px;border-radius:9px;font-weight:600;font-size:14px;cursor:pointer;font-family:'Outfit',sans-serif;transition:background 0.15s}
+  .apply-btn:hover{background:#1642B8}
+
+  /* MARKETPLACE TABLE */
+  .marketplace-main{}
+  .mkt-toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:12px}
+  .mkt-count{font-size:14px;color:var(--ink-light)}
+  .mkt-count strong{color:var(--ink)}
+  .mkt-sort{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--ink-light)}
+  .sort-select{padding:8px 12px;border:1px solid var(--border);border-radius:8px;font-size:13.5px;font-family:'Space Grotesk',sans-serif;outline:none;color:var(--ink);cursor:pointer}
+
+  .tradeline-table{width:100%;border-collapse:collapse;background:var(--white);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+  .tradeline-table thead{background:var(--surface)}
+  .tradeline-table th{padding:13px 16px;text-align:left;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-light);white-space:nowrap;cursor:pointer;user-select:none;border-bottom:1px solid var(--border)}
+  .tradeline-table th:hover{color:var(--sky)}
+  .tradeline-table th.sorted{color:var(--sky)}
+  .sort-arrow{margin-left:4px;font-size:10px}
+  .tradeline-table td{padding:14px 16px;font-size:13.5px;border-bottom:1px solid var(--border);vertical-align:middle}
+  .tradeline-table tr:last-child td{border-bottom:none}
+  .tradeline-table tbody tr{transition:background 0.12s}
+  .tradeline-table tbody tr:hover{background:var(--sky-pale)}
+  .bank-cell{display:flex;align-items:center;gap:10px}
+  .bank-logo{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+  .bank-logo.chase{background:rgba(0,80,170,0.12);color:#0050AA}
+  .bank-logo.disc{background:rgba(255,102,0,0.12);color:#FF6600}
+  .bank-logo.barc{background:rgba(0,90,160,0.12);color:#005AA0}
+  .bank-logo.boa{background:rgba(200,30,30,0.12);color:#C81E1E}
+  .bank-logo.elan{background:rgba(80,0,160,0.12);color:#5000A0}
+  .bank-logo.cp1{background:rgba(0,100,60,0.12);color:#00643C}
+  .bank-name{font-weight:600;font-size:13.5px}
+  .card-id{font-size:11px;color:var(--ink-light);margin-top:1px}
+  .limit-cell{font-weight:600;color:var(--ink)}
+  .age-badge{display:inline-flex;align-items:center;padding:4px 10px;border-radius:50px;font-size:11.5px;font-weight:600}
+  .age-badge.old{background:rgba(240,165,0,0.12);color:#B87800}
+  .age-badge.mid{background:rgba(0,196,140,0.12);color:#007A5E}
+  .age-badge.new{background:rgba(27,79,216,0.1);color:var(--sky)}
+  .deadline-cell{font-size:12.5px;color:var(--ink-light)}
+  .deadline-cell strong{color:var(--ink);font-size:13px}
+  .stock-cell{font-size:13px}
+  .in-stock{color:var(--mint);font-weight:600}
+  .low-stock{color:var(--gold);font-weight:600}
+  .price-cell{font-family:'Outfit',sans-serif;font-weight:700;font-size:16px;color:var(--ink)}
+  .atc-btn{background:var(--sky);color:var(--white);border:none;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:all 0.15s;font-family:'Space Grotesk',sans-serif}
+  .atc-btn:hover{background:#1642B8;transform:translateY(-1px)}
+  .atc-btn.added{background:var(--mint)}
+
+  .empty-state{text-align:center;padding:60px 24px;color:var(--ink-light)}
+  .empty-state-icon{font-size:48px;margin-bottom:16px}
+  .empty-state h3{font-size:20px;color:var(--ink);margin-bottom:8px}
+
+  /* MODAL */
+  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(13,15,26,0.6);z-index:2000;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(4px)}
+  .modal-overlay.open{display:flex}
+  .modal{background:var(--white);border-radius:20px;padding:40px;max-width:500px;width:100%;box-shadow:var(--shadow-lg);position:relative}
+  .modal-close{position:absolute;top:16px;right:20px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--ink-light)}
+  .modal-title{font-family:'Outfit',sans-serif;font-size:22px;font-weight:800;margin-bottom:6px}
+  .modal-subtitle{font-size:14px;color:var(--ink-light);margin-bottom:28px}
+  .modal-selected{background:var(--sky-pale);border:1px solid rgba(27,79,216,0.2);border-radius:10px;padding:16px;margin-bottom:24px;font-size:14px}
+  .modal-selected strong{color:var(--sky)}
+  .form-row{margin-bottom:18px}
+  .form-label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:7px}
+  .form-input{width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:9px;font-size:14px;font-family:'Space Grotesk',sans-serif;outline:none;transition:border-color 0.15s}
+  .form-input:focus{border-color:var(--sky)}
+  .form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .form-note{font-size:12px;color:var(--ink-light);margin-top:6px}
+  .modal-submit{width:100%;background:var(--sky);color:var(--white);border:none;padding:14px;border-radius:10px;font-weight:700;font-size:15px;cursor:pointer;font-family:'Outfit',sans-serif;transition:background 0.15s;margin-top:8px}
+  .modal-submit:hover{background:#1642B8}
+
+  /* CART DRAWER */
+  .cart-drawer{position:fixed;top:0;right:-440px;width:420px;height:100vh;background:var(--white);z-index:3000;box-shadow:-8px 0 40px rgba(0,0,0,0.15);transition:right 0.3s ease;display:flex;flex-direction:column}
+  .cart-drawer.open{right:0}
+  .cart-header{padding:24px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+  .cart-header h3{font-family:'Outfit',sans-serif;font-size:20px;font-weight:800}
+  .cart-close{background:none;border:none;font-size:22px;cursor:pointer;color:var(--ink-light)}
+  .cart-items{flex:1;overflow-y:auto;padding:16px}
+  .cart-item{display:flex;gap:14px;padding:16px;border:1px solid var(--border);border-radius:10px;margin-bottom:12px}
+  .cart-item-info{flex:1}
+  .cart-item-name{font-weight:600;font-size:14px;margin-bottom:4px}
+  .cart-item-meta{font-size:12px;color:var(--ink-light)}
+  .cart-item-price{font-family:'Outfit',sans-serif;font-weight:700;color:var(--sky)}
+  .cart-item-remove{background:none;border:none;color:var(--ink-light);cursor:pointer;font-size:18px;align-self:start}
+  .cart-footer{padding:20px 24px;border-top:1px solid var(--border)}
+  .cart-total{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+  .cart-total-label{font-size:14px;color:var(--ink-light)}
+  .cart-total-price{font-family:'Outfit',sans-serif;font-size:24px;font-weight:800;color:var(--ink)}
+  .cart-checkout-btn{width:100%;background:var(--gold);color:var(--ink);border:none;padding:16px;border-radius:10px;font-weight:700;font-size:16px;cursor:pointer;font-family:'Outfit',sans-serif;transition:all 0.15s}
+  .cart-checkout-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(240,165,0,0.3)}
+  .cart-empty{text-align:center;padding:48px 24px;color:var(--ink-light)}
+  .cart-empty-icon{font-size:48px;margin-bottom:12px}
+  .cart-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.3);z-index:2999}
+  .cart-overlay.open{display:block}
+
+  .sticky-phone{position:fixed;bottom:24px;right:24px;background:var(--sky);color:var(--white);border-radius:50px;padding:14px 22px;display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px;box-shadow:var(--shadow-lg);z-index:900;transition:transform 0.15s;cursor:pointer;text-decoration:none}
+  .sticky-phone:hover{transform:translateY(-2px)}
+
+  footer{background:#080A14;color:rgba(255,255,255,0.6);padding:70px 24px 32px}
+  .footer-inner{max-width:1200px;margin:0 auto}
+  .footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:60px}
+  .footer-brand .logo{margin-bottom:14px}
+  .footer-brand p{font-size:14px;line-height:1.7;color:rgba(255,255,255,0.45)}
+  .footer-contact{margin-top:20px;font-size:13.5px}
+  .footer-contact div{margin-bottom:6px;color:rgba(255,255,255,0.5)}
+  .footer-contact strong{color:rgba(255,255,255,0.8)}
+  .footer-col h4{font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;color:var(--white);margin-bottom:18px}
+  .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .footer-col ul li a{font-size:13.5px;color:rgba(255,255,255,0.45);transition:color 0.15s}
+  .footer-col ul li a:hover{color:var(--white)}
+  .footer-socials{display:flex;gap:12px;margin-top:20px}
+  .social-btn{width:36px;height:36px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all 0.15s;cursor:pointer}
+  .social-btn:hover{background:var(--sky);border-color:var(--sky)}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:13px}
+  .footer-bottom a{color:rgba(255,255,255,0.45);transition:color 0.15s}
+  .footer-bottom a:hover{color:var(--white)}
+
+  @media(max-width:1024px){.main-layout{grid-template-columns:1fr}.filter-sidebar{position:static}}
+  @media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}.tradeline-table{font-size:12px}.tradeline-table th,.tradeline-table td{padding:10px 10px}.footer-top{grid-template-columns:1fr 1fr;gap:28px}.cart-drawer{width:100%;right:-100%}}
+</style>
+</head>
+<body>
+
+<div class="topbar">🎉 New customers get <strong>$15 off</strong> — use code <strong>SCORE15</strong> at checkout · <a href="#">Learn more</a></div>
+
+<header>
+  <nav>
+    <a href="index.html" class="logo"><div class="logo-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 2L3 5V10C3 13.87 6.13 17.48 10 18C13.87 17.48 17 13.87 17 10V5L10 2Z" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="1.4" stroke-linejoin="round"/><path d="M7 11.5L9.5 8.5L10 10L12.5 7" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12.5" cy="7" r="1" fill="white"/></svg></div>TradeLine <span>Marketplace</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="active"><a href="marketplace.html">Buy Tradelines</a></li>
+      <li><a href="sell.html">Sell Tradelines</a></li>
+      <li><a href="brokers.html">Brokers</a></li>
+      <li class="has-dropdown"><a href="#">Resources</a>
+        <div class="dropdown">
+          <a href="resources.html#what-is">What Is a Tradeline?</a>
+          <a href="resources.html#guide">Buyer's Guide</a>
+          <a href="calculator.html">Tradeline Calculator</a>
+          <a href="resources.html#faq">FAQs</a>
+          <a href="resources.html#guarantees">Our Guarantees</a>
+          <a href="blog.html">Knowledge Center</a>
+        </div>
+      </li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="account.html">My Account</a></li>
+    </ul>
+    <div class="cart-btn" onclick="openCart()">🛒 <span class="cart-count" id="cartCount">0</span></div>
+    <div class="hamburger" onclick="openMenu()"><span></span><span></span><span></span></div>
+  </nav>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" onclick="closeMenu()">✕</button>
+  <a href="index.html">Home</a><a href="marketplace.html">Buy Tradelines</a>
+  <a href="sell.html">Sell Tradelines</a><a href="brokers.html">Brokers</a>
+  <a href="blog.html">Knowledge Center</a><a href="calculator.html">Calculator</a>
+  <a href="resources.html#faq">FAQs</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+</div>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>›</span>Buy Tradelines</div>
+    <h1>The Tradeline Vault</h1>
+    <p>Browse our full inventory of authorized user tradelines. Filter, sort, and purchase instantly — all online.</p>
+  </div>
+</section>
+
+<div class="lead-bar">
+  <div class="lead-bar-inner">
+    <div class="lead-bar-text">
+      <strong>🎁 First-time buyer? Grab $15 off your order</strong>
+      <span>Enter your email to receive your discount code instantly. No spam — ever.</span>
+    </div>
+    <div class="lead-form">
+      <input type="email" placeholder="your@email.com" id="leadEmail">
+      <button onclick="claimDiscount()">Claim Discount</button>
+    </div>
+  </div>
+</div>
+
+<div class="main-layout">
+  <!-- FILTERS -->
+  <aside class="filter-sidebar">
+    <div class="filter-box">
+      <div class="filter-box-title">Filters <span class="filter-clear" onclick="clearFilters()">Clear all</span></div>
+
+      <div class="filter-group">
+        <span class="filter-group-label">Card Age</span>
+        <div class="filter-options">
+          <div class="filter-option"><input type="checkbox" id="age1" data-filter="age" data-value="lt5"><label for="age1">Under 5 years</label><span class="count">12</span></div>
+          <div class="filter-option"><input type="checkbox" id="age2" data-filter="age" data-value="5to10"><label for="age2">5 – 10 years</label><span class="count">28</span></div>
+          <div class="filter-option"><input type="checkbox" id="age3" data-filter="age" data-value="10to15"><label for="age3">10 – 15 years</label><span class="count">34</span></div>
+          <div class="filter-option"><input type="checkbox" id="age4" data-filter="age" data-value="15to20"><label for="age4">15 – 20 years</label><span class="count">19</span></div>
+          <div class="filter-option"><input type="checkbox" id="age5" data-filter="age" data-value="gt20"><label for="age5">20+ years</label><span class="count">8</span></div>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-group-label">Credit Limit</span>
+        <div class="filter-options">
+          <div class="filter-option"><input type="checkbox" id="lim1" data-filter="limit" data-value="lt5k"><label for="lim1">Under $5,000</label><span class="count">7</span></div>
+          <div class="filter-option"><input type="checkbox" id="lim2" data-filter="limit" data-value="5to10k"><label for="lim2">$5,000 – $10,000</label><span class="count">22</span></div>
+          <div class="filter-option"><input type="checkbox" id="lim3" data-filter="limit" data-value="10to20k"><label for="lim3">$10,000 – $20,000</label><span class="count">41</span></div>
+          <div class="filter-option"><input type="checkbox" id="lim4" data-filter="limit" data-value="20to40k"><label for="lim4">$20,000 – $40,000</label><span class="count">26</span></div>
+          <div class="filter-option"><input type="checkbox" id="lim5" data-filter="limit" data-value="gt40k"><label for="lim5">$40,000+</label><span class="count">5</span></div>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-group-label">Price Range</span>
+        <div class="filter-options">
+          <div class="filter-option"><input type="checkbox" id="pr1" data-filter="price" data-value="lt500"><label for="pr1">Under $500</label><span class="count">14</span></div>
+          <div class="filter-option"><input type="checkbox" id="pr2" data-filter="price" data-value="500to750"><label for="pr2">$500 – $750</label><span class="count">29</span></div>
+          <div class="filter-option"><input type="checkbox" id="pr3" data-filter="price" data-value="750to1000"><label for="pr3">$750 – $1,000</label><span class="count">33</span></div>
+          <div class="filter-option"><input type="checkbox" id="pr4" data-filter="price" data-value="1000to1250"><label for="pr4">$1,000 – $1,250</label><span class="count">18</span></div>
+          <div class="filter-option"><input type="checkbox" id="pr5" data-filter="price" data-value="gt1250"><label for="pr5">$1,250+</label><span class="count">7</span></div>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-group-label">Bank</span>
+        <div class="filter-options">
+          <div class="filter-option"><input type="checkbox" id="bk1" data-filter="bank" data-value="Chase"><label for="bk1">Chase</label><span class="count">24</span></div>
+          <div class="filter-option"><input type="checkbox" id="bk2" data-filter="bank" data-value="Discover"><label for="bk2">Discover</label><span class="count">31</span></div>
+          <div class="filter-option"><input type="checkbox" id="bk3" data-filter="bank" data-value="Barclays"><label for="bk3">Barclays</label><span class="count">18</span></div>
+          <div class="filter-option"><input type="checkbox" id="bk4" data-filter="bank" data-value="Bank of America"><label for="bk4">Bank of America</label><span class="count">15</span></div>
+          <div class="filter-option"><input type="checkbox" id="bk5" data-filter="bank" data-value="Elan"><label for="bk5">Elan Financial</label><span class="count">9</span></div>
+          <div class="filter-option"><input type="checkbox" id="bk6" data-filter="bank" data-value="Capital One"><label for="bk6">Capital One</label><span class="count">4</span></div>
+        </div>
+      </div>
+
+      <div class="filter-group" style="margin-bottom:0">
+        <span class="filter-group-label">Payment</span>
+        <div class="filter-options">
+          <div class="filter-option"><input type="checkbox" id="pay1" data-filter="payment" data-value="crypto"><label for="pay1">Crypto</label></div>
+          <div class="filter-option"><input type="checkbox" id="pay2" data-filter="payment" data-value="credit"><label for="pay2">Store Credit</label></div>
+        </div>
+      </div>
+
+      <div style="margin-top:20px"><button class="apply-btn" onclick="applyFilters()">Apply Filters</button></div>
+    </div>
+
+    <div class="filter-box" style="background:var(--sky-pale);border-color:rgba(27,79,216,0.2)">
+      <div style="font-size:13px;color:var(--sky);font-weight:600;margin-bottom:8px">💡 Need help choosing?</div>
+      <div style="font-size:13px;color:var(--ink-light);margin-bottom:14px">Use our free calculator to find the best tradeline match for your credit goals.</div>
+      <a href="calculator.html" style="display:block;background:var(--sky);color:var(--white);text-align:center;padding:10px;border-radius:8px;font-weight:600;font-size:13px">Open Calculator</a>
+    </div>
+  </aside>
+
+  <!-- TABLE -->
+  <div class="marketplace-main">
+    <div class="mkt-toolbar">
+      <div class="mkt-count">Showing <strong id="resultCount">25</strong> tradelines</div>
+      <div class="mkt-sort">
+        Sort by:
+        <select class="sort-select" id="sortSelect" onchange="sortTable()">
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="limit-desc">Limit: Highest First</option>
+          <option value="age-desc">Age: Oldest First</option>
+          <option value="deadline">Purchase Deadline</option>
+        </select>
+      </div>
+    </div>
+
+    <div style="overflow-x:auto">
+      <table class="tradeline-table" id="tradelineTable">
+        <thead>
+          <tr>
+            <th onclick="sortBy('bank')">Bank <span class="sort-arrow">↕</span></th>
+            <th onclick="sortBy('limit')">Credit Limit <span class="sort-arrow">↕</span></th>
+            <th onclick="sortBy('age')">Card Age <span class="sort-arrow">↕</span></th>
+            <th onclick="sortBy('deadline')">Buy Deadline <span class="sort-arrow">↕</span></th>
+            <th onclick="sortBy('reporting')">Reports</th>
+            <th onclick="sortBy('stock')">Stock <span class="sort-arrow">↕</span></th>
+            <th onclick="sortBy('price')">Price <span class="sort-arrow">↕</span></th>
+            <th>Add</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+    <div class="empty-state" id="emptyState" style="display:none">
+      <div class="empty-state-icon">🔍</div>
+      <h3>No tradelines match your filters</h3>
+      <p>Try adjusting or <span style="color:var(--sky);cursor:pointer;font-weight:600" onclick="clearFilters()">clearing your filters</span> to see more results.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ADD TO CART MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-title">Add Authorized User</div>
+    <div class="modal-subtitle">Enter the details of the person who will be added as an authorized user.</div>
+    <div class="modal-selected" id="modalSelected">Selected: —</div>
+    <div class="form-row-2">
+      <div class="form-row">
+        <label class="form-label">First Name *</label>
+        <input class="form-input" type="text" id="auFirst" placeholder="Jane">
+      </div>
+      <div class="form-row">
+        <label class="form-label">Last Name *</label>
+        <input class="form-input" type="text" id="auLast" placeholder="Smith">
+      </div>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Date of Birth *</label>
+      <input class="form-input" type="date" id="auDob">
+      <div class="form-note">Required for authorized user processing.</div>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Social Security Number (Last 4) *</label>
+      <input class="form-input" type="text" id="auSsn" placeholder="XXXX" maxlength="4">
+      <div class="form-note">🔒 Encrypted & secured. Required by card issuers.</div>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Mailing Address *</label>
+      <input class="form-input" type="text" id="auAddr" placeholder="123 Main St, City, State, ZIP">
+    </div>
+    <button class="modal-submit" onclick="confirmAddToCart()">Confirm & Add to Cart →</button>
+  </div>
+</div>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <h3>🛒 Your Cart</h3>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty"><div class="cart-empty-icon">🛒</div><p>Your cart is empty.<br>Browse tradelines to get started.</p></div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total">
+      <span class="cart-total-label">Total</span>
+      <span class="cart-total-price" id="cartTotal">$0</span>
+    </div>
+    <div style="font-size:12px;color:var(--ink-light);margin-bottom:14px">🔒 Secure crypto checkout · No documents required</div>
+    <button class="cart-checkout-btn" onclick="location.href='checkout.html'">Proceed to Checkout →</button>
+  </div>
+</div>
+
+<a href="tel:3105550192" class="sticky-phone">📞 <span>(310) 555-0192</span></a>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" style="color:var(--white)"><div class="logo-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 2L3 5V10C3 13.87 6.13 17.48 10 18C13.87 17.48 17 13.87 17 10V5L10 2Z" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="1.4" stroke-linejoin="round"/><path d="M7 11.5L9.5 8.5L10 10L12.5 7" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12.5" cy="7" r="1" fill="white"/></svg></div>TradeLine <span>Marketplace</span></a>
+        <p style="margin-top:14px">TradeLine Marketplace is a fintech platform dedicated to equal credit access. Licensed · Compliant · Transparent.</p>
+        <div class="footer-contact">
+          <div>📍 <strong>1800 Vine St, Suite 220, Los Angeles, CA 90028</strong></div>
+          <div>📞 <strong>(310) 555-0192</strong></div>
+          <div>✉️ <strong>support@tradelinemarketplace.io</strong></div>
+        </div>
+        <div class="footer-socials"><div class="social-btn">▶</div><div class="social-btn">f</div><div class="social-btn">𝕏</div><div class="social-btn">📷</div></div>
+      </div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="marketplace.html">Buy Tradelines</a></li><li><a href="sell.html">Sell Tradelines</a></li><li><a href="brokers.html">Broker Program</a></li><li><a href="resources.html#store-credit">Store Credit</a></li><li><a href="calculator.html">Calculator</a></li></ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul><li><a href="resources.html">What Is a Tradeline?</a></li><li><a href="resources.html">Buyer's Guide</a></li><li><a href="resources.html#faq">FAQs</a></li><li><a href="resources.html">Our Guarantees</a></li><li><a href="blog.html">Knowledge Center</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="legal.html#privacy">Privacy Policy</a></li><li><a href="legal.html#terms">Terms & Conditions</a></li><li><a href="legal.html#fraud">Fraud Policy</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <div>©2026 TradeLine Marketplace LLC. All Rights Reserved. We do not sell tradelines in Georgia.</div>
+      <div style="display:flex;gap:20px"><a href="legal.html#privacy">Privacy</a><a href="legal.html#terms">Terms</a><a href="legal.html#fraud">Fraud</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─── DATA ───────────────────────────────────────────
+const RAW_DATA = [
+  {id:'30672',bank:'Chase',bankClass:'chase',limit:20700,opened:'2013-05',age:13,deadline:'Jul 15, 2026',reports:'Jul 19–22',stock:2,price:1020,ageGroup:'10to15',limitGroup:'10to20k',priceGroup:'1000to1250'},
+  {id:'21094',bank:'Discover',bankClass:'disc',limit:16500,opened:'2016-01',age:10,deadline:'Jul 8, 2026',reports:'Jul 12–15',stock:1,price:840,ageGroup:'10to15',limitGroup:'10to20k',priceGroup:'750to1000'},
+  {id:'28107',bank:'Barclays',bankClass:'barc',limit:41100,opened:'2015-03',age:11,deadline:'Jul 22, 2026',reports:'Jul 26–29',stock:4,price:1440,ageGroup:'10to15',limitGroup:'gt40k',priceGroup:'gt1250'},
+  {id:'19204',bank:'Bank of America',bankClass:'boa',limit:8200,opened:'2018-07',age:8,deadline:'Jul 5, 2026',reports:'Jul 9–12',stock:3,price:690,ageGroup:'5to10',limitGroup:'5to10k',priceGroup:'500to750'},
+  {id:'33109',bank:'Chase',bankClass:'chase',limit:31000,opened:'2009-11',age:17,deadline:'Jul 18, 2026',reports:'Jul 22–25',stock:1,price:1380,ageGroup:'15to20',limitGroup:'20to40k',priceGroup:'gt1250'},
+  {id:'44021',bank:'Discover',bankClass:'disc',limit:12400,opened:'2019-04',age:7,deadline:'Jul 10, 2026',reports:'Jul 14–17',stock:5,price:760,ageGroup:'5to10',limitGroup:'10to20k',priceGroup:'750to1000'},
+  {id:'55813',bank:'Elan',bankClass:'elan',limit:25000,opened:'2017-09',age:9,deadline:'Jul 25, 2026',reports:'Jul 29–Aug 1',stock:2,price:990,ageGroup:'5to10',limitGroup:'20to40k',priceGroup:'750to1000'},
+  {id:'67443',bank:'Capital One',bankClass:'cp1',limit:4800,opened:'2021-02',age:5,deadline:'Jul 3, 2026',reports:'Jul 7–10',stock:7,price:420,ageGroup:'5to10',limitGroup:'lt5k',priceGroup:'lt500'},
+  {id:'72188',bank:'Bank of America',bankClass:'boa',limit:18500,opened:'2014-06',age:12,deadline:'Jul 20, 2026',reports:'Jul 24–27',stock:2,price:1100,ageGroup:'10to15',limitGroup:'10to20k',priceGroup:'1000to1250'},
+  {id:'83501',bank:'Barclays',bankClass:'barc',limit:9900,opened:'2020-08',age:6,deadline:'Jul 12, 2026',reports:'Jul 16–19',stock:4,price:680,ageGroup:'5to10',limitGroup:'5to10k',priceGroup:'500to750'},
+  {id:'91223',bank:'Chase',bankClass:'chase',limit:47500,opened:'2004-03',age:22,deadline:'Jul 28, 2026',reports:'Aug 1–4',stock:1,price:1860,ageGroup:'gt20',limitGroup:'gt40k',priceGroup:'gt1250'},
+  {id:'10459',bank:'Discover',bankClass:'disc',limit:6100,opened:'2022-11',age:4,deadline:'Jul 7, 2026',reports:'Jul 11–14',stock:9,price:480,ageGroup:'lt5',limitGroup:'5to10k',priceGroup:'lt500'},
+  {id:'11778',bank:'Elan',bankClass:'elan',limit:33000,opened:'2012-04',age:14,deadline:'Jul 17, 2026',reports:'Jul 21–24',stock:3,price:1290,ageGroup:'10to15',limitGroup:'20to40k',priceGroup:'1000to1250'},
+  {id:'12996',bank:'Bank of America',bankClass:'boa',limit:11000,opened:'2016-09',age:10,deadline:'Jul 14, 2026',reports:'Jul 18–21',stock:2,price:820,ageGroup:'10to15',limitGroup:'10to20k',priceGroup:'750to1000'},
+  {id:'14332',bank:'Chase',bankClass:'chase',limit:22500,opened:'2010-06',age:16,deadline:'Jul 23, 2026',reports:'Jul 27–30',stock:1,price:1200,ageGroup:'15to20',limitGroup:'20to40k',priceGroup:'1000to1250'},
+  {id:'15678',bank:'Barclays',bankClass:'barc',limit:5500,opened:'2019-12',age:7,deadline:'Jul 6, 2026',reports:'Jul 10–13',stock:6,price:590,ageGroup:'5to10',limitGroup:'5to10k',priceGroup:'500to750'},
+  {id:'16890',bank:'Capital One',bankClass:'cp1',limit:3200,opened:'2023-01',age:3,deadline:'Jul 4, 2026',reports:'Jul 8–11',stock:11,price:350,ageGroup:'lt5',limitGroup:'lt5k',priceGroup:'lt500'},
+  {id:'18004',bank:'Discover',bankClass:'disc',limit:28500,opened:'2008-07',age:18,deadline:'Jul 29, 2026',reports:'Aug 2–5',stock:2,price:1550,ageGroup:'15to20',limitGroup:'20to40k',priceGroup:'gt1250'},
+  {id:'19241',bank:'Elan',bankClass:'elan',limit:7700,opened:'2021-05',age:5,deadline:'Jul 11, 2026',reports:'Jul 15–18',stock:4,price:610,ageGroup:'5to10',limitGroup:'5to10k',priceGroup:'500to750'},
+  {id:'20577',bank:'Chase',bankClass:'chase',limit:14200,opened:'2017-02',age:9,deadline:'Jul 16, 2026',reports:'Jul 20–23',stock:3,price:890,ageGroup:'5to10',limitGroup:'10to20k',priceGroup:'750to1000'},
+  {id:'21903',bank:'Bank of America',bankClass:'boa',limit:39000,opened:'2011-08',age:15,deadline:'Jul 21, 2026',reports:'Jul 25–28',stock:1,price:1420,ageGroup:'15to20',limitGroup:'20to40k',priceGroup:'gt1250'},
+  {id:'23145',bank:'Barclays',bankClass:'barc',limit:17800,opened:'2015-11',age:11,deadline:'Jul 19, 2026',reports:'Jul 23–26',stock:2,price:950,ageGroup:'10to15',limitGroup:'10to20k',priceGroup:'750to1000'},
+  {id:'24389',bank:'Discover',bankClass:'disc',limit:44000,opened:'2006-04',age:20,deadline:'Jul 26, 2026',reports:'Jul 30–Aug 2',stock:1,price:1780,ageGroup:'15to20',limitGroup:'gt40k',priceGroup:'gt1250'},
+  {id:'25601',bank:'Capital One',bankClass:'cp1',limit:9100,opened:'2018-10',age:8,deadline:'Jul 9, 2026',reports:'Jul 13–16',stock:5,price:720,ageGroup:'5to10',limitGroup:'5to10k',priceGroup:'500to750'},
+  {id:'26812',bank:'Elan',bankClass:'elan',limit:52000,opened:'2003-06',age:23,deadline:'Jul 30, 2026',reports:'Aug 3–6',stock:1,price:2100,ageGroup:'gt20',limitGroup:'gt40k',priceGroup:'gt1250'},
+];
+
+let filteredData = [...RAW_DATA];
+let cart = JSON.parse(localStorage.getItem('tlmCart') || '[]');
+let pendingItem = null;
+
+// ─── RENDER TABLE ─────────────────────────────────
+function ageLabel(a){
+  if(a>=20) return {text:a+' yrs',cls:'old'};
+  if(a>=10) return {text:a+' yrs',cls:'mid'};
+  return {text:a+' yrs',cls:'new'};
+}
+function stockLabel(s){
+  if(s===1) return `<span class="low-stock">⚠ 1 left</span>`;
+  if(s<=3) return `<span class="low-stock">${s} left</span>`;
+  return `<span class="in-stock">${s} in stock</span>`;
+}
+function bankEmoji(b){
+  const m={Chase:'🏦',Discover:'🔶',Barclays:'🌐','Bank of America':'🏛️',Elan:'💜','Capital One':'🟢'};
+  return m[b]||'💳';
+}
+
+function renderTable(){
+  const tbody = document.getElementById('tableBody');
+  const empty = document.getElementById('emptyState');
+  document.getElementById('resultCount').textContent = filteredData.length;
+  if(!filteredData.length){tbody.innerHTML='';empty.style.display='block';return;}
+  empty.style.display='none';
+  tbody.innerHTML = filteredData.map(t=>{
+    const age = ageLabel(t.age);
+    const inCart = cart.some(c=>c.id===t.id);
+    return `<tr>
+      <td><div class="bank-cell"><div class="bank-logo ${t.bankClass}">${bankEmoji(t.bank)}</div><div><div class="bank-name">${t.bank}</div><div class="card-id">#${t.id}</div></div></div></td>
+      <td class="limit-cell">$${t.limit.toLocaleString()}</td>
+      <td><span class="age-badge ${age.cls}">${age.text}</span></td>
+      <td class="deadline-cell"><strong>${t.deadline}</strong></td>
+      <td class="deadline-cell">${t.reports}</td>
+      <td>${stockLabel(t.stock)}</td>
+      <td class="price-cell">$${t.price.toLocaleString()}</td>
+      <td><button class="atc-btn${inCart?' added':''}" onclick="openModal('${t.id}')" ${inCart?'disabled':''}>${inCart?'✓ Added':'Add to Cart'}</button></td>
+    </tr>`;
+  }).join('');
+}
+
+// ─── FILTERS ─────────────────────────────────────
+function applyFilters(){
+  const checked = cb=>document.querySelectorAll(`input[data-filter="${cb}"]:checked`);
+  const ages=[...checked('age')].map(x=>x.dataset.value);
+  const limits=[...checked('limit')].map(x=>x.dataset.value);
+  const prices=[...checked('price')].map(x=>x.dataset.value);
+  const banks=[...checked('bank')].map(x=>x.dataset.value);
+
+  filteredData = RAW_DATA.filter(t=>{
+    if(ages.length && !ages.includes(t.ageGroup)) return false;
+    if(limits.length && !limits.includes(t.limitGroup)) return false;
+    if(prices.length && !prices.includes(t.priceGroup)) return false;
+    if(banks.length && !banks.includes(t.bank)) return false;
+    return true;
+  });
+  sortTable();
+}
+
+function clearFilters(){
+  document.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);
+  filteredData=[...RAW_DATA];
+  renderTable();
+}
+
+// ─── SORT ────────────────────────────────────────
+function sortTable(){
+  const v=document.getElementById('sortSelect').value;
+  filteredData.sort((a,b)=>{
+    if(v==='price-asc') return a.price-b.price;
+    if(v==='price-desc') return b.price-a.price;
+    if(v==='limit-desc') return b.limit-a.limit;
+    if(v==='age-desc') return b.age-a.age;
+    return 0;
+  });
+  renderTable();
+}
+function sortBy(col){
+  const s=document.getElementById('sortSelect');
+  if(col==='price') s.value='price-asc';
+  if(col==='limit') s.value='limit-desc';
+  if(col==='age') s.value='age-desc';
+  sortTable();
+}
+
+// ─── MODAL ───────────────────────────────────────
+function openModal(id){
+  const item=RAW_DATA.find(t=>t.id===id);
+  if(!item) return;
+  pendingItem=item;
+  document.getElementById('modalSelected').innerHTML=`<strong>${item.bank} #${item.id}</strong> — $${item.limit.toLocaleString()} limit · ${item.age} yrs old · <strong style="color:var(--sky)">$${item.price.toLocaleString()}</strong>`;
+  ['auFirst','auLast','auDob','auSsn','auAddr'].forEach(f=>document.getElementById(f).value='');
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow='';
+  pendingItem=null;
+}
+function confirmAddToCart(){
+  const f=document.getElementById('auFirst').value.trim();
+  const l=document.getElementById('auLast').value.trim();
+  const d=document.getElementById('auDob').value;
+  const s=document.getElementById('auSsn').value.trim();
+  const a=document.getElementById('auAddr').value.trim();
+  if(!f||!l||!d||!s||!a){alert('Please fill in all required fields.');return;}
+  if(s.length!==4||isNaN(s)){alert('Please enter the last 4 digits of the SSN.');return;}
+  cart.push({...pendingItem,au:{first:f,last:l,dob:d,ssn:s,addr:a}});
+  localStorage.setItem('tlmCart',JSON.stringify(cart));
+  updateCartCount();
+  closeModal();
+  renderTable();
+  openCart();
+}
+
+// ─── CART ────────────────────────────────────────
+function openCart(){
+  document.getElementById('cartDrawer').classList.add('open');
+  document.getElementById('cartOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+  renderCart();
+}
+function closeCart(){
+  document.getElementById('cartDrawer').classList.remove('open');
+  document.getElementById('cartOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+function removeFromCart(id){
+  cart=cart.filter(c=>c.id!==id);
+  localStorage.setItem('tlmCart',JSON.stringify(cart));
+  updateCartCount();
+  renderCart();
+  renderTable();
+}
+function renderCart(){
+  const ci=document.getElementById('cartItems');
+  const cf=document.getElementById('cartFooter');
+  if(!cart.length){
+    ci.innerHTML='<div class="cart-empty"><div class="cart-empty-icon">🛒</div><p>Your cart is empty.<br>Browse tradelines to get started.</p></div>';
+    cf.style.display='none';return;
+  }
+  const total=cart.reduce((s,c)=>s+c.price,0);
+  ci.innerHTML=cart.map(c=>`
+    <div class="cart-item">
+      <div style="font-size:28px">${bankEmoji(c.bank)}</div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${c.bank} #${c.id}</div>
+        <div class="cart-item-meta">$${c.limit.toLocaleString()} limit · ${c.age} yrs · AU: ${c.au.first} ${c.au.last}</div>
+        <div class="cart-item-price" style="margin-top:6px">$${c.price.toLocaleString()}</div>
+      </div>
+      <button class="cart-item-remove" onclick="removeFromCart('${c.id}')">✕</button>
+    </div>`).join('');
+  document.getElementById('cartTotal').textContent='$'+total.toLocaleString();
+  cf.style.display='block';
+}
+function updateCartCount(){
+  cart=JSON.parse(localStorage.getItem('tlmCart')||'[]');
+  document.getElementById('cartCount').textContent=cart.length;
+}
+
+// ─── LEAD ────────────────────────────────────────
+function claimDiscount(){
+  const e=document.getElementById('leadEmail').value.trim();
+  if(!e||!e.includes('@')){alert('Please enter a valid email.');return;}
+  alert('🎉 Your discount code SCORE15 has been applied! You\'ll also receive a confirmation at '+e);
+}
+
+// ─── MOBILE NAV ──────────────────────────────────
+function openMenu(){document.getElementById('mobileNav').classList.add('open');document.body.style.overflow='hidden'}
+function closeMenu(){document.getElementById('mobileNav').classList.remove('open');document.body.style.overflow=''}
+
+// ─── INIT ────────────────────────────────────────
+updateCartCount();
+renderTable();
+</script>
+</body>
+</html>
