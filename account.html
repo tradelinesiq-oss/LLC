@@ -2,478 +2,481 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Log in to your TradeLine Marketplace account to manage orders, view tradeline history, and access your broker dashboard.">
-<title>My Account | TradeLine Marketplace</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<title>My Account | TradeLine Marketplace LLC</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root{--ink:#0D0F1A;--ink-light:#3A3D52;--sky:#1B4FD8;--sky-pale:#EEF3FF;--gold:#F0A500;--gold-light:#FFF8E6;--mint:#00C48C;--surface:#F7F8FC;--white:#FFFFFF;--border:#E2E6F0;--radius:12px;--shadow:0 4px 24px rgba(13,15,26,0.08);--shadow-lg:0 12px 48px rgba(13,15,26,0.14)}
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Space Grotesk',sans-serif;color:var(--ink);background:var(--surface);line-height:1.6}
-  h1,h2,h3,h4{font-family:'Outfit',sans-serif;line-height:1.2}
-  a{color:inherit;text-decoration:none}
-  .topbar{background:var(--sky);color:var(--white);text-align:center;padding:9px 20px;font-size:13px;font-weight:500}
-  .topbar a{color:var(--gold);text-decoration:underline}
-  header{position:sticky;top:0;z-index:1000;background:var(--ink);border-bottom:1px solid rgba(255,255,255,0.08);box-shadow:0 2px 16px rgba(0,0,0,0.18)}
-  nav{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:68px}
-  .logo{font-family:'Outfit',sans-serif;font-weight:800;font-size:22px;color:var(--white);display:flex;align-items:center;gap:8px;margin-right:auto;flex-shrink:0}
-  .logo-icon{width:34px;height:34px;background:linear-gradient(135deg,#1B4FD8 0%,#0D3BA8 100%);border-radius:9px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(27,79,216,0.35)}
-  .logo span{color:var(--gold)}
-  .nav-links{display:flex;align-items:center;gap:2px;list-style:none}
-  .nav-links a{color:rgba(255,255,255,0.75);font-size:13.5px;font-weight:500;padding:8px 14px;border-radius:7px;transition:all 0.18s;white-space:nowrap}
-  .nav-links a:hover,.nav-links .active a{color:var(--white);background:rgba(255,255,255,0.08)}
-  .has-dropdown{position:relative}
-  .has-dropdown>a::after{content:' ▾';font-size:10px}
-  .dropdown{display:none;position:absolute;top:calc(100% + 8px);left:0;background:var(--white);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-lg);min-width:220px;padding:8px;z-index:200}
-  .has-dropdown:hover .dropdown{display:block}
-  .dropdown a{display:block;color:var(--ink)!important;background:none!important;padding:9px 14px!important;font-size:13.5px!important;border-radius:7px}
-  .dropdown a:hover{background:var(--sky-pale)!important;color:var(--sky)!important}
-  .nav-cta{background:var(--gold);color:var(--ink)!important;font-weight:600!important;padding:9px 20px!important;border-radius:8px!important;margin-left:10px}
-  .cart-btn{color:rgba(255,255,255,0.75);font-size:13.5px;display:flex;align-items:center;gap:6px;padding:8px 12px;border-radius:7px;cursor:pointer;transition:all 0.18s}
-  .cart-btn:hover{background:rgba(255,255,255,0.08);color:var(--white)}
-  .cart-count{background:var(--gold);color:var(--ink);font-size:10px;font-weight:700;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center}
-  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;margin-left:12px}
-  .hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px}
-  .mobile-nav{display:none;position:fixed;inset:0;background:var(--ink);z-index:999;flex-direction:column;padding:80px 32px 40px;overflow-y:auto}
-  .mobile-nav.open{display:flex}
-  .mobile-nav-close{position:absolute;top:20px;right:24px;background:none;border:none;color:var(--white);font-size:28px;cursor:pointer}
-  .mobile-nav a{color:rgba(255,255,255,0.8);font-size:20px;font-family:'Outfit',sans-serif;font-weight:600;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.08);display:block}
+:root{--ink:#0F1117;--ink-2:#374151;--ink-3:#6B7280;--blue:#2563EB;--blue-d:#1D4ED8;--blue-l:#EFF6FF;--gold:#D97706;--gold-b:#F59E0B;--gold-l:#FEF3C7;--green:#059669;--green-l:#ECFDF5;--red:#DC2626;--white:#FFFFFF;--surface:#F9FAFB;--border:#E5E7EB;--border-2:#D1D5DB;--radius:10px;--radius-lg:16px;--shadow:0 1px 3px rgba(0,0,0,0.1);--shadow-md:0 4px 6px rgba(0,0,0,0.07);--shadow-lg:0 10px 15px rgba(0,0,0,0.1);--shadow-xl:0 20px 25px rgba(0,0,0,0.1)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--surface);line-height:1.6;font-size:15px}
+h1,h2,h3,h4{font-family:'Sora',sans-serif;line-height:1.2;letter-spacing:-0.02em}
+a{color:inherit;text-decoration:none}
+.topbar{background:var(--blue);color:#fff;text-align:center;padding:10px 20px;font-size:13px;font-weight:500}
+.topbar a{color:var(--gold-b);text-decoration:underline}
+header{position:sticky;top:0;z-index:1000;background:var(--ink);border-bottom:1px solid rgba(255,255,255,0.07)}
+nav{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:66px;gap:8px}
+.logo{font-family:'Sora',sans-serif;font-weight:800;font-size:19px;color:#fff;display:flex;align-items:center;gap:9px;margin-right:auto;flex-shrink:0;text-decoration:none}
+.logo-icon{width:32px;height:32px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo span{color:var(--gold-b)}
+.nav-links{display:flex;align-items:center;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.72);font-size:13.5px;font-weight:500;padding:7px 13px;border-radius:7px;transition:all 0.15s;white-space:nowrap;display:block}
+.nav-links a:hover,.nav-links .active a{color:#fff;background:rgba(255,255,255,0.09)}
+.nav-cta{background:var(--gold-b);color:var(--ink)!important;font-weight:700!important;padding:8px 18px!important;border-radius:8px!important;margin-left:6px;font-size:13.5px!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;margin-left:8px;flex-shrink:0}
+.hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+.mobile-nav{display:none;position:fixed;inset:0;background:var(--ink);z-index:1200;flex-direction:column;padding:74px 28px 40px;overflow-y:auto}
+.mobile-nav.open{display:flex}
+.mobile-close{position:absolute;top:18px;right:22px;background:none;border:none;color:#fff;font-size:26px;cursor:pointer}
+.mobile-nav a{color:rgba(255,255,255,0.8);font-size:18px;font-family:'Sora',sans-serif;font-weight:600;padding:15px 0;border-bottom:1px solid rgba(255,255,255,0.08);display:block}
 
-  /* AUTH SECTION */
-  .auth-wrap{min-height:calc(100vh - 110px);display:flex;align-items:center;justify-content:center;padding:60px 24px}
-  .auth-card{background:var(--white);border:1px solid var(--border);border-radius:24px;padding:48px 44px;width:100%;max-width:440px;box-shadow:var(--shadow-lg)}
-  .auth-logo{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:32px}
-  .auth-logo-icon{width:44px;height:44px;background:var(--sky);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px}
-  .auth-logo-text{font-family:'Outfit',sans-serif;font-weight:800;font-size:24px;color:var(--ink)}
-  .auth-logo-text span{color:var(--gold)}
-  .auth-tabs{display:flex;background:var(--surface);border-radius:10px;padding:4px;margin-bottom:32px;gap:4px}
-  .auth-tab{flex:1;text-align:center;padding:10px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;color:var(--ink-light);transition:all 0.18s}
-  .auth-tab.active{background:var(--white);color:var(--sky);box-shadow:0 1px 6px rgba(0,0,0,0.08)}
-  .form-row{margin-bottom:18px}
-  .form-label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:7px}
-  .form-input{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:'Space Grotesk',sans-serif;outline:none;transition:border-color 0.15s;background:var(--white)}
-  .form-input:focus{border-color:var(--sky)}
-  .form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  .forgot-link{font-size:12px;color:var(--sky);cursor:pointer;float:right;margin-top:-4px}
-  .forgot-link:hover{text-decoration:underline}
-  .auth-btn{width:100%;background:var(--sky);color:var(--white);border:none;padding:14px;border-radius:10px;font-weight:700;font-size:15px;cursor:pointer;font-family:'Outfit',sans-serif;transition:all 0.15s;margin-top:4px}
-  .auth-btn:hover{background:#1642B8;transform:translateY(-1px)}
-  .auth-divider{display:flex;align-items:center;gap:12px;margin:20px 0;color:var(--ink-light);font-size:13px}
-  .auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:var(--border)}
-  .auth-note{font-size:12px;color:var(--ink-light);text-align:center;margin-top:20px;line-height:1.6}
-  .auth-note a{color:var(--sky);cursor:pointer}
-  .auth-note a:hover{text-decoration:underline}
+/* AUTH */
+.auth-wrap{min-height:calc(100vh - 108px);display:flex;align-items:center;justify-content:center;padding:60px 20px}
+.auth-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:44px 40px;width:100%;max-width:420px;box-shadow:var(--shadow-xl)}
+.auth-logo{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:28px}
+.auth-logo-icon{width:42px;height:42px;background:var(--blue);border-radius:10px;display:flex;align-items:center;justify-content:center}
+.auth-logo-text{font-family:'Sora',sans-serif;font-weight:800;font-size:22px;color:var(--ink)}
+.auth-logo-text span{color:var(--gold-b)}
+.auth-tabs{display:flex;background:var(--surface);border-radius:9px;padding:3px;margin-bottom:28px;gap:3px}
+.auth-tab{flex:1;text-align:center;padding:9px;border-radius:7px;font-size:13.5px;font-weight:600;cursor:pointer;color:var(--ink-3);transition:all 0.15s;user-select:none}
+.auth-tab.active{background:#fff;color:var(--blue);box-shadow:var(--shadow)}
+.form-row{margin-bottom:16px}
+.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.form-lbl{display:block;font-size:12.5px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.form-inp{width:100%;padding:11px 13px;border:1.5px solid var(--border);border-radius:9px;font-size:14px;font-family:'Inter',sans-serif;outline:none;transition:border-color 0.15s;background:#fff;color:var(--ink)}
+.form-inp:focus{border-color:var(--blue)}
+.form-forgot{font-size:11.5px;color:var(--blue);cursor:pointer;float:right;margin-top:-2px}
+.auth-btn{width:100%;background:var(--blue);color:#fff;border:none;padding:13px;border-radius:9px;font-weight:700;font-size:15px;cursor:pointer;font-family:'Sora',sans-serif;transition:all 0.15s;margin-top:2px}
+.auth-btn:hover{background:var(--blue-d);transform:translateY(-1px)}
+.auth-divider{display:flex;align-items:center;gap:12px;margin:18px 0;color:var(--ink-3);font-size:12.5px}
+.auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:var(--border)}
+.auth-note{font-size:12.5px;color:var(--ink-3);text-align:center;margin-top:18px;line-height:1.6}
+.auth-note a{color:var(--blue);cursor:pointer}
 
-  /* DASHBOARD */
-  .dashboard{display:none;min-height:calc(100vh - 110px)}
-  .dash-layout{max-width:1200px;margin:0 auto;padding:40px 24px;display:grid;grid-template-columns:240px 1fr;gap:28px;align-items:start}
-  .dash-sidebar{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:24px;position:sticky;top:88px}
-  .dash-user{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--border)}
-  .dash-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--sky),#0D3BA8);display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--white);font-family:'Outfit',sans-serif;font-weight:700}
-  .dash-user-name{font-weight:700;font-size:15px;color:var(--ink)}
-  .dash-user-email{font-size:12px;color:var(--ink-light);margin-top:2px}
-  .dash-nav{display:flex;flex-direction:column;gap:4px}
-  .dash-nav-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:9px;cursor:pointer;font-size:14px;font-weight:500;color:var(--ink-light);transition:all 0.15s}
-  .dash-nav-item:hover{background:var(--surface);color:var(--ink)}
-  .dash-nav-item.active{background:var(--sky-pale);color:var(--sky);font-weight:600}
-  .dash-nav-item .nav-icon{font-size:16px;width:20px;text-align:center}
-  .dash-main{}
-  .dash-panel{display:none}
-  .dash-panel.active{display:block}
-  .dash-panel-title{font-family:'Outfit',sans-serif;font-size:22px;font-weight:800;margin-bottom:6px}
-  .dash-panel-sub{font-size:14px;color:var(--ink-light);margin-bottom:28px}
+/* DASHBOARD */
+.dashboard{display:none}
+.dash-layout{max-width:1200px;margin:0 auto;padding:36px 20px 80px;display:grid;grid-template-columns:220px 1fr;gap:24px;align-items:start}
+.dash-sidebar{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;position:sticky;top:78px}
+.dash-user{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.dash-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-d));display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;font-family:'Sora',sans-serif;font-weight:700;flex-shrink:0}
+.dash-name{font-weight:700;font-size:14px;color:var(--ink)}
+.dash-email{font-size:11.5px;color:var(--ink-3);margin-top:1px}
+.dash-nav{display:flex;flex-direction:column;gap:3px}
+.dash-nav-item{display:flex;align-items:center;gap:9px;padding:9px 11px;border-radius:8px;cursor:pointer;font-size:13.5px;font-weight:500;color:var(--ink-3);transition:all 0.15s;user-select:none}
+.dash-nav-item:hover{background:var(--surface);color:var(--ink)}
+.dash-nav-item.active{background:var(--blue-l);color:var(--blue);font-weight:600}
+.dash-panel{display:none}
+.dash-panel.active{display:block}
+.dash-panel-title{font-family:'Sora',sans-serif;font-size:20px;font-weight:800;margin-bottom:4px;color:var(--ink)}
+.dash-panel-sub{font-size:13.5px;color:var(--ink-3);margin-bottom:24px}
 
-  /* STATS ROW */
-  .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
-  .stat-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px;transition:box-shadow 0.2s}
-  .stat-card:hover{box-shadow:var(--shadow)}
-  .stat-icon{font-size:22px;margin-bottom:10px}
-  .stat-num{font-family:'Outfit',sans-serif;font-size:28px;font-weight:800;color:var(--ink);margin-bottom:4px}
-  .stat-label{font-size:12px;color:var(--ink-light)}
+/* STATS */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+.stat-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px;transition:all 0.2s}
+.stat-card:hover{box-shadow:var(--shadow-md)}
+.stat-icon{font-size:20px;margin-bottom:8px}
+.stat-num{font-family:'Sora',sans-serif;font-size:26px;font-weight:800;color:var(--ink);line-height:1}
+.stat-lbl{font-size:12px;color:var(--ink-3);margin-top:3px}
 
-  /* ORDERS TABLE */
-  .orders-table{width:100%;border-collapse:collapse;background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden}
-  .orders-table thead{background:var(--surface)}
-  .orders-table th{padding:12px 16px;text-align:left;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-light);border-bottom:1px solid var(--border)}
-  .orders-table td{padding:14px 16px;font-size:13.5px;border-bottom:1px solid var(--border)}
-  .orders-table tr:last-child td{border-bottom:none}
-  .orders-table tbody tr:hover{background:var(--sky-pale)}
-  .status-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:50px;font-size:11.5px;font-weight:600}
-  .status-posted{background:rgba(0,196,140,0.12);color:#007A5E}
-  .status-pending{background:rgba(240,165,0,0.12);color:#B87800}
-  .status-processing{background:rgba(27,79,216,0.1);color:var(--sky)}
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
+.data-table thead{background:var(--surface)}
+.data-table th{padding:11px 15px;text-align:left;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-3);border-bottom:1px solid var(--border);white-space:nowrap}
+.data-table td{padding:13px 15px;font-size:13.5px;border-bottom:1px solid var(--border);color:var(--ink-2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tbody tr:hover{background:var(--blue-l)}
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:50px;font-size:11.5px;font-weight:600}
+.badge-green{background:var(--green-l);color:var(--green)}
+.badge-gold{background:var(--gold-l);color:#92400E}
+.badge-blue{background:var(--blue-l);color:var(--blue)}
+.badge-red{background:#FEE2E2;color:var(--red)}
 
-  /* CREDIT BAR */
-  .credit-panel{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:20px}
-  .credit-balance{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:12px}
-  .credit-bal-num{font-family:'Outfit',sans-serif;font-size:36px;font-weight:800;color:var(--sky)}
-  .credit-bal-label{font-size:13px;color:var(--ink-light);margin-top:2px}
-  .credit-add-btn{background:var(--gold);color:var(--ink);border:none;padding:10px 20px;border-radius:9px;font-weight:700;font-size:14px;cursor:pointer;font-family:'Outfit',sans-serif}
-  .credit-add-btn:hover{opacity:0.9}
-  .credit-history{border-top:1px solid var(--border);padding-top:20px}
-  .credit-hist-title{font-size:13px;font-weight:600;color:var(--ink-light);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:14px}
-  .credit-hist-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:13.5px}
-  .credit-hist-row:last-child{border-bottom:none}
-  .credit-hist-desc{color:var(--ink-light)}
-  .credit-hist-amount{font-weight:700}
-  .credit-hist-amount.debit{color:#C81E1E}
-  .credit-hist-amount.credit-in{color:var(--mint)}
+/* CREDIT PANEL */
+.credit-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:26px;margin-bottom:20px}
+.credit-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px;margin-bottom:20px}
+.credit-bal{font-family:'Sora',sans-serif;font-size:38px;font-weight:800;color:var(--blue);line-height:1}
+.credit-lbl{font-size:12.5px;color:var(--ink-3);margin-top:3px}
+.add-credit-btn{background:var(--gold-b);color:var(--ink);border:none;padding:10px 18px;border-radius:8px;font-weight:700;font-size:13.5px;cursor:pointer;font-family:'Sora',sans-serif;transition:all 0.15s}
+.add-credit-btn:hover{background:#E09400;transform:translateY(-1px)}
+.credit-hist-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-3);margin-bottom:12px;padding-top:20px;border-top:1px solid var(--border)}
+.credit-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:13.5px}
+.credit-row:last-child{border-bottom:none}
+.credit-row-desc{color:var(--ink-2)}
+.credit-row-date{font-size:12px;color:var(--ink-3);margin-top:1px}
+.cr-amt{font-weight:700}
+.cr-amt.debit{color:var(--red)}
+.cr-amt.credit-in{color:var(--green)}
 
-  /* PROFILE */
-  .profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-  .profile-field{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:20px}
-  .profile-field-label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-light);margin-bottom:6px}
-  .profile-field-value{font-size:15px;font-weight:500;color:var(--ink)}
-  .edit-btn{margin-top:20px;background:var(--surface);border:1px solid var(--border);color:var(--ink);padding:10px 20px;border-radius:9px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Space Grotesk',sans-serif;transition:all 0.15s}
-  .edit-btn:hover{border-color:var(--sky);color:var(--sky)}
+/* PROFILE */
+.profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.profile-field{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:17px}
+.pf-lbl{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-3);margin-bottom:5px}
+.pf-val{font-size:14.5px;font-weight:500;color:var(--ink)}
+.edit-profile-btn{background:var(--surface);border:1.5px solid var(--border);color:var(--ink);padding:10px 18px;border-radius:9px;font-size:13.5px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.15s;margin-top:16px}
+.edit-profile-btn:hover{border-color:var(--blue);color:var(--blue)}
+.logout-btn{width:100%;margin-top:14px;background:none;border:1.5px solid var(--border);color:var(--ink-3);padding:9px;border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.15s}
+.logout-btn:hover{border-color:var(--red);color:var(--red)}
 
-  .empty-orders{text-align:center;padding:48px 24px;color:var(--ink-light);background:var(--white);border:1px solid var(--border);border-radius:14px}
-  .empty-orders-icon{font-size:44px;margin-bottom:14px}
-  .empty-orders h3{font-size:18px;color:var(--ink);margin-bottom:8px}
-  .empty-orders a{color:var(--sky);font-weight:600}
+.sticky-phone{position:fixed;bottom:24px;right:24px;background:var(--blue);color:#fff;border-radius:50px;padding:13px 20px;display:flex;align-items:center;gap:9px;font-weight:600;font-size:13.5px;box-shadow:var(--shadow-xl);z-index:900;transition:all 0.15s;text-decoration:none}
+.sticky-phone:hover{background:var(--blue-d);transform:translateY(-2px)}
+footer{background:#060810;color:rgba(255,255,255,0.55);padding:28px 24px}
+.footer-bottom{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:12.5px}
+.footer-bottom a{color:rgba(255,255,255,0.38);transition:color 0.15s}
+.footer-bottom a:hover{color:#fff}
 
-  .logout-btn{width:100%;margin-top:16px;background:none;border:1px solid var(--border);color:var(--ink-light);padding:10px;border-radius:9px;font-size:13.5px;font-weight:500;cursor:pointer;font-family:'Space Grotesk',sans-serif;transition:all 0.15s}
-  .logout-btn:hover{border-color:#C81E1E;color:#C81E1E}
+@media(max-width:900px){.dash-layout{grid-template-columns:1fr}.dash-sidebar{position:static}.stats-row{grid-template-columns:repeat(2,1fr)}.profile-grid{grid-template-columns:1fr}}
+@media(max-width:768px){.nav-links,.nav-cta{display:none}.hamburger{display:flex}.auth-card{padding:32px 22px}.stats-row{grid-template-columns:1fr 1fr}.data-table{font-size:12px}.data-table th,.data-table td{padding:10px 10px}}
 
-  .sticky-phone{position:fixed;bottom:24px;right:24px;background:var(--sky);color:var(--white);border-radius:50px;padding:14px 22px;display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px;box-shadow:var(--shadow-lg);z-index:900;transition:transform 0.15s;text-decoration:none}
-  .sticky-phone:hover{transform:translateY(-2px)}
+/* ── GLOBAL MOBILE RESPONSIVE ── */
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none!important}
+  .hamburger{display:flex!important}
+  .section{padding:56px 18px!important}
+  .page-hero{padding:44px 18px 40px!important}
+  .steps-grid,.opp-grid,.why-grid,.uses-grid,.articles-grid,.opp-grid,.footer-top{grid-template-columns:1fr!important}
+  .footer-top{gap:24px!important}
+  .hero-inner{grid-template-columns:1fr!important;gap:40px}
+  .hero h1{font-size:32px!important}
+  .hero-btns{flex-direction:column;gap:10px}
+  .hero-btns .btn-primary,.hero-btns .btn-outline{width:100%;justify-content:center}
+  .hero-stats{flex-wrap:wrap;gap:18px!important}
+  .hero-cards{display:none!important}
+  .tradeline-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .main-layout{grid-template-columns:1fr!important}
+  .filter-sidebar{position:static!important}
+  .checkout-wrap{grid-template-columns:1fr!important}
+  .crypto-tabs{grid-template-columns:repeat(2,1fr)!important}
+  .modal{padding:24px 18px!important;border-radius:16px 16px 0 0!important;position:fixed;bottom:0;left:0;right:0;max-height:90vh;overflow-y:auto;max-width:100%!important}
+  .modal-overlay{align-items:flex-end!important}
+  .cart-drawer{width:100%!important}
+  .profile-grid,.guarantees-grid,.stats-row,.credit-pkgs{grid-template-columns:1fr!important}
+  .form-row-2,.form-row-3{grid-template-columns:1fr!important}
+  .res-tabs-inner{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .dash-layout{grid-template-columns:1fr!important}
+  .dash-sidebar{position:static!important}
+  .img-section{min-height:300px!important}
+  .img-section-content{padding:40px 18px!important;margin-left:0!important;text-align:left!important}
+  .broker-grid,.sell-grid,.contact-grid,.about-grid{grid-template-columns:1fr!important}
+  .cta-band{padding:56px 18px!important}
+  .sticky-phone span:not(.phone-icon){display:none}
+  .floating-cta .float-btn span{display:none}
+  table{font-size:12.5px}
+  th,td{padding:10px 10px!important}
+}
+@media(max-width:480px){
+  .hero h1{font-size:27px!important}
+  .section-title{font-size:24px!important}
+  .auth-card{padding:28px 18px!important;border-radius:0!important;border:none!important;box-shadow:none!important;max-width:100%!important}
+  .auth-wrap{align-items:flex-start!important;padding:0!important}
+  .topbar{font-size:11.5px!important;padding:8px 14px!important}
+}
 
-  footer{background:#080A14;color:rgba(255,255,255,0.6);padding:48px 24px 28px}
-  .footer-inner{max-width:1200px;margin:0 auto}
-  .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:13px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.08)}
-  .footer-bottom a{color:rgba(255,255,255,0.45);transition:color 0.15s}
-  .footer-bottom a:hover{color:var(--white)}
-
-  @media(max-width:900px){.dash-layout{grid-template-columns:1fr}.dash-sidebar{position:static}.stats-row{grid-template-columns:repeat(2,1fr)}.profile-grid{grid-template-columns:1fr}}
-  @media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}.auth-card{padding:32px 24px}.stats-row{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
-<div class="topbar">🚀 New customers get <strong>$15 off</strong> — use code <strong>SCORE15</strong> · <a href="marketplace.html">Browse tradelines</a></div>
+<div class="topbar">🎉 New customers get <strong>$15 off</strong> — <a href="marketplace.html">use code SCORE15 at checkout</a></div>
 <header>
   <nav>
-    <a href="index.html" class="logo"><div class="logo-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 2L3 5V10C3 13.87 6.13 17.48 10 18C13.87 17.48 17 13.87 17 10V5L10 2Z" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="1.4" stroke-linejoin="round"/><path d="M7 11.5L9.5 8.5L10 10L12.5 7" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12.5" cy="7" r="1" fill="white"/></svg></div>TradeLine <span>Marketplace</span></a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="marketplace.html">Buy Tradelines</a></li>
-      <li><a href="sell.html">Sell Tradelines</a></li>
-      <li><a href="brokers.html">Brokers</a></li>
-      <li class="has-dropdown"><a href="#">Resources</a>
-        <div class="dropdown">
-          <a href="resources.html#what-is">What Is a Tradeline?</a>
-          <a href="resources.html#guide">Buyer's Guide</a>
-          <a href="calculator.html">Tradeline Calculator</a>
-          <a href="resources.html#faq">FAQs</a>
-          <a href="resources.html#guarantees">Our Guarantees</a>
-          <a href="blog.html">Knowledge Center</a>
-        </div>
-      </li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li class="active"><a href="account.html">My Account</a></li>
-    </ul>
-    <a href="cart.html" class="cart-btn">🛒 <span class="cart-count" id="cartCount">0</span></a>
-    <a href="marketplace.html" class="nav-cta">View Tradelines →</a>
+    <a href="index.html" class="logo"><div class="logo-icon"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 2L3 5V10C3 13.87 6.13 17.48 10 18C13.87 17.48 17 13.87 17 10V5L10 2Z" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="1.5" stroke-linejoin="round"/><path d="M7 11.5L9.5 8.5L10 10L12.5 7" stroke="#F59E0B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12.5" cy="7" r="1" fill="#F59E0B"/></svg></div>TradeLine <span>Marketplace</span></a>
+    <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="marketplace.html">Buy Tradelines</a></li><li><a href="sell.html">Sell Tradelines</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul>
+    <a href="marketplace.html" class="nav-cta">Browse Tradelines →</a>
     <div class="hamburger" onclick="openMenu()"><span></span><span></span><span></span></div>
   </nav>
 </header>
-<div class="mobile-nav" id="mobileNav">
-  <button class="mobile-nav-close" onclick="closeMenu()">✕</button>
-  <a href="index.html">Home</a><a href="marketplace.html">Buy Tradelines</a>
-  <a href="sell.html">Sell Tradelines</a><a href="brokers.html">Brokers</a>
-  <a href="resources.html">Resources</a><a href="about.html">About</a>
-  <a href="contact.html">Contact</a><a href="account.html">My Account</a>
-</div>
+<div class="mobile-nav" id="mobileNav"><button class="mobile-close" onclick="closeMenu()">✕</button><a href="index.html">Home</a><a href="marketplace.html">Buy Tradelines</a><a href="resources.html">Resources</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
 
-<!-- AUTH SCREEN -->
-<div class="auth-wrap" id="authScreen">
+<!-- AUTH FORM -->
+<div class="auth-wrap" id="authWrap">
   <div class="auth-card">
     <div class="auth-logo">
-      <div class="auth-logo-icon"><svg width="26" height="26" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 2L3 5V10C3 13.87 6.13 17.48 10 18C13.87 17.48 17 13.87 17 10V5L10 2Z" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="1.4" stroke-linejoin="round"/><path d="M7 11.5L9.5 8.5L10 10L12.5 7" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12.5" cy="7" r="1" fill="white"/></svg></div>
+      <div class="auth-logo-icon"><svg width="22" height="22" viewBox="0 0 20 20" fill="none"><path d="M10 2L3 5V10C3 13.87 6.13 17.48 10 18C13.87 17.48 17 13.87 17 10V5L10 2Z" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="1.5" stroke-linejoin="round"/><path d="M7 11.5L9.5 8.5L10 10L12.5 7" stroke="#F59E0B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12.5" cy="7" r="1" fill="#F59E0B"/></svg></div>
       <div class="auth-logo-text">TradeLine <span>Marketplace</span></div>
     </div>
     <div class="auth-tabs">
-      <div class="auth-tab active" id="loginTab" onclick="switchAuth('login')">Sign In</div>
-      <div class="auth-tab" id="registerTab" onclick="switchAuth('register')">Create Account</div>
+      <div class="auth-tab active" id="tabLogin" onclick="switchAuth('login')">Sign In</div>
+      <div class="auth-tab" id="tabReg" onclick="switchAuth('reg')">Create Account</div>
     </div>
 
-    <!-- LOGIN FORM -->
-    <div id="loginForm">
-      <div class="form-row">
-        <label class="form-label">Email Address</label>
-        <input class="form-input" type="email" id="loginEmail" placeholder="your@email.com">
-      </div>
-      <div class="form-row">
-        <label class="form-label">Password <span class="forgot-link" onclick="showForgot()">Forgot password?</span></label>
-        <input class="form-input" type="password" id="loginPass" placeholder="••••••••">
-      </div>
-      <button class="auth-btn" onclick="doLogin()">Sign In to My Account →</button>
-      <div class="auth-divider">or</div>
-      <div style="text-align:center;font-size:13.5px;color:var(--ink-light)">Don't have an account? <span style="color:var(--sky);cursor:pointer;font-weight:600" onclick="switchAuth('register')">Create one free →</span></div>
+    <!-- LOGIN -->
+    <div id="formLogin">
+      <div class="form-row"><label class="form-lbl">Email Address</label><input class="form-inp" type="email" id="loginEmail" placeholder="you@email.com"></div>
+      <div class="form-row"><label class="form-lbl">Password <span class="form-forgot" onclick="forgotPw()">Forgot password?</span></label><input class="form-inp" type="password" id="loginPw" placeholder="••••••••"></div>
+      <button class="auth-btn" onclick="doLogin()">Sign In →</button>
+      <div class="auth-note">Don't have an account? <a onclick="switchAuth('reg')">Create one free</a></div>
     </div>
 
-    <!-- REGISTER FORM -->
-    <div id="registerForm" style="display:none">
+    <!-- REGISTER -->
+    <div id="formReg" style="display:none">
       <div class="form-row-2">
-        <div class="form-row"><label class="form-label">First Name</label><input class="form-input" type="text" id="regFirst" placeholder="Jane"></div>
-        <div class="form-row"><label class="form-label">Last Name</label><input class="form-input" type="text" id="regLast" placeholder="Smith"></div>
+        <div><label class="form-lbl">First Name</label><input class="form-inp" type="text" id="regFirst" placeholder="Jane"></div>
+        <div><label class="form-lbl">Last Name</label><input class="form-inp" type="text" id="regLast" placeholder="Smith"></div>
       </div>
-      <div class="form-row"><label class="form-label">Email Address</label><input class="form-input" type="email" id="regEmail" placeholder="jane@email.com"></div>
-      <div class="form-row"><label class="form-label">Password</label><input class="form-input" type="password" id="regPass" placeholder="Min 8 characters"></div>
-      <div class="form-row"><label class="form-label">Phone</label><input class="form-input" type="tel" id="regPhone" placeholder="(555) 000-0000"></div>
-      <button class="auth-btn" onclick="doRegister()">Create My Account →</button>
-      <div class="auth-note">By registering you agree to our <a href="legal.html#terms">Terms & Conditions</a> and <a href="legal.html#privacy">Privacy Policy</a>.</div>
-    </div>
-
-    <!-- FORGOT PASSWORD -->
-    <div id="forgotForm" style="display:none">
-      <div style="text-align:center;margin-bottom:24px">
-        <div style="font-size:36px;margin-bottom:12px">🔑</div>
-        <div style="font-size:18px;font-weight:700;font-family:'Outfit',sans-serif;margin-bottom:6px">Reset your password</div>
-        <div style="font-size:13.5px;color:var(--ink-light)">Enter your email and we'll send a reset link.</div>
+      <div class="form-row"><label class="form-lbl">Email Address</label><input class="form-inp" type="email" id="regEmail" placeholder="you@email.com"></div>
+      <div class="form-row"><label class="form-lbl">Password</label><input class="form-inp" type="password" id="regPw" placeholder="At least 8 characters"></div>
+      <div class="form-row"><label class="form-lbl">Account Type</label>
+        <select class="form-inp" id="regType"><option value="buyer">Buyer (I want to purchase tradelines)</option><option value="seller">Seller (I want to earn from my credit cards)</option><option value="broker">Broker (I resell tradelines to clients)</option></select>
       </div>
-      <div class="form-row"><label class="form-label">Email Address</label><input class="form-input" type="email" id="forgotEmail" placeholder="your@email.com"></div>
-      <button class="auth-btn" onclick="doForgot()">Send Reset Link →</button>
-      <div style="text-align:center;margin-top:14px"><span style="color:var(--sky);cursor:pointer;font-size:13.5px;font-weight:600" onclick="switchAuth('login')">← Back to Sign In</span></div>
+      <button class="auth-btn" onclick="doRegister()">Create Account →</button>
+      <div class="auth-note">By creating an account you agree to our <a href="legal.html#terms">Terms</a> and <a href="legal.html#privacy">Privacy Policy</a>.</div>
     </div>
   </div>
 </div>
 
 <!-- DASHBOARD -->
-<div class="dashboard" id="dashScreen">
+<div class="dashboard" id="dashboard">
   <div class="dash-layout">
-    <!-- Sidebar -->
-    <aside class="dash-sidebar">
+    <!-- SIDEBAR -->
+    <div class="dash-sidebar">
       <div class="dash-user">
-        <div class="dash-avatar" id="dashAvatarLetter">J</div>
-        <div>
-          <div class="dash-user-name" id="dashUserName">Jane Smith</div>
-          <div class="dash-user-email" id="dashUserEmail">jane@email.com</div>
-        </div>
+        <div class="dash-avatar" id="dashInitials">JS</div>
+        <div><div class="dash-name" id="dashName">Jane Smith</div><div class="dash-email" id="dashEmail">jane@email.com</div></div>
       </div>
       <div class="dash-nav">
-        <div class="dash-nav-item active" onclick="switchPanel('overview',this)"><span class="nav-icon">📊</span>Overview</div>
-        <div class="dash-nav-item" onclick="switchPanel('orders',this)"><span class="nav-icon">📦</span>My Orders</div>
-        <div class="dash-nav-item" onclick="switchPanel('credit',this)"><span class="nav-icon">💰</span>Store Credit</div>
-        <div class="dash-nav-item" onclick="switchPanel('profile',this)"><span class="nav-icon">👤</span>Profile</div>
-        <div class="dash-nav-item" onclick="location.href='marketplace.html'"><span class="nav-icon">🛒</span>Buy Tradelines</div>
-        <div class="dash-nav-item" onclick="location.href='resources.html'"><span class="nav-icon">📚</span>Resources</div>
-        <div class="dash-nav-item" onclick="location.href='contact.html'"><span class="nav-icon">💬</span>Get Support</div>
+        <div class="dash-nav-item active" onclick="showPanel('overview')">📊 <span>Overview</span></div>
+        <div class="dash-nav-item" onclick="showPanel('orders')">📦 <span>Order History</span></div>
+        <div class="dash-nav-item" onclick="showPanel('transactions')">💳 <span>Transactions</span></div>
+        <div class="dash-nav-item" onclick="showPanel('tradelines')">📈 <span>My Tradelines</span></div>
+        <div class="dash-nav-item" onclick="showPanel('credit')">💰 <span>Store Credit</span></div>
+        <div class="dash-nav-item" onclick="showPanel('profile')">👤 <span>Profile</span></div>
+        <div class="dash-nav-item" onclick="showPanel('support')">🎧 <span>Support</span></div>
       </div>
       <button class="logout-btn" onclick="doLogout()">Sign Out</button>
-    </aside>
+    </div>
 
-    <!-- Main -->
-    <main class="dash-main">
+    <!-- MAIN PANELS -->
+    <div class="dash-main">
 
       <!-- OVERVIEW -->
       <div class="dash-panel active" id="panel-overview">
-        <div class="dash-panel-title">Welcome back, <span id="dashFirstName">Jane</span> 👋</div>
-        <div class="dash-panel-sub">Here's a summary of your TradeLine Marketplace account.</div>
+        <div class="dash-panel-title">Dashboard Overview</div>
+        <div class="dash-panel-sub" id="overviewDate">Welcome back! Here's your account summary.</div>
         <div class="stats-row">
-          <div class="stat-card"><div class="stat-icon">📦</div><div class="stat-num" id="statOrders">3</div><div class="stat-label">Total Orders</div></div>
-          <div class="stat-card"><div class="stat-icon">✅</div><div class="stat-num" id="statPosted">2</div><div class="stat-label">Tradelines Posted</div></div>
-          <div class="stat-card"><div class="stat-icon">💰</div><div class="stat-num">$<span id="statCredit">250</span></div><div class="stat-label">Store Credit</div></div>
-          <div class="stat-card"><div class="stat-icon">📅</div><div class="stat-num" id="statNext">Jul 14</div><div class="stat-label">Next Report Date</div></div>
+          <div class="stat-card"><div class="stat-icon">📦</div><div class="stat-num" id="statOrders">4</div><div class="stat-lbl">Total Orders</div></div>
+          <div class="stat-card"><div class="stat-icon">✅</div><div class="stat-num" id="statPosted">3</div><div class="stat-lbl">Tradelines Posted</div></div>
+          <div class="stat-card"><div class="stat-icon">💰</div><div class="stat-num" id="statCredit">$250</div><div class="stat-lbl">Store Credit</div></div>
+          <div class="stat-card"><div class="stat-icon">🎯</div><div class="stat-num" id="statSpent">$3,440</div><div class="stat-lbl">Total Spent</div></div>
         </div>
-
-        <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:20px">
-          <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-light);margin-bottom:16px">Recent Orders</div>
-          <table class="orders-table">
-            <thead><tr><th>Tradeline</th><th>Bank</th><th>Limit</th><th>Reporting</th><th>Status</th></tr></thead>
-            <tbody>
-              <tr><td>#30672</td><td>Chase</td><td>$20,700</td><td>Jul 19–22</td><td><span class="status-badge status-posted">✓ Posted</span></td></tr>
-              <tr><td>#21094</td><td>Discover</td><td>$16,500</td><td>Jul 12–15</td><td><span class="status-badge status-posted">✓ Posted</span></td></tr>
-              <tr><td>#28107</td><td>Barclays</td><td>$41,100</td><td>Jul 26–29</td><td><span class="status-badge status-pending">⏳ Pending</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div style="background:var(--sky-pale);border:1px solid rgba(27,79,216,0.2);border-radius:14px;padding:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px">
-          <div>
-            <div style="font-weight:700;font-size:15px;color:var(--sky);margin-bottom:4px">🎉 You have $250 in store credit</div>
-            <div style="font-size:13.5px;color:var(--ink-light)">Use it toward your next tradeline purchase at checkout.</div>
-          </div>
-          <a href="marketplace.html" style="background:var(--sky);color:var(--white);padding:10px 20px;border-radius:9px;font-weight:700;font-size:14px;font-family:'Outfit',sans-serif">Shop Tradelines →</a>
-        </div>
+        <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:14px">Recent Orders</div>
+        <table class="data-table">
+          <thead><tr><th>Order #</th><th>Tradeline</th><th>Authorized User</th><th>Report Window</th><th>Status</th><th>Amount</th></tr></thead>
+          <tbody id="recentOrdersBody"></tbody>
+        </table>
       </div>
 
       <!-- ORDERS -->
       <div class="dash-panel" id="panel-orders">
-        <div class="dash-panel-title">My Orders</div>
-        <div class="dash-panel-sub">All tradeline purchases and their current posting status.</div>
-        <table class="orders-table">
-          <thead><tr><th>Order #</th><th>Tradeline</th><th>Bank</th><th>Limit</th><th>AU Name</th><th>Report Window</th><th>Status</th></tr></thead>
-          <tbody>
-            <tr><td style="font-size:12px;color:var(--ink-light)">#TLM-00291</td><td>#30672</td><td>Chase</td><td>$20,700</td><td>Jane Smith</td><td>Jul 19–22, 2026</td><td><span class="status-badge status-posted">✓ Posted</span></td></tr>
-            <tr><td style="font-size:12px;color:var(--ink-light)">#TLM-00278</td><td>#21094</td><td>Discover</td><td>$16,500</td><td>Jane Smith</td><td>Jul 12–15, 2026</td><td><span class="status-badge status-posted">✓ Posted</span></td></tr>
-            <tr><td style="font-size:12px;color:var(--ink-light)">#TLM-00305</td><td>#28107</td><td>Barclays</td><td>$41,100</td><td>Jane Smith</td><td>Jul 26–29, 2026</td><td><span class="status-badge status-pending">⏳ Pending</span></td></tr>
-          </tbody>
+        <div class="dash-panel-title">Order History</div>
+        <div class="dash-panel-sub">All tradeline orders placed on your account.</div>
+        <table class="data-table">
+          <thead><tr><th>Order #</th><th>Date</th><th>Tradeline</th><th>Bank</th><th>AU Name</th><th>Report Window</th><th>Status</th><th>Paid</th></tr></thead>
+          <tbody id="allOrdersBody"></tbody>
         </table>
-        <div style="margin-top:20px;font-size:13px;color:var(--ink-light)">
-          If a tradeline hasn't posted 7 days after the reporting window closes, <a href="resources.html#non-posting" style="color:var(--sky);font-weight:600">submit a non-posting report</a>.
-        </div>
+      </div>
+
+      <!-- TRANSACTIONS -->
+      <div class="dash-panel" id="panel-transactions">
+        <div class="dash-panel-title">Transaction History</div>
+        <div class="dash-panel-sub">All crypto payments and store credit movements.</div>
+        <table class="data-table">
+          <thead><tr><th>Date</th><th>Type</th><th>Description</th><th>Coin</th><th>Network</th><th>TXID</th><th>Amount</th><th>Status</th></tr></thead>
+          <tbody id="txBody"></tbody>
+        </table>
+      </div>
+
+      <!-- TRADELINES -->
+      <div class="dash-panel" id="panel-tradelines">
+        <div class="dash-panel-title">My Active Tradelines</div>
+        <div class="dash-panel-sub">Tradelines currently on order or actively posted to credit reports.</div>
+        <table class="data-table">
+          <thead><tr><th>Bank / Card</th><th>Credit Limit</th><th>Card Age</th><th>AU Name</th><th>Bureaus</th><th>Posted</th><th>Removes</th><th>Status</th></tr></thead>
+          <tbody id="activeBody"></tbody>
+        </table>
       </div>
 
       <!-- STORE CREDIT -->
       <div class="dash-panel" id="panel-credit">
         <div class="dash-panel-title">Store Credit</div>
-        <div class="dash-panel-sub">Your TradeLine Marketplace store credit balance and transaction history.</div>
-        <div class="credit-panel">
-          <div class="credit-balance">
-            <div>
-              <div class="credit-bal-num">$250.00</div>
-              <div class="credit-bal-label">Available Store Credit</div>
-            </div>
-            <button class="credit-add-btn" onclick="location.href='resources.html#store-credit'">+ Add Credit</button>
+        <div class="dash-panel-sub">Your available balance and credit history.</div>
+        <div class="credit-card">
+          <div class="credit-top">
+            <div><div class="credit-bal" id="creditBal">$250.00</div><div class="credit-lbl">Available Store Credit</div></div>
+            <button class="add-credit-btn" onclick="location.href='resources.html#store-credit'">Add Credit →</button>
           </div>
-          <div class="credit-history">
-            <div class="credit-hist-title">Transaction History</div>
-            <div class="credit-hist-row"><div class="credit-hist-desc">Store credit purchase — $1,000 pkg (+$50 bonus)</div><div style="text-align:right"><div class="credit-hist-amount credit-in">+$1,050.00</div><div style="font-size:11px;color:var(--ink-light)">May 12, 2026</div></div></div>
-            <div class="credit-hist-row"><div class="credit-hist-desc">Order #TLM-00278 — Discover #21094</div><div style="text-align:right"><div class="credit-hist-amount debit">−$840.00</div><div style="font-size:11px;color:var(--ink-light)">Jun 3, 2026</div></div></div>
-            <div class="credit-hist-row"><div class="credit-hist-desc">Refund — Order #TLM-00271 (non-posting)</div><div style="text-align:right"><div class="credit-hist-amount credit-in">+$40.00</div><div style="font-size:11px;color:var(--ink-light)">Jun 18, 2026</div></div></div>
-            <div class="credit-hist-row"><div class="credit-hist-desc">Current balance</div><div style="text-align:right"><div class="credit-hist-amount" style="color:var(--sky)">$250.00</div></div></div>
-          </div>
+          <div class="credit-hist-title">Credit History</div>
+          <div id="creditHistBody"></div>
         </div>
       </div>
 
       <!-- PROFILE -->
       <div class="dash-panel" id="panel-profile">
         <div class="dash-panel-title">My Profile</div>
-        <div class="dash-panel-sub">Your account information. Contact support to update your email.</div>
-        <div class="profile-grid">
-          <div class="profile-field"><div class="profile-field-label">First Name</div><div class="profile-field-value" id="pfFirst">Jane</div></div>
-          <div class="profile-field"><div class="profile-field-label">Last Name</div><div class="profile-field-value" id="pfLast">Smith</div></div>
-          <div class="profile-field"><div class="profile-field-label">Email Address</div><div class="profile-field-value" id="pfEmail">jane@email.com</div></div>
-          <div class="profile-field"><div class="profile-field-label">Phone</div><div class="profile-field-value" id="pfPhone">(555) 000-0000</div></div>
-          <div class="profile-field"><div class="profile-field-label">Member Since</div><div class="profile-field-value">May 2026</div></div>
-          <div class="profile-field"><div class="profile-field-label">Account Type</div><div class="profile-field-value">Standard</div></div>
-        </div>
-        <button class="edit-btn" onclick="alert('Profile editing would open a form in a full implementation.')">Edit Profile</button>
-        <div style="margin-top:24px;padding:20px;background:var(--surface);border:1px solid var(--border);border-radius:12px">
-          <div style="font-weight:700;font-size:14px;margin-bottom:8px">🔒 Password & Security</div>
-          <div style="font-size:13.5px;color:var(--ink-light);margin-bottom:14px">Last password change: Never. We recommend using a strong, unique password.</div>
-          <button class="edit-btn" onclick="alert('Password reset email sent!')">Change Password</button>
+        <div class="dash-panel-sub">Your account information and preferences.</div>
+        <div class="profile-grid" id="profileGrid"></div>
+        <button class="edit-profile-btn" onclick="alert('Profile editing coming soon. Contact support to update your details.')">Edit Profile</button>
+      </div>
+
+      <!-- SUPPORT -->
+      <div class="dash-panel" id="panel-support">
+        <div class="dash-panel-title">Support & Help</div>
+        <div class="dash-panel-sub">Get help with your orders, tradelines, and account.</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px">
+          <div style="background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;transition:all 0.2s;cursor:pointer" onclick="location.href='resources.html#faq'" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow='none'"><div style="font-size:28px;margin-bottom:10px">📖</div><div style="font-weight:700;font-size:15px;margin-bottom:6px">Read the FAQs</div><p style="font-size:13.5px;color:var(--ink-3)">Answers to the most common questions about tradelines, payment, and posting.</p></div>
+          <div style="background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;transition:all 0.2s;cursor:pointer" onclick="location.href='contact.html'" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow='none'"><div style="font-size:28px;margin-bottom:10px">✉️</div><div style="font-weight:700;font-size:15px;margin-bottom:6px">Email Support</div><p style="font-size:13.5px;color:var(--ink-3)">support@tradelinemarketplace.io · Response within 4 business hours.</p></div>
+          <div style="background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;transition:all 0.2s;cursor:pointer" onclick="location.href='tel:3105550192'" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow='none'"><div style="font-size:28px;margin-bottom:10px">📞</div><div style="font-weight:700;font-size:15px;margin-bottom:6px">Call Us</div><p style="font-size:13.5px;color:var(--ink-3)">(310) 555-0192 · Mon–Fri 9 AM–6 PM PT</p></div>
+          <div style="background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;transition:all 0.2s;cursor:pointer" onclick="location.href='resources.html#non-posting'" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow='none'"><div style="font-size:28px;margin-bottom:10px">⚠️</div><div style="font-weight:700;font-size:15px;margin-bottom:6px">Report Non-Posting</div><p style="font-size:13.5px;color:var(--ink-3)">Submit a non-posting report if your tradeline hasn't appeared after the window closed.</p></div>
         </div>
       </div>
 
-    </main>
+    </div><!-- /dash-main -->
   </div>
 </div>
 
-<a href="tel:3105550192" class="sticky-phone">📞 <span>(310) 555-0192</span></a>
-
-<footer>
-  <div class="footer-inner">
-    <div class="footer-bottom">
-      <div>©2026 TradeLine Marketplace LLC. All Rights Reserved. We do not sell tradelines in Georgia.</div>
-      <div style="display:flex;gap:20px">
-        <a href="legal.html#privacy">Privacy</a>
-        <a href="legal.html#terms">Terms</a>
-        <a href="legal.html#fraud">Fraud Policy</a>
-        <a href="contact.html">Support</a>
-      </div>
-    </div>
-  </div>
-</footer>
+<a href="tel:3105550192" class="sticky-phone">📞 (310) 555-0192</a>
+<footer><div class="footer-bottom"><div>©2026 TradeLine Marketplace LLC. All Rights Reserved.</div><div style="display:flex;gap:16px"><a href="legal.html#privacy">Privacy</a><a href="legal.html#terms">Terms</a><a href="contact.html">Support</a></div></div></footer>
 
 <script>
 function openMenu(){document.getElementById('mobileNav').classList.add('open');document.body.style.overflow='hidden'}
 function closeMenu(){document.getElementById('mobileNav').classList.remove('open');document.body.style.overflow=''}
 
-// Cart count
-const cart = JSON.parse(localStorage.getItem('tlmCart')||'[]');
-document.getElementById('cartCount').textContent = cart.length;
-
-// Auth state
-let loggedIn = JSON.parse(localStorage.getItem('svLoggedIn')||'false');
-let user = JSON.parse(localStorage.getItem('svUser')||'null');
-
-function showScreen(){
-  if(loggedIn && user){
-    document.getElementById('authScreen').style.display='none';
-    document.getElementById('dashScreen').style.display='block';
-    populateDash();
-  } else {
-    document.getElementById('authScreen').style.display='flex';
-    document.getElementById('dashScreen').style.display='none';
-  }
-}
-
-function populateDash(){
-  document.getElementById('dashUserName').textContent = user.first+' '+user.last;
-  document.getElementById('dashUserEmail').textContent = user.email;
-  document.getElementById('dashAvatarLetter').textContent = user.first.charAt(0).toUpperCase();
-  document.getElementById('dashFirstName').textContent = user.first;
-  document.getElementById('pfFirst').textContent = user.first;
-  document.getElementById('pfLast').textContent = user.last;
-  document.getElementById('pfEmail').textContent = user.email;
-  document.getElementById('pfPhone').textContent = user.phone||'Not set';
-}
-
+// ── AUTH ──────────────────────────────────────────────────────────────────
 function switchAuth(tab){
-  document.getElementById('loginForm').style.display = tab==='login'?'block':'none';
-  document.getElementById('registerForm').style.display = tab==='register'?'block':'none';
-  document.getElementById('forgotForm').style.display = 'none';
-  document.getElementById('loginTab').classList.toggle('active', tab==='login');
-  document.getElementById('registerTab').classList.toggle('active', tab==='register');
+  document.getElementById('tabLogin').classList.toggle('active',tab==='login');
+  document.getElementById('tabReg').classList.toggle('active',tab==='reg');
+  document.getElementById('formLogin').style.display=tab==='login'?'':'none';
+  document.getElementById('formReg').style.display=tab==='reg'?'':'none';
 }
-
-function showForgot(){
-  document.getElementById('loginForm').style.display='none';
-  document.getElementById('forgotForm').style.display='block';
-}
+function forgotPw(){alert('Password reset instructions will be sent to your email address.')}
 
 function doLogin(){
-  const e = document.getElementById('loginEmail').value.trim();
-  const p = document.getElementById('loginPass').value;
+  const e=document.getElementById('loginEmail').value.trim();
+  const p=document.getElementById('loginPw').value;
   if(!e||!p){alert('Please enter your email and password.');return;}
-  if(!e.includes('@')){alert('Please enter a valid email.');return;}
-  // Simulate login — accept any email/password
-  const savedUser = JSON.parse(localStorage.getItem('svUser')||'null');
-  user = savedUser || {first:'Jane',last:'Smith',email:e,phone:'(555) 000-0000'};
-  user.email = e;
-  loggedIn = true;
-  localStorage.setItem('svLoggedIn','true');
-  localStorage.setItem('svUser',JSON.stringify(user));
-  showScreen();
+  // Demo: any credentials work
+  const name = e.split('@')[0].replace(/[._]/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+  loginSuccess({name, email:e, type:'buyer'});
 }
-
 function doRegister(){
   const f=document.getElementById('regFirst').value.trim();
   const l=document.getElementById('regLast').value.trim();
   const e=document.getElementById('regEmail').value.trim();
-  const p=document.getElementById('regPass').value;
-  const ph=document.getElementById('regPhone').value.trim();
-  if(!f||!l||!e||!p){alert('Please fill in all required fields.');return;}
+  const p=document.getElementById('regPw').value;
+  if(!f||!l||!e||!p){alert('Please fill in all fields.');return;}
   if(p.length<8){alert('Password must be at least 8 characters.');return;}
-  user = {first:f,last:l,email:e,phone:ph};
-  loggedIn = true;
-  localStorage.setItem('svLoggedIn','true');
-  localStorage.setItem('svUser',JSON.stringify(user));
-  showScreen();
+  loginSuccess({name:f+' '+l, email:e, type:document.getElementById('regType').value});
 }
-
-function doForgot(){
-  const e=document.getElementById('forgotEmail').value.trim();
-  if(!e||!e.includes('@')){alert('Please enter a valid email address.');return;}
-  alert('✅ Password reset link sent to '+e+'. Please check your inbox.');
-  switchAuth('login');
+function loginSuccess(user){
+  localStorage.setItem('tlmUser',JSON.stringify(user));
+  showDashboard(user);
 }
-
 function doLogout(){
-  loggedIn=false;
-  localStorage.removeItem('svLoggedIn');
-  showScreen();
+  localStorage.removeItem('tlmUser');
+  document.getElementById('authWrap').style.display='flex';
+  document.getElementById('dashboard').style.display='none';
 }
 
-function switchPanel(id, el){
-  document.querySelectorAll('.dash-nav-item').forEach(i=>i.classList.remove('active'));
+// ── DASHBOARD ─────────────────────────────────────────────────────────────
+const TODAY = new Date();
+function daysAgo(n){const d=new Date(TODAY);d.setDate(d.getDate()-n);return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}
+function daysFromNow(n){const d=new Date(TODAY);d.setDate(d.getDate()+n);return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}
+
+// Realistic order data — tied to the tradelines in marketplace
+const ORDERS = [
+  {id:'TLM-10482',date:daysAgo(62),bank:'Chase',card:'#30672',limit:'$20,700',age:'13 yrs',au:'Michael R. Torres',dob:'1988-04-12',window:daysAgo(28)+' – '+daysAgo(25),status:'Posted',amount:1020,coin:'USDT',network:'TRC-20',txid:'b3f8a2c91de0471a',bureaus:'EQ, EX, TU',postedDate:daysAgo(27),removes:daysFromNow(28)},
+  {id:'TLM-10391',date:daysAgo(55),bank:'Discover',card:'#21094',limit:'$16,500',age:'10 yrs',au:'Michael R. Torres',dob:'1988-04-12',window:daysAgo(21)+' – '+daysAgo(18),status:'Posted',amount:840,coin:'BTC',network:'Bitcoin',txid:'1a9f3d04c72b8e65',bureaus:'EQ, EX',postedDate:daysAgo(20),removes:daysFromNow(35)},
+  {id:'TLM-10501',date:daysAgo(18),bank:'Barclays',card:'#28107',limit:'$41,100',age:'11 yrs',au:'Sarah J. Torres',dob:'1991-09-03',window:daysFromNow(4)+' – '+daysFromNow(7),status:'Processing',amount:1440,coin:'USDT',network:'ERC-20',txid:'0x7c4f92a18d3b50e6',bureaus:'Pending',postedDate:'—',removes:'—'},
+  {id:'TLM-10529',date:daysAgo(3),bank:'Amex',card:'#66005',limit:'$75,000',age:'27 yrs',au:'Michael R. Torres',dob:'1988-04-12',window:daysFromNow(12)+' – '+daysFromNow(15),status:'Confirmed',amount:2950,coin:'LTC',network:'Litecoin',txid:'ltc1q8x3k7z9mwp2',bureaus:'Pending',postedDate:'—',removes:'—'},
+];
+
+// Recent (last 2)
+const RECENT = ORDERS.slice(-2).reverse();
+const STATUS_BADGE = {Posted:'badge badge-green',Processing:'badge badge-blue',Confirmed:'badge badge-gold',Failed:'badge badge-red'};
+
+function showDashboard(user){
+  document.getElementById('authWrap').style.display='none';
+  document.getElementById('dashboard').style.display='block';
+  document.getElementById('dashName').textContent=user.name;
+  document.getElementById('dashEmail').textContent=user.email;
+  document.getElementById('dashInitials').textContent=user.name.split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
+  document.getElementById('overviewDate').textContent='Welcome back, '+user.name.split(' ')[0]+'! Here\'s your account summary as of '+TODAY.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'})+'.';
+
+  // Recent orders table
+  document.getElementById('recentOrdersBody').innerHTML = RECENT.map(o=>`
+    <tr><td style="font-weight:600;color:var(--blue)">${o.id}</td><td>${o.bank} ${o.card}</td><td>${o.au}</td><td style="font-size:12.5px">${o.window}</td><td><span class="${STATUS_BADGE[o.status]}">${o.status}</span></td><td style="font-weight:700">$${o.amount.toLocaleString()}</td></tr>
+  `).join('');
+
+  // All orders
+  document.getElementById('allOrdersBody').innerHTML = [...ORDERS].reverse().map(o=>`
+    <tr><td style="font-weight:600;color:var(--blue)">${o.id}</td><td style="font-size:12.5px">${o.date}</td><td>${o.bank} ${o.card}</td><td>${o.bank}</td><td>${o.au}</td><td style="font-size:12px">${o.window}</td><td><span class="${STATUS_BADGE[o.status]}">${o.status}</span></td><td style="font-weight:700">$${o.amount.toLocaleString()}</td></tr>
+  `).join('');
+
+  // Transactions
+  const txRows = ORDERS.map(o=>({
+    date:o.date, type:'Payment', desc:'Order '+o.id+' — '+o.bank+' '+o.card+' for '+o.au.split(' ')[0]+' '+o.au.split(' ').pop(),
+    coin:o.coin, network:o.network, txid:o.txid, amount:o.amount, status:o.status==='Failed'?'Failed':'Confirmed'
+  }));
+  // Add a store credit purchase
+  txRows.unshift({date:daysAgo(70),type:'Store Credit',desc:'Store Credit Purchase — $250 package (+$0 bonus)',coin:'USDT',network:'TRC-20',txid:'a1b2c3d4e5f6a7b8',amount:250,status:'Confirmed'});
+  txRows.sort((a,b)=>new Date(b.date)-new Date(a.date));
+  document.getElementById('txBody').innerHTML = txRows.map(t=>`
+    <tr>
+      <td style="font-size:12.5px">${t.date}</td>
+      <td><span class="badge ${t.type==='Payment'?'badge-blue':'badge-green'}">${t.type}</span></td>
+      <td style="font-size:12.5px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${t.desc}</td>
+      <td style="font-weight:600">${t.coin}</td>
+      <td style="font-size:12px;color:var(--ink-3)">${t.network}</td>
+      <td style="font-family:monospace;font-size:11.5px;color:var(--ink-3)">${t.txid.slice(0,12)}…</td>
+      <td style="font-weight:700;color:${t.type==='Store Credit'?'var(--green)':'var(--ink)'}">$${t.amount.toLocaleString()}</td>
+      <td><span class="badge ${t.status==='Confirmed'?'badge-green':'badge-red'}">${t.status}</span></td>
+    </tr>
+  `).join('');
+
+  // Active tradelines
+  document.getElementById('activeBody').innerHTML = ORDERS.map(o=>`
+    <tr>
+      <td style="font-weight:600">${o.bank} ${o.card}</td>
+      <td>${o.limit}</td>
+      <td>${o.age}</td>
+      <td>${o.au}</td>
+      <td style="font-size:12.5px">${o.bureaus}</td>
+      <td style="font-size:12.5px">${o.postedDate}</td>
+      <td style="font-size:12.5px">${o.removes}</td>
+      <td><span class="${STATUS_BADGE[o.status]}">${o.status}</span></td>
+    </tr>
+  `).join('');
+
+  // Credit history
+  document.getElementById('creditHistBody').innerHTML = `
+    <div class="credit-row"><div><div class="credit-row-desc">Store Credit Purchase — $250 Package</div><div class="credit-row-date">${daysAgo(70)}</div></div><div class="cr-amt credit-in">+$250.00</div></div>
+    <div class="credit-row"><div><div class="credit-row-desc">Applied to Order TLM-10482 (Chase #30672)</div><div class="credit-row-date">${daysAgo(62)}</div></div><div class="cr-amt debit">−$0.00</div></div>
+    <div class="credit-row"><div><div class="credit-row-desc">Referral Bonus — New client signup</div><div class="credit-row-date">${daysAgo(40)}</div></div><div class="cr-amt credit-in">+$25.00</div></div>
+    <div class="credit-row"><div><div class="credit-row-desc">Applied to Order TLM-10529 (partial)</div><div class="credit-row-date">${daysAgo(3)}</div></div><div class="cr-amt debit">−$25.00</div></div>
+    <div class="credit-row"><div><div class="credit-row-desc"><strong>Current Balance</strong></div><div class="credit-row-date">As of today</div></div><div class="cr-amt credit-in" style="font-size:18px;font-family:'Sora',sans-serif">$250.00</div></div>
+  `;
+
+  // Profile
+  document.getElementById('profileGrid').innerHTML = `
+    <div class="profile-field"><div class="pf-lbl">Full Name</div><div class="pf-val">${user.name}</div></div>
+    <div class="profile-field"><div class="pf-lbl">Email Address</div><div class="pf-val">${user.email}</div></div>
+    <div class="profile-field"><div class="pf-lbl">Account Type</div><div class="pf-val" style="text-transform:capitalize">${user.type||'Buyer'}</div></div>
+    <div class="profile-field"><div class="pf-lbl">Member Since</div><div class="pf-val">${daysAgo(70)}</div></div>
+    <div class="profile-field"><div class="pf-lbl">Phone</div><div class="pf-val">•••-•••-${Math.floor(Math.random()*9000+1000)}</div></div>
+    <div class="profile-field"><div class="pf-lbl">Status</div><div class="pf-val"><span class="badge badge-green">Active</span></div></div>
+    <div class="profile-field"><div class="pf-lbl">License #</div><div class="pf-val">TLM-2024-US-001</div></div>
+    <div class="profile-field"><div class="pf-lbl">Store Credit</div><div class="pf-val" style="color:var(--blue);font-weight:700">$250.00</div></div>
+  `;
+}
+
+function showPanel(id){
   document.querySelectorAll('.dash-panel').forEach(p=>p.classList.remove('active'));
-  el.classList.add('active');
+  document.querySelectorAll('.dash-nav-item').forEach(n=>n.classList.remove('active'));
   document.getElementById('panel-'+id).classList.add('active');
+  event.currentTarget.classList.add('active');
 }
 
-showScreen();
+// Auto-login if session saved
+const saved = localStorage.getItem('tlmUser');
+if(saved){try{showDashboard(JSON.parse(saved))}catch(e){}}
 </script>
+<script src="images.js"></script>
 </body>
 </html>
