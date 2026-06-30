@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Use TradeLine Marketplace's free tradeline calculator to estimate which tradelines will have the most impact on your credit score.">
+<title>Tradeline Calculator | TradeLine Marketplace</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+  --ink:#0F1117;--ink-2:#374151;--ink-3:#6B7280;
+  --sky:#2563EB;--sky-pale:#EFF6FF;
+  --blue:#2563EB;--blue-d:#1D4ED8;--blue-l:#EFF6FF;
+  --gold:#D97706;--gold-light:#FEF3C7;--gold-b:#F59E0B;
+  --mint:#059669;--green-l:#ECFDF5;
+  --surface:#F9FAFB;--white:#FFFFFF;--border:#E5E7EB;--border-2:#D1D5DB;
+  --radius:10px;--radius-lg:16px;--radius-xl:24px;
+  --shadow:0 1px 3px rgba(0,0,0,0.1),0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md:0 4px 6px rgba(0,0,0,0.07),0 2px 4px rgba(0,0,0,0.06);
+  --shadow-lg:0 10px 15px rgba(0,0,0,0.1),0 4px 6px rgba(0,0,0,0.05);
+  --shadow-xl:0 20px 25px rgba(0,0,0,0.1),0 10px 10px rgba(0,0,0,0.04);
+}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--white);line-height:1.6;font-size:15px;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{font-family:'Sora',sans-serif;line-height:1.2;letter-spacing:-0.02em}
+  a{color:inherit;text-decoration:none}
+  .topbar{background:var(--sky);color:var(--white);text-align:center;padding:9px 20px;font-size:13px;font-weight:500}
+  .topbar a{color:var(--gold);text-decoration:underline}
+  header{position:sticky;top:0;z-index:1000;background:var(--ink);border-bottom:1px solid rgba(255,255,255,0.08);box-shadow:0 2px 16px rgba(0,0,0,0.18)}
+  nav{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:68px}
+  .logo{font-family:'Sora',sans-serif;font-weight:800;font-size:22px;color:var(--white);display:flex;align-items:center;gap:8px;margin-right:auto;flex-shrink:0}
+  .logo-icon{width:34px;height:34px;background:linear-gradient(135deg,#1B4FD8 0%,#0D3BA8 100%);border-radius:9px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(27,79,216,0.35)}
+  .logo span{color:var(--gold)}
+  .nav-links{display:flex;align-items:center;gap:2px;list-style:none}
+  .nav-links a{color:rgba(255,255,255,0.75);font-size:13.5px;font-weight:500;padding:8px 14px;border-radius:7px;transition:all 0.18s;white-space:nowrap}
+  .nav-links a:hover{color:var(--white);background:rgba(255,255,255,0.08)}
+  .has-dropdown{position:relative}
+  .has-dropdown>a::after{content:' ▾';font-size:10px}
+  .dropdown{display:none;position:absolute;top:calc(100% + 8px);left:0;background:var(--white);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-lg);min-width:220px;padding:8px;z-index:200}
+  .has-dropdown:hover .dropdown{display:block}
+  .dropdown a{display:block;color:var(--ink)!important;background:none!important;padding:9px 14px!important;font-size:13.5px!important;border-radius:7px}
+  .dropdown a:hover{background:var(--sky-pale)!important;color:var(--sky)!important}
+  .nav-cta{background:var(--gold);color:var(--ink)!important;font-weight:600!important;padding:9px 20px!important;border-radius:8px!important;margin-left:10px}
+  .cart-btn{color:rgba(255,255,255,0.75);font-size:13.5px;display:flex;align-items:center;gap:6px;padding:8px 12px;border-radius:7px;cursor:pointer;transition:all 0.18s}
+  .cart-count{background:var(--gold);color:var(--ink);font-size:10px;font-weight:700;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;margin-left:12px}
+  .hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px}
+  .mobile-nav{display:none;position:fixed;inset:0;background:var(--ink);z-index:999;flex-direction:column;padding:80px 32px 40px;overflow-y:auto}
+  .mobile-nav.open{display:flex}
+  .mobile-nav-close{position:absolute;top:20px;right:24px;background:none;border:none;color:var(--white);font-size:28px;cursor:pointer}
+  .mobile-nav a{color:rgba(255,255,255,0.8);font-size:20px;font-family:'Sora',sans-serif;font-weight:600;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.08);display:block}
+
+  .page-hero{background:var(--ink);padding:56px 24px 48px;position:relative;overflow:hidden}
+  .page-hero::before{display:none}
+  .page-hero-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1}
+  .breadcrumb{font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:16px}
+  .breadcrumb a{color:rgba(255,255,255,0.4)}
+  .breadcrumb span{margin:0 8px}
+  .page-hero h1{font-size:clamp(28px,4vw,48px);color:var(--white);font-weight:800;margin-bottom:12px;letter-spacing:-0.02em}
+  .page-hero p{color:rgba(255,255,255,0.55);font-size:16px;max-width:560px}
+
+  /* CALC LAYOUT */
+  .calc-wrap{max-width:1100px;margin:0 auto;padding:60px 24px 100px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+
+  /* INPUT SIDE */
+  .calc-inputs{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:36px;box-shadow:var(--shadow)}
+  .calc-title{font-family:'Sora',sans-serif;font-size:20px;font-weight:800;margin-bottom:6px}
+  .calc-sub{font-size:13.5px;color:var(--ink-light);margin-bottom:32px}
+  .form-section{margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid var(--border)}
+  .form-section:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+  .form-section-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--sky);margin-bottom:16px}
+  .form-row{margin-bottom:18px}
+  .form-label{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:8px}
+  .form-label .value-display{font-size:14px;font-weight:700;color:var(--sky);font-family:'Sora',sans-serif}
+  .form-input{width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:9px;font-size:14px;font-family:'Inter',system-ui,sans-serif;outline:none;transition:border-color 0.15s}
+  .form-input:focus{border-color:var(--sky)}
+  .form-select{width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:9px;font-size:14px;font-family:'Inter',system-ui,sans-serif;outline:none;cursor:pointer;background:var(--white)}
+  .range-input{width:100%;-webkit-appearance:none;appearance:none;height:6px;border-radius:3px;background:var(--border);outline:none;cursor:pointer}
+  .range-input::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--sky);cursor:pointer;box-shadow:0 2px 6px rgba(27,79,216,0.3)}
+  .range-input::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--sky);cursor:pointer;border:none}
+  .range-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--ink-light);margin-top:4px}
+
+  .calc-btn{width:100%;background:var(--sky);color:var(--white);border:none;padding:16px;border-radius:10px;font-weight:700;font-size:16px;cursor:pointer;font-family:'Sora',sans-serif;transition:all 0.15s;margin-top:8px;display:flex;align-items:center;justify-content:center;gap:8px}
+  .calc-btn:hover{background:#1642B8;transform:translateY(-1px)}
+  .reset-btn{width:100%;background:transparent;color:var(--ink-light);border:1px solid var(--border);padding:12px;border-radius:10px;font-weight:500;font-size:14px;cursor:pointer;font-family:'Inter',system-ui,sans-serif;transition:all 0.15s;margin-top:10px}
+  .reset-btn:hover{border-color:var(--ink);color:var(--ink)}
+
+  /* RESULTS SIDE */
+  .calc-results{position:sticky;top:88px}
+  .results-card{background:var(--ink);border-radius:20px;padding:36px;color:var(--white)}
+  .results-header{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+  .results-icon{font-size:32px}
+  .results-title-block .results-title{font-family:'Sora',sans-serif;font-size:18px;font-weight:800;color:var(--white)}
+  .results-title-block .results-sub{font-size:13px;color:rgba(255,255,255,0.45);margin-top:2px}
+
+  .score-display{text-align:center;margin-bottom:32px}
+  .score-before-after{display:flex;align-items:center;justify-content:center;gap:20px}
+  .score-block{text-align:center}
+  .score-label{font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.45);margin-bottom:6px}
+  .score-num{font-family:'Sora',sans-serif;font-size:48px;font-weight:800;line-height:1}
+  .score-num.before{color:rgba(255,255,255,0.5)}
+  .score-num.after{color:var(--mint)}
+  .score-arrow{font-size:28px;color:var(--mint);margin-top:12px}
+  .score-delta{display:inline-flex;align-items:center;gap:6px;background:rgba(0,196,140,0.15);border:1px solid rgba(0,196,140,0.3);color:var(--mint);font-family:'Sora',sans-serif;font-weight:700;font-size:18px;padding:8px 18px;border-radius:50px;margin-top:16px}
+
+  /* Score meter */
+  .score-meter{margin:28px 0}
+  .score-meter-label{font-size:12px;color:rgba(255,255,255,0.45);margin-bottom:8px}
+  .score-bar-track{height:12px;border-radius:6px;background:rgba(255,255,255,0.1);overflow:hidden;position:relative}
+  .score-bar-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,#FF4444,#FF9900,#FFD700,#00C48C);transition:width 0.8s ease}
+  .score-bar-marker{position:absolute;top:-4px;width:20px;height:20px;border-radius:50%;background:var(--white);border:3px solid var(--ink);box-shadow:0 2px 8px rgba(0,0,0,0.4);transform:translateX(-50%);transition:left 0.8s ease}
+  .score-range-labels{display:flex;justify-content:space-between;font-size:10px;color:rgba(255,255,255,0.35);margin-top:6px}
+
+  /* Breakdown */
+  .breakdown{display:flex;flex-direction:column;gap:14px;margin-top:8px}
+  .breakdown-item{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px 16px}
+  .breakdown-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+  .breakdown-factor{font-size:13px;font-weight:600;color:var(--white)}
+  .breakdown-impact{font-size:12px;font-weight:600;padding:3px 10px;border-radius:50px}
+  .impact-high{background:rgba(0,196,140,0.15);color:var(--mint)}
+  .impact-med{background:rgba(240,165,0,0.15);color:var(--gold)}
+  .impact-low{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.5)}
+  .breakdown-bar-track{height:4px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden}
+  .breakdown-bar-fill{height:100%;border-radius:2px;transition:width 0.8s ease}
+  .fill-mint{background:var(--mint)}
+  .fill-gold{background:var(--gold)}
+  .fill-dim{background:rgba(255,255,255,0.2)}
+  .breakdown-desc{font-size:12px;color:rgba(255,255,255,0.4);margin-top:6px}
+
+  .results-cta{margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08)}
+  .results-cta-text{font-size:13.5px;color:rgba(255,255,255,0.6);margin-bottom:16px;line-height:1.6}
+  .results-cta-btn{display:block;background:var(--gold);color:var(--ink);text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:15px;font-family:'Sora',sans-serif;transition:all 0.15s}
+  .results-cta-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(240,165,0,0.3)}
+
+  .disclaimer{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;max-width:1100px;margin:0 auto 60px;padding-left:24px;padding-right:24px}
+  .disclaimer p{font-size:12.5px;color:var(--ink-light);line-height:1.7}
+  .disclaimer strong{color:var(--ink)}
+
+  .sticky-phone{position:fixed;bottom:24px;right:24px;background:var(--sky);color:var(--white);border-radius:50px;padding:14px 22px;display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px;box-shadow:var(--shadow-lg);z-index:900;transition:transform 0.15s}
+  .sticky-phone:hover{transform:translateY(-2px)}
+
+  footer{background:#080A14;color:rgba(255,255,255,0.6);padding:70px 24px 32px}
+  .footer-inner{max-width:1200px;margin:0 auto}
+  .footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:60px}
+  .footer-brand p{font-size:14px;line-height:1.7;color:rgba(255,255,255,0.45);margin-top:14px}
+  .footer-contact{margin-top:20px;font-size:13.5px}
+  .footer-contact div{margin-bottom:6px;color:rgba(255,255,255,0.5)}
+  .footer-contact strong{color:rgba(255,255,255,0.8)}
+  .footer-col h4{font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--white);margin-bottom:18px}
+  .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .footer-col ul li a{font-size:13.5px;color:rgba(255,255,255,0.45);transition:color 0.15s}
+  .footer-col ul li a:hover{color:var(--white)}
+  .footer-socials{display:flex;gap:12px;margin-top:20px}
+  .social-btn{width:36px;height:36px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;transition:all 0.15s}
+  .social-btn:hover{background:var(--sky)}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:13px}
+  .footer-bottom a{color:rgba(255,255,255,0.45)}
+  .footer-bottom a:hover{color:var(--white)}
+
+  @media(max-width:960px){.calc-wrap{grid-template-columns:1fr}.calc-results{position:static}}
+  @media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}.footer-top{grid-template-columns:1fr 1fr;gap:28px}}
+
+/* ── GLOBAL MOBILE RESPONSIVE ── */
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none!important}
+  .hamburger{display:flex!important}
+  .section{padding:56px 18px!important}
+  .page-hero{padding:44px 18px 40px!important}
+  .steps-grid,.opp-grid,.why-grid,.uses-grid,.articles-grid,.opp-grid,.footer-top{grid-template-columns:1fr!important}
+  .footer-top{gap:24px!important}
+  .hero-inner{grid-template-columns:1fr!important;gap:40px}
+  .hero h1{font-size:32px!important}
+  .hero-btns{flex-direction:column;gap:10px}
+  .hero-btns .btn-primary,.hero-btns .btn-outline{width:100%;justify-content:center}
+  .hero-stats{flex-wrap:wrap;gap:18px!important}
+  .hero-cards{display:none!important}
+  .tradeline-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .main-layout{grid-template-columns:1fr!important}
+  .filter-sidebar{position:static!important}
+  .checkout-wrap{grid-template-columns:1fr!important}
+  .crypto-tabs{grid-template-columns:repeat(2,1fr)!important}
+  .modal{padding:24px 18px!important;border-radius:16px 16px 0 0!important;position:fixed;bottom:0;left:0;right:0;max-height:90vh;overflow-y:auto;max-width:100%!important}
+  .modal-overlay{align-items:flex-end!important}
+  .cart-drawer{width:100%!important}
+  .profile-grid,.guarantees-grid,.stats-row,.credit-pkgs{grid-template-columns:1fr!important}
+  .form-row-2,.form-row-3{grid-template-columns:1fr!important}
+  .res-tabs-inner{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .dash-layout{grid-template-columns:1fr!important}
+  .dash-sidebar{position:static!important}
+  .img-section{min-height:300px!important}
+  .img-section-content{padding:40px 18px!important;margin-left:0!important;text-align:left!important}
+  .broker-grid,.sell-grid,.contact-grid,.about-grid{grid-template-columns:1fr!important}
+  .cta-band{padding:56px 18px!important}
+  .sticky-phone span:not(.phone-icon){display:none}
+  .floating-cta .float-btn span{display:none}
+  table{font-size:12.5px}
+  th,td{padding:10px 10px!important}
+}
+@media(max-width:480px){
+  .hero h1{font-size:27px!important}
+  .section-title{font-size:24px!important}
+  .auth-card{padding:28px 18px!important;border-radius:0!important;border:none!important;box-shadow:none!important;max-width:100%!important}
+  .auth-wrap{align-items:flex-start!important;padding:0!important}
+  .topbar{font-size:11.5px!important;padding:8px 14px!important}
+}
+
+
+  /* Hero background image support */
+  .page-hero{position:relative;overflow:hidden;background-size:cover;background-position:center;background-repeat:no-repeat}
+  .page-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,12,20,0.88) 0%,rgba(10,12,20,0.72) 100%);z-index:1}
+  .page-hero-inner{position:relative;z-index:2!important}
+  .breadcrumb{position:relative;z-index:2}
+  .page-hero h1,.page-hero p{position:relative;z-index:2}
+
+</style>
+</head>
+<body>
+<div class="topbar">📲 Questions? Chat with us on <a href="https://wa.me/12625837916" target="_blank" rel="noopener">WhatsApp</a> or <a href="https://t.me/TradeIQ_Plug1" target="_blank" rel="noopener">Telegram</a></div>
+<header>
+  <nav>
+    <a href="index.html" class="logo"><div class="logo-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 2L3 5V10C3 13.87 6.13 17.48 10 18C13.87 17.48 17 13.87 17 10V5L10 2Z" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="1.4" stroke-linejoin="round"/><path d="M7 11.5L9.5 8.5L10 10L12.5 7" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12.5" cy="7" r="1" fill="white"/></svg></div>TradeLine <span>Marketplace</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="marketplace.html">Buy Tradelines</a></li>
+      <li><a href="sell.html">Sell Tradelines</a></li>
+      <li><a href="brokers.html">Brokers</a></li>
+      <li class="has-dropdown"><a href="#">Resources</a>
+        <div class="dropdown">
+          <a href="resources.html#what-is">What Is a Tradeline?</a>
+          <a href="resources.html#guide">Buyer's Guide</a>
+          <a href="calculator.html">Tradeline Calculator</a>
+          <a href="resources.html#faq">FAQs</a>
+          <a href="resources.html#guarantees">Our Guarantees</a>
+          <a href="blog.html">Knowledge Center</a>
+        </div>
+      </li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="marketplace.html" class="cart-btn">🛒 <span class="cart-count" id="cartCount">0</span></a>
+    <a href="marketplace.html" class="nav-cta">View Tradelines →</a>
+    <div class="hamburger" onclick="openMenu()"><span></span><span></span><span></span></div>
+  </nav>
+</header>
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" onclick="closeMenu()">✕</button>
+  <a href="index.html">Home</a><a href="marketplace.html">Buy Tradelines</a>
+  <a href="sell.html">Sell Tradelines</a><a href="brokers.html">Brokers</a>
+  <a href="resources.html">Resources</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+</div>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><a href="resources.html">Resources</a><span>›</span>Tradeline Calculator</div>
+    <h1>Tradeline Impact Calculator</h1>
+    <p>Model the estimated effect of adding authorized user tradelines to your current credit profile. Free, instant, no login needed.</p>
+  </div>
+</section>
+
+<div class="calc-wrap">
+  <!-- INPUT SIDE -->
+  <div class="calc-inputs">
+    <div class="calc-title">Your Credit Profile</div>
+    <div class="calc-sub">Enter your current credit details to model the impact of adding tradelines.</div>
+
+    <div class="form-section">
+      <div class="form-section-title">Current Credit Score</div>
+      <div class="form-row">
+        <div class="form-label">Current FICO Score <span class="value-display" id="scoreVal">620</span></div>
+        <input type="range" class="range-input" id="currentScore" min="300" max="850" value="620" oninput="updateDisplay()">
+        <div class="range-labels"><span>300 (Poor)</span><span>580 (Fair)</span><span>740 (Good)</span><span>850 (Excellent)</span></div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-title">Current Credit File</div>
+      <div class="form-row">
+        <div class="form-label">Number of Open Accounts <span class="value-display" id="acctVal">3</span></div>
+        <input type="range" class="range-input" id="numAccounts" min="0" max="20" value="3" oninput="updateDisplay()">
+        <div class="range-labels"><span>0</span><span>5</span><span>10</span><span>20+</span></div>
+      </div>
+      <div class="form-row">
+        <div class="form-label">Average Account Age <span class="value-display" id="ageVal">2 yrs</span></div>
+        <input type="range" class="range-input" id="avgAge" min="0" max="25" value="2" oninput="updateDisplay()">
+        <div class="range-labels"><span>New</span><span>5 yrs</span><span>15 yrs</span><span>25 yrs</span></div>
+      </div>
+      <div class="form-row">
+        <div class="form-label">Current Utilization Rate <span class="value-display" id="utilVal">45%</span></div>
+        <input type="range" class="range-input" id="utilRate" min="0" max="100" value="45" oninput="updateDisplay()">
+        <div class="range-labels"><span>0%</span><span>25%</span><span>50%</span><span>100%</span></div>
+      </div>
+      <div class="form-row">
+        <label class="form-label">Total Available Credit</label>
+        <input type="number" class="form-input" id="totalCredit" value="5000" min="0" placeholder="e.g. 5000" oninput="updateDisplay()">
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-title">Tradeline(s) You're Considering</div>
+      <div class="form-row">
+        <div class="form-label">Number of Tradelines to Add <span class="value-display" id="tlCountVal">1</span></div>
+        <input type="range" class="range-input" id="tlCount" min="1" max="5" value="1" oninput="updateDisplay()">
+        <div class="range-labels"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
+      </div>
+      <div class="form-row">
+        <div class="form-label">Average Tradeline Age <span class="value-display" id="tlAgeVal">10 yrs</span></div>
+        <input type="range" class="range-input" id="tlAge" min="1" max="25" value="10" oninput="updateDisplay()">
+        <div class="range-labels"><span>1 yr</span><span>5 yrs</span><span>15 yrs</span><span>25 yrs</span></div>
+      </div>
+      <div class="form-row">
+        <label class="form-label">Average Credit Limit per Tradeline</label>
+        <input type="number" class="form-input" id="tlLimit" value="15000" min="0" placeholder="e.g. 15000" oninput="updateDisplay()">
+      </div>
+      <div class="form-row">
+        <label class="form-label">Your Credit Goal</label>
+        <select class="form-select" id="creditGoal" onchange="updateDisplay()">
+          <option value="mortgage">Qualify for a Mortgage</option>
+          <option value="auto">Better Auto Loan Rate</option>
+          <option value="card">Premium Credit Card</option>
+          <option value="score">General Score Improvement</option>
+          <option value="business">Business Funding</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="calc-btn" onclick="runCalculation()">🧮 Calculate My Impact</button>
+    <button class="reset-btn" onclick="resetCalc()">Reset Calculator</button>
+  </div>
+
+  <!-- RESULTS SIDE -->
+  <div class="calc-results">
+    <div class="results-card" id="resultsCard">
+      <div class="results-header">
+        <div class="results-icon">📊</div>
+        <div class="results-title-block">
+          <div class="results-title">Estimated Impact</div>
+          <div class="results-sub">Based on your profile inputs</div>
+        </div>
+      </div>
+
+      <div class="score-display">
+        <div class="score-before-after">
+          <div class="score-block">
+            <div class="score-label">Current Score</div>
+            <div class="score-num before" id="dispBefore">620</div>
+          </div>
+          <div class="score-arrow">→</div>
+          <div class="score-block">
+            <div class="score-label">Estimated After</div>
+            <div class="score-num after" id="dispAfter">—</div>
+          </div>
+        </div>
+        <div style="margin-top:14px">
+          <div class="score-delta" id="dispDelta" style="display:none">+0 pts estimated</div>
+        </div>
+      </div>
+
+      <div class="score-meter">
+        <div class="score-meter-label">Score Range Position</div>
+        <div class="score-bar-track">
+          <div class="score-bar-fill" id="meterFill" style="width:28%"></div>
+          <div class="score-bar-marker" id="meterMarker" style="left:28%"></div>
+        </div>
+        <div class="score-range-labels"><span>300</span><span>580</span><span>670</span><span>740</span><span>850</span></div>
+      </div>
+
+      <div class="breakdown" id="breakdownSection">
+        <div style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.6);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.07em;font-size:11px">Impact Breakdown</div>
+        <div class="breakdown-item" id="bd-util">
+          <div class="breakdown-top"><span class="breakdown-factor">Utilization Rate</span><span class="breakdown-impact impact-high" id="bd-util-tag">High Impact</span></div>
+          <div class="breakdown-bar-track"><div class="breakdown-bar-fill fill-mint" id="bd-util-bar" style="width:80%"></div></div>
+          <div class="breakdown-desc" id="bd-util-desc">Adding high-limit tradelines will lower your overall utilization ratio.</div>
+        </div>
+        <div class="breakdown-item" id="bd-age">
+          <div class="breakdown-top"><span class="breakdown-factor">Average Account Age</span><span class="breakdown-impact impact-med" id="bd-age-tag">Medium Impact</span></div>
+          <div class="breakdown-bar-track"><div class="breakdown-bar-fill fill-gold" id="bd-age-bar" style="width:60%"></div></div>
+          <div class="breakdown-desc" id="bd-age-desc">Older tradelines increase your average account age.</div>
+        </div>
+        <div class="breakdown-item" id="bd-mix">
+          <div class="breakdown-top"><span class="breakdown-factor">Number of Accounts</span><span class="breakdown-impact impact-med" id="bd-mix-tag">Medium Impact</span></div>
+          <div class="breakdown-bar-track"><div class="breakdown-bar-fill fill-gold" id="bd-mix-bar" style="width:50%"></div></div>
+          <div class="breakdown-desc" id="bd-mix-desc">More positive accounts strengthen your credit profile depth.</div>
+        </div>
+        <div class="breakdown-item" id="bd-hist">
+          <div class="breakdown-top"><span class="breakdown-factor">Credit History Depth</span><span class="breakdown-impact impact-low" id="bd-hist-tag">Low Impact</span></div>
+          <div class="breakdown-bar-track"><div class="breakdown-bar-fill fill-dim" id="bd-hist-bar" style="width:25%"></div></div>
+          <div class="breakdown-desc" id="bd-hist-desc">Adds to your total length of credit history record.</div>
+        </div>
+      </div>
+
+      <div class="results-cta">
+        <div class="results-cta-text" id="ctaText">Run the calculation above to see your personalized tradeline recommendations.</div>
+        <a href="marketplace.html" class="results-cta-btn" id="ctaBtn">Browse Tradelines That Match →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer" style="padding:20px 24px">
+  <p><strong>Disclaimer:</strong> This calculator provides estimates only and should not be considered a guarantee of any credit score change. Credit score calculations are determined by FICO's proprietary algorithms and depend on factors unique to your credit profile that are not captured in this tool. Actual results vary. TradeLine Marketplace does not guarantee any specific point increase. This tool is provided for educational and planning purposes.</p>
+</div>
+
+<a href="https://wa.me/12625837916" target="_blank" rel="noopener" class="sticky-phone" style="background:#25D366">💬 WhatsApp Us</a>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" style="color:var(--white)"><div class="logo-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 2L3 5V10C3 13.87 6.13 17.48 10 18C13.87 17.48 17 13.87 17 10V5L10 2Z" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="1.4" stroke-linejoin="round"/><path d="M7 11.5L9.5 8.5L10 10L12.5 7" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12.5" cy="7" r="1" fill="white"/></svg></div>TradeLine <span>Marketplace</span></a>
+        <p>TradeLine Marketplace is a fintech platform dedicated to equal credit access.</p>
+        <div class="footer-contact">
+          <div>📍 <strong>1800 Vine St, Suite 220, Los Angeles, CA 90028</strong></div>
+          <div>💬 WhatsApp: <strong><a href="https://wa.me/12625837916" target="_blank" style="color:inherit">+1 (262) 583-7916</a></strong></div><div>✈️ Telegram: <strong><a href="https://t.me/TradeIQ_Plug1" target="_blank" style="color:inherit">@TradeIQ_Plug1</a></strong></div>
+        </div>
+        <div class="footer-socials"><div class="social-btn">▶</div><div class="social-btn">f</div><div class="social-btn">𝕏</div><div class="social-btn">📷</div></div>
+      </div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="marketplace.html">Buy Tradelines</a></li><li><a href="sell.html">Sell Tradelines</a></li><li><a href="brokers.html">Broker Program</a></li></ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul><li><a href="resources.html">What Is a Tradeline?</a></li><li><a href="resources.html">Buyer's Guide</a></li><li><a href="calculator.html">Calculator</a></li><li><a href="blog.html">Knowledge Center</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="legal.html#privacy">Privacy Policy</a></li><li><a href="legal.html#terms">Terms & Conditions</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <div>©2026 TradeLine Marketplace LLC. All Rights Reserved.</div>
+      <div style="display:flex;gap:20px"><a href="legal.html#privacy">Privacy</a><a href="legal.html#terms">Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function openMenu(){document.getElementById('mobileNav').classList.add('open');document.body.style.overflow='hidden'}
+function closeMenu(){document.getElementById('mobileNav').classList.remove('open');document.body.style.overflow=''}
+
+function updateDisplay(){
+  const s=+document.getElementById('currentScore').value;
+  const a=+document.getElementById('numAccounts').value;
+  const age=+document.getElementById('avgAge').value;
+  const u=+document.getElementById('utilRate').value;
+  const tlc=+document.getElementById('tlCount').value;
+  const tla=+document.getElementById('tlAge').value;
+  document.getElementById('scoreVal').textContent=s;
+  document.getElementById('acctVal').textContent=a;
+  document.getElementById('ageVal').textContent=age+' yr'+(age!==1?'s':'');
+  document.getElementById('utilVal').textContent=u+'%';
+  document.getElementById('tlCountVal').textContent=tlc;
+  document.getElementById('tlAgeVal').textContent=tla+' yr'+(tla!==1?'s':'');
+  document.getElementById('dispBefore').textContent=s;
+  // Update meter
+  const pct=((s-300)/(850-300))*100;
+  document.getElementById('meterFill').style.width=pct+'%';
+  document.getElementById('meterMarker').style.left=pct+'%';
+}
+
+function runCalculation(){
+  const s=+document.getElementById('currentScore').value;
+  const a=+document.getElementById('numAccounts').value;
+  const age=+document.getElementById('avgAge').value;
+  const u=+document.getElementById('utilRate').value;
+  const tc=+document.getElementById('totalCredit').value||5000;
+  const tlc=+document.getElementById('tlCount').value;
+  const tla=+document.getElementById('tlAge').value;
+  const tll=+document.getElementById('tlLimit').value||15000;
+  const goal=document.getElementById('creditGoal').value;
+
+  // --- Estimate logic ---
+  let delta=0;
+  let utilImpact=0, ageImpact=0, mixImpact=0, histImpact=0;
+
+  // Utilization: new util = existing balance / (existing credit + tradeline credit)
+  const existingBalance = tc*(u/100);
+  const newCredit = tc + (tll*tlc);
+  const newUtil = Math.round((existingBalance/newCredit)*100);
+  const utilDrop = u - newUtil;
+  if(utilDrop>30) utilImpact=40;
+  else if(utilDrop>15) utilImpact=25;
+  else if(utilDrop>5) utilImpact=12;
+  else utilImpact=4;
+  delta+=utilImpact;
+
+  // Age: weighted average new account age
+  const totalAccts=a+tlc;
+  const weightedAge=totalAccts>0?((age*a)+(tla*tlc))/totalAccts:tla;
+  const ageDiff=weightedAge-age;
+  if(ageDiff>5) ageImpact=30;
+  else if(ageDiff>2) ageImpact=18;
+  else if(ageDiff>0) ageImpact=8;
+  else ageImpact=2;
+  delta+=ageImpact;
+
+  // Account mix
+  if(a<5){ mixImpact=15*tlc; delta+=Math.min(mixImpact,25); }
+  else if(a<10){ mixImpact=8*tlc; delta+=Math.min(mixImpact,15); }
+  else{ mixImpact=3*tlc; delta+=Math.min(mixImpact,8); }
+
+  // Credit history depth
+  histImpact = tla>15 ? 10 : tla>8 ? 6 : 3;
+  delta+=histImpact;
+
+  // Cap delta based on current score (less room at top)
+  const headroom=850-s;
+  delta=Math.min(delta, Math.floor(headroom*0.45));
+  delta=Math.max(delta, 0);
+
+  // Jitter for realism
+  const jitter=Math.floor(Math.random()*10)-5;
+  delta=Math.max(0, delta+jitter);
+
+  const after=Math.min(850, s+delta);
+
+  // Update UI
+  document.getElementById('dispAfter').textContent=after;
+  const dEl=document.getElementById('dispDelta');
+  dEl.style.display='inline-flex';
+  dEl.textContent='+'+(after-s)+' pts estimated';
+
+  const newPct=((after-300)/(850-300))*100;
+  document.getElementById('meterFill').style.width=newPct+'%';
+  document.getElementById('meterMarker').style.left=newPct+'%';
+
+  // Breakdown bars
+  const utilBar=Math.min(100,(utilImpact/40)*100);
+  const ageBar=Math.min(100,(ageImpact/30)*100);
+  const mixBar=Math.min(100,((Math.min(mixImpact,25))/25)*100);
+  const histBar=Math.min(100,(histImpact/10)*100);
+
+  document.getElementById('bd-util-bar').style.width=utilBar+'%';
+  document.getElementById('bd-age-bar').style.width=ageBar+'%';
+  document.getElementById('bd-mix-bar').style.width=mixBar+'%';
+  document.getElementById('bd-hist-bar').style.width=histBar+'%';
+
+  // Impact tags
+  function impactTag(val,high,med){
+    if(val>=high) return ['High Impact','impact-high'];
+    if(val>=med) return ['Medium Impact','impact-med'];
+    return ['Low Impact','impact-low'];
+  }
+  setTag('bd-util-tag', impactTag(utilImpact,25,10));
+  setTag('bd-age-tag', impactTag(ageImpact,20,8));
+  setTag('bd-mix-tag', impactTag(Math.min(mixImpact,25),15,6));
+  setTag('bd-hist-tag', impactTag(histImpact,8,4));
+
+  // Update descriptions
+  document.getElementById('bd-util-desc').textContent=`Util drops from ${u}% to ~${newUtil}% — adding $${(tll*tlc).toLocaleString()} in available credit.`;
+  document.getElementById('bd-age-desc').textContent=`Average account age moves from ${age} to ~${weightedAge.toFixed(1)} years.`;
+  document.getElementById('bd-mix-desc').textContent=`You'll go from ${a} to ${a+tlc} open positive accounts on file.`;
+  document.getElementById('bd-hist-desc').textContent=tla>10 ? `Adding ${tla}-year-old tradelines significantly strengthens your history.` : `Tradeline age of ${tla} years adds moderate history depth.`;
+
+  // CTA text based on goal & after score
+  const goalTexts={
+    mortgage:`Mortgage lenders typically look for 620+. ${after>=680?'At '+after+', you\'re in solid range.':'You\'re approaching qualification territory.'}`,
+    auto:`Auto lenders offer best rates at 720+. ${after>=720?'At '+after+', you qualify for top tier rates.':'Adding these tradelines moves you closer to prime rates.'}`,
+    card:`Premium cards typically require 700+. ${after>=700?'At '+after+', you should qualify for most premium rewards cards.':'A few more points and premium cards become accessible.'}`,
+    score:`${delta} estimated points is a meaningful improvement toward your general credit goals.`,
+    business:`Business lenders look for 680+ personal credit. ${after>=680?'You\'re in a strong position for business funding.':'These tradelines move you toward business funding eligibility.'}`
+  };
+  document.getElementById('ctaText').textContent=goalTexts[goal]||goalTexts.score;
+}
+
+function setTag(id, [text, cls]){
+  const el=document.getElementById(id);
+  el.textContent=text;
+  el.className='breakdown-impact '+cls;
+}
+
+function resetCalc(){
+  document.getElementById('currentScore').value=620;
+  document.getElementById('numAccounts').value=3;
+  document.getElementById('avgAge').value=2;
+  document.getElementById('utilRate').value=45;
+  document.getElementById('totalCredit').value=5000;
+  document.getElementById('tlCount').value=1;
+  document.getElementById('tlAge').value=10;
+  document.getElementById('tlLimit').value=15000;
+  document.getElementById('creditGoal').value='mortgage';
+  document.getElementById('dispAfter').textContent='—';
+  document.getElementById('dispDelta').style.display='none';
+  updateDisplay();
+}
+
+updateDisplay();
+const cart=JSON.parse(localStorage.getItem('tlmCart')||'[]');
+document.getElementById('cartCount').textContent=cart.length;
+</script>
+<script src="images.js"></script>
+<script>
+(function(){
+  var hero = document.querySelector('.page-hero');
+  if(hero && typeof IMG_MARKET !== 'undefined'){
+    hero.style.backgroundImage = 'url('+IMG_MARKET+')';
+    hero.style.backgroundSize = 'cover';
+    hero.style.backgroundPosition = 'center';
+  }
+})();
+</script>
+</body>
+</html>

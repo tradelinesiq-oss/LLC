@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cart & Checkout | TradeLine Marketplace LLC</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+  --ink:#0F1117;--ink-2:#374151;--ink-3:#6B7280;
+  --sky:#2563EB;--sky-pale:#EFF6FF;
+  --blue:#2563EB;--blue-d:#1D4ED8;--blue-l:#EFF6FF;
+  --gold:#D97706;--gold-light:#FEF3C7;--gold-b:#F59E0B;
+  --mint:#059669;--green-l:#ECFDF5;
+  --surface:#F9FAFB;--white:#FFFFFF;--border:#E5E7EB;--border-2:#D1D5DB;
+  --radius:10px;--radius-lg:16px;--radius-xl:24px;
+  --shadow:0 1px 3px rgba(0,0,0,0.1),0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md:0 4px 6px rgba(0,0,0,0.07),0 2px 4px rgba(0,0,0,0.06);
+  --shadow-lg:0 10px 15px rgba(0,0,0,0.1),0 4px 6px rgba(0,0,0,0.05);
+  --shadow-xl:0 20px 25px rgba(0,0,0,0.1),0 10px 10px rgba(0,0,0,0.04);
+}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--white);line-height:1.6;font-size:15px;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{font-family:'Sora',sans-serif;line-height:1.2;letter-spacing:-0.02em}
+  a{color:inherit;text-decoration:none}
+  .topbar{background:var(--sky);color:var(--white);text-align:center;padding:9px 20px;font-size:13px;font-weight:500}
+  .topbar a{color:var(--gold);text-decoration:underline}
+  header{position:sticky;top:0;z-index:1000;background:var(--ink);border-bottom:1px solid rgba(255,255,255,0.08);box-shadow:0 2px 16px rgba(0,0,0,0.18)}
+  nav{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:68px}
+  .logo{font-family:'Sora',sans-serif;font-weight:800;font-size:20px;color:var(--white);display:flex;align-items:center;gap:8px;margin-right:auto;flex-shrink:0}
+  .logo-icon{width:34px;height:34px;background:linear-gradient(135deg,#1B4FD8 0%,#0D3BA8 100%);border-radius:9px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(27,79,216,0.35)}
+  .logo span{color:var(--gold)}
+  .nav-links{display:flex;align-items:center;gap:2px;list-style:none}
+  .nav-links a{color:rgba(255,255,255,0.75);font-size:13.5px;font-weight:500;padding:8px 14px;border-radius:7px;transition:all 0.18s;white-space:nowrap}
+  .nav-links a:hover{color:var(--white);background:rgba(255,255,255,0.08)}
+  .nav-cta{background:var(--gold);color:var(--ink)!important;font-weight:600!important;padding:9px 20px!important;border-radius:8px!important;margin-left:10px}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;margin-left:12px}
+  .hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px}
+  .mobile-nav{display:none;position:fixed;inset:0;background:var(--ink);z-index:999;flex-direction:column;padding:80px 32px 40px;overflow-y:auto}
+  .mobile-nav.open{display:flex}
+  .mobile-nav-close{position:absolute;top:20px;right:24px;background:none;border:none;color:var(--white);font-size:28px;cursor:pointer}
+  .mobile-nav a{color:rgba(255,255,255,0.8);font-size:20px;font-family:'Sora',sans-serif;font-weight:600;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.08);display:block}
+
+  /* PROGRESS BAR */
+  .checkout-progress{background:var(--white);border-bottom:1px solid var(--border);padding:20px 24px}
+  .progress-inner{max-width:800px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:0}
+  .progress-step{display:flex;align-items:center;gap:8px;flex:1;justify-content:center}
+  .progress-step-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;font-family:'Sora',sans-serif;flex-shrink:0}
+  .progress-step.done .progress-step-num{background:var(--mint);color:var(--white)}
+  .progress-step.active .progress-step-num{background:var(--sky);color:var(--white)}
+  .progress-step.upcoming .progress-step-num{background:var(--border);color:var(--ink-light)}
+  .progress-step-label{font-size:13px;font-weight:600}
+  .progress-step.done .progress-step-label,.progress-step.active .progress-step-label{color:var(--ink)}
+  .progress-step.upcoming .progress-step-label{color:var(--ink-light)}
+  .progress-line{flex:0.5;height:2px;background:var(--border);margin:0 -8px;position:relative;z-index:0}
+  .progress-line.done{background:var(--mint)}
+
+  /* LAYOUT */
+  .checkout-wrap{max-width:1000px;margin:0 auto;padding:40px 24px 80px;display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start}
+  .checkout-aside{position:sticky;top:88px}
+
+  /* STEPS */
+  .step-section{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:32px;margin-bottom:20px}
+  .step-section-title{font-family:'Sora',sans-serif;font-size:18px;font-weight:800;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+  .step-section-icon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px;background:var(--sky-pale);flex-shrink:0}
+
+  /* CART ITEMS */
+  .cart-item{display:flex;gap:16px;padding:16px;border:1px solid var(--border);border-radius:12px;margin-bottom:12px;align-items:flex-start}
+  .cart-item-bank{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;background:var(--sky-pale)}
+  .cart-item-info{flex:1}
+  .cart-item-title{font-weight:700;font-size:15px;margin-bottom:4px}
+  .cart-item-meta{font-size:13px;color:var(--ink-light);display:flex;gap:16px;flex-wrap:wrap}
+  .cart-item-au{font-size:12px;background:var(--surface);border:1px solid var(--border);border-radius:7px;padding:8px 12px;margin-top:10px;color:var(--ink-light)}
+  .cart-item-au strong{color:var(--ink)}
+  .cart-item-price{font-family:'Sora',sans-serif;font-weight:800;font-size:18px;color:var(--sky);text-align:right;flex-shrink:0}
+  .remove-btn{background:none;border:none;color:var(--ink-light);cursor:pointer;font-size:16px;padding:4px;transition:color 0.15s}
+  .remove-btn:hover{color:#C81E1E}
+
+  /* COUPON */
+  .coupon-row{display:flex;gap:10px;margin-top:8px}
+  .coupon-input{flex:1;padding:11px 14px;border:1.5px solid var(--border);border-radius:9px;font-size:14px;font-family:'Inter',system-ui,sans-serif;outline:none;transition:border-color 0.15s}
+  .coupon-input:focus{border-color:var(--sky)}
+  .coupon-btn{background:var(--surface);border:1.5px solid var(--border);color:var(--ink);padding:11px 18px;border-radius:9px;font-weight:600;font-size:14px;cursor:pointer;transition:all 0.15s;white-space:nowrap}
+  .coupon-btn:hover{border-color:var(--sky);color:var(--sky)}
+  .coupon-success{font-size:13px;color:var(--mint);font-weight:600;margin-top:8px;display:none}
+
+  /* CRYPTO PAYMENT */
+  .crypto-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:24px}
+  .crypto-tab{padding:14px 8px;border:2px solid var(--border);border-radius:12px;text-align:center;cursor:pointer;transition:all 0.2s;font-size:12.5px;font-weight:600;color:var(--ink-light);position:relative}
+  .crypto-tab:hover{border-color:var(--sky);background:var(--sky-pale)}
+  .crypto-tab.active{border-color:var(--sky);background:var(--sky-pale);color:var(--ink)}
+  .crypto-tab.active.btc{border-color:var(--crypto-orange);background:rgba(247,147,26,0.07);color:#c47a14}
+  .crypto-tab.active.eth{border-color:var(--crypto-purple);background:rgba(98,126,234,0.09);color:#4a61c0}
+  .crypto-tab.active.usdt{border-color:var(--crypto-teal);background:rgba(38,161,123,0.09);color:#1e8a6a}
+  .crypto-tab.active.sol{border-color:#9945FF;background:rgba(153,69,255,0.09);color:#7a34cc}
+  .crypto-tab-icon{font-size:24px;margin-bottom:4px;display:block}
+  .crypto-tab-name{display:block;font-size:13px;font-weight:700}
+  .crypto-tab-ticker{display:block;font-size:11px;opacity:0.6;margin-top:1px}
+
+  .crypto-wallet-panel{display:none}
+  .crypto-wallet-panel.active{display:block}
+  .wallet-address-box{background:var(--surface);border:2px solid var(--border);border-radius:12px;padding:20px 20px 16px;margin-bottom:16px;position:relative}
+  .wallet-address-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-light);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+  .wallet-qr{width:120px;height:120px;background:var(--white);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--ink-light);text-align:center;padding:8px;margin:0 auto 12px;line-height:1.4}
+  .wallet-address{font-family:monospace;font-size:13px;color:var(--ink);background:var(--white);border:1px solid var(--border);border-radius:8px;padding:10px 14px;word-break:break-all;line-height:1.5;margin-bottom:10px}
+  .copy-btn{background:var(--sky);color:var(--white);border:none;border-radius:8px;padding:8px 18px;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.15s;display:flex;align-items:center;gap:6px;width:100%;justify-content:center}
+  .copy-btn:hover{background:#1642B8}
+  .copy-btn.copied{background:var(--mint)}
+  .crypto-amount-row{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+  .crypto-amount-box{flex:1;background:rgba(0,196,140,0.07);border:1.5px solid rgba(0,196,140,0.25);border-radius:10px;padding:14px 16px}
+  .crypto-amount-label{font-size:11px;color:var(--ink-light);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
+  .crypto-amount-val{font-family:'Sora',sans-serif;font-size:22px;font-weight:800;color:var(--ink)}
+  .crypto-amount-usd{font-size:12px;color:var(--ink-light);margin-top:2px}
+  .crypto-note{background:rgba(240,165,0,0.08);border:1px solid rgba(240,165,0,0.3);border-radius:10px;padding:14px 16px;font-size:13px;color:#7A5500;margin-top:12px;line-height:1.6}
+  .tx-hash-row{margin-top:16px}
+  .tx-hash-label{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:7px;display:block}
+  .tx-hash-input{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-family:monospace;outline:none;transition:border-color 0.15s;background:var(--white)}
+  .tx-hash-input:focus{border-color:var(--sky)}
+  .tx-hash-hint{font-size:12px;color:var(--ink-light);margin-top:5px}
+  .network-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:3px 10px;border-radius:50px;margin-left:8px}
+  .network-badge.eth-net{background:rgba(98,126,234,0.15);color:#4a61c0}
+  .network-badge.bsc{background:rgba(240,185,11,0.15);color:#9a7200}
+  .network-badge.tron{background:rgba(255,6,10,0.15);color:#cc0006}
+  .form-row{margin-bottom:18px}
+  .form-label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:7px}
+  .form-input{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:'Inter',system-ui,sans-serif;outline:none;transition:border-color 0.15s;background:var(--white)}
+  .form-input:focus{border-color:var(--sky)}
+  .store-credit-panel{background:var(--sky-pale);border:1px solid rgba(27,79,216,0.2);border-radius:12px;padding:20px}
+
+  /* ORDER SUMMARY */
+  .summary-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px}
+  .summary-title{font-family:'Sora',sans-serif;font-size:17px;font-weight:800;margin-bottom:20px}
+  .summary-line{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:14px}
+  .summary-line:last-of-type{border-bottom:none}
+  .summary-line-label{color:var(--ink-light)}
+  .summary-line-value{font-weight:600;color:var(--ink)}
+  .summary-total{display:flex;justify-content:space-between;align-items:center;padding:16px 0 0;margin-top:4px;border-top:2px solid var(--ink)}
+  .summary-total-label{font-family:'Sora',sans-serif;font-weight:700;font-size:16px}
+  .summary-total-value{font-family:'Sora',sans-serif;font-weight:800;font-size:24px;color:var(--sky)}
+  .place-order-btn{width:100%;background:var(--gold);color:var(--ink);border:none;padding:16px;border-radius:12px;font-weight:800;font-size:16px;cursor:pointer;font-family:'Sora',sans-serif;transition:all 0.15s;margin-top:20px;display:flex;align-items:center;justify-content:center;gap:8px}
+  .place-order-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(240,165,0,0.35)}
+  .place-order-btn:disabled{background:var(--border);color:var(--ink-light);cursor:not-allowed;transform:none;box-shadow:none}
+  .security-note{display:flex;align-items:flex-start;gap:8px;margin-top:14px;font-size:12px;color:var(--ink-light);line-height:1.5}
+  .guarantee-list{margin-top:16px;display:flex;flex-direction:column;gap:8px}
+  .guarantee-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-light)}
+  .guarantee-item::before{content:'✓';color:var(--mint);font-weight:700;flex-shrink:0}
+
+  /* EMPTY CART */
+  .empty-cart{text-align:center;padding:80px 24px}
+  .empty-cart-icon{font-size:64px;margin-bottom:20px}
+  .empty-cart h2{font-size:26px;font-weight:800;margin-bottom:12px}
+  .empty-cart p{font-size:16px;color:var(--ink-light);margin-bottom:28px}
+  .shop-btn{display:inline-flex;align-items:center;gap:8px;background:var(--sky);color:var(--white);padding:14px 28px;border-radius:10px;font-weight:700;font-size:15px;font-family:'Sora',sans-serif;transition:all 0.15s}
+  .shop-btn:hover{background:#1642B8;transform:translateY(-1px)}
+
+  /* SUCCESS */
+  .order-success{display:none;text-align:center;padding:60px 24px;background:var(--white);border:1px solid var(--border);border-radius:20px;max-width:600px;margin:60px auto}
+  .success-icon{font-size:72px;margin-bottom:20px;animation:pop 0.4s ease}
+  @keyframes pop{0%{transform:scale(0.5);opacity:0}80%{transform:scale(1.15)}100%{transform:scale(1);opacity:1}}
+  .success-title{font-family:'Sora',sans-serif;font-size:32px;font-weight:800;margin-bottom:12px}
+  .success-sub{font-size:16px;color:var(--ink-light);line-height:1.7;margin-bottom:32px}
+  .success-details{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:left;margin-bottom:24px}
+  .success-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:14px}
+  .success-row:last-child{border-bottom:none}
+  .success-row span:first-child{color:var(--ink-light)}
+  .success-row span:last-child{font-weight:600}
+  .success-btn{display:inline-flex;align-items:center;gap:8px;background:var(--sky);color:var(--white);padding:13px 28px;border-radius:10px;font-weight:700;font-size:15px;font-family:'Sora',sans-serif;transition:all 0.15s;cursor:pointer;border:none}
+  .success-btn:hover{background:#1642B8}
+
+  .sticky-phone{position:fixed;bottom:24px;right:24px;background:var(--sky);color:var(--white);border-radius:50px;padding:14px 22px;display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px;box-shadow:var(--shadow-lg);z-index:900;transition:transform 0.15s;text-decoration:none}
+  .sticky-phone:hover{transform:translateY(-2px)}
+  footer{background:#080A14;color:rgba(255,255,255,0.6);padding:40px 24px 28px}
+  .footer-bottom{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:13px}
+  .footer-bottom a{color:rgba(255,255,255,0.45);transition:color 0.15s}
+  .footer-bottom a:hover{color:var(--white)}
+
+  @media(max-width:900px){.checkout-wrap{grid-template-columns:1fr}.checkout-aside{position:static}}
+  @media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}.progress-step-label{display:none}.crypto-tabs{grid-template-columns:repeat(2,1fr)}}
+
+/* ── GLOBAL MOBILE RESPONSIVE ── */
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none!important}
+  .hamburger{display:flex!important}
+  .section{padding:56px 18px!important}
+  .page-hero{padding:44px 18px 40px!important}
+  .steps-grid,.opp-grid,.why-grid,.uses-grid,.articles-grid,.opp-grid,.footer-top{grid-template-columns:1fr!important}
+  .footer-top{gap:24px!important}
+  .hero-inner{grid-template-columns:1fr!important;gap:40px}
+  .hero h1{font-size:32px!important}
+  .hero-btns{flex-direction:column;gap:10px}
+  .hero-btns .btn-primary,.hero-btns .btn-outline{width:100%;justify-content:center}
+  .hero-stats{flex-wrap:wrap;gap:18px!important}
+  .hero-cards{display:none!important}
+  .tradeline-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .main-layout{grid-template-columns:1fr!important}
+  .filter-sidebar{position:static!important}
+  .checkout-wrap{grid-template-columns:1fr!important}
+  .crypto-tabs{grid-template-columns:repeat(2,1fr)!important}
+  .modal{padding:24px 18px!important;border-radius:16px 16px 0 0!important;position:fixed;bottom:0;left:0;right:0;max-height:90vh;overflow-y:auto;max-width:100%!important}
+  .modal-overlay{align-items:flex-end!important}
+  .cart-drawer{width:100%!important}
+  .profile-grid,.guarantees-grid,.stats-row,.credit-pkgs{grid-template-columns:1fr!important}
+  .form-row-2,.form-row-3{grid-template-columns:1fr!important}
+  .res-tabs-inner{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .dash-layout{grid-template-columns:1fr!important}
+  .dash-sidebar{position:static!important}
+  .img-section{min-height:300px!important}
+  .img-section-content{padding:40px 18px!important;margin-left:0!important;text-align:left!important}
+  .broker-grid,.sell-grid,.contact-grid,.about-grid{grid-template-columns:1fr!important}
+  .cta-band{padding:56px 18px!important}
+  .sticky-phone span:not(.phone-icon){display:none}
+  .floating-cta .float-btn span{display:none}
+  table{font-size:12.5px}
+  th,td{padding:10px 10px!important}
+}
+@media(max-width:480px){
+  .hero h1{font-size:27px!important}
+  .section-title{font-size:24px!important}
+  .auth-card{padding:28px 18px!important;border-radius:0!important;border:none!important;box-shadow:none!important;max-width:100%!important}
+  .auth-wrap{align-items:flex-start!important;padding:0!important}
+  .topbar{font-size:11.5px!important;padding:8px 14px!important}
+}
+
+</style>
+</head>
+<body>
+<div class="topbar">📲 Questions? Chat with us on <a href="https://wa.me/12625837916" target="_blank" rel="noopener">WhatsApp</a> or <a href="https://t.me/TradeIQ_Plug1" target="_blank" rel="noopener">Telegram</a></div>
+<header>
+  <nav>
+    <a href="index.html" class="logo">
+      <div class="logo-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 2L3 5V10C3 13.87 6.13 17.48 10 18C13.87 17.48 17 13.87 17 10V5L10 2Z" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="1.4" stroke-linejoin="round"/><path d="M7 11.5L9.5 8.5L10 10L12.5 7" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12.5" cy="7" r="1" fill="white"/></svg></div>
+      TradeLine <span>Marketplace</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="marketplace.html">Buy Tradelines</a></li>
+      <li><a href="sell.html">Sell Tradelines</a></li>
+      <li><a href="brokers.html">Brokers</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="marketplace.html" class="nav-cta">Continue Shopping →</a>
+    <div class="hamburger" onclick="openMenu()"><span></span><span></span><span></span></div>
+  </nav>
+</header>
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" onclick="closeMenu()">✕</button>
+  <a href="index.html">Home</a><a href="marketplace.html">Buy Tradelines</a>
+  <a href="resources.html">Resources</a><a href="contact.html">Contact</a>
+</div>
+
+<!-- PROGRESS -->
+<div class="checkout-progress" id="progressBar">
+  <div class="progress-inner">
+    <div class="progress-step active" id="prog1"><div class="progress-step-num">1</div><div class="progress-step-label">Cart</div></div>
+    <div class="progress-line" id="line1"></div>
+    <div class="progress-step upcoming" id="prog2"><div class="progress-step-num">2</div><div class="progress-step-label">Payment</div></div>
+    <div class="progress-line" id="line2"></div>
+    <div class="progress-step upcoming" id="prog3"><div class="progress-step-num">3</div><div class="progress-step-label">Confirm</div></div>
+  </div>
+</div>
+
+<!-- SUCCESS -->
+<div class="order-success" id="orderSuccess">
+  <div class="success-icon">🎉</div>
+  <div class="success-title">Order Confirmed!</div>
+  <p class="success-sub">Your tradeline order has been received. Once your crypto payment is verified on-chain, our team will process your order. Your tradeline will post during the reporting window shown below.</p>
+  <div class="success-details" id="successDetails"></div>
+  <button class="success-btn" onclick="location.href='account.html'">Go to My Dashboard →</button>
+</div>
+
+<!-- EMPTY CART -->
+<div class="empty-cart" id="emptyCart" style="display:none">
+  <div class="empty-cart-icon">🛒</div>
+  <h2>Your cart is empty</h2>
+  <p>Browse the tradeline vault to find the perfect match for your credit goals.</p>
+  <a href="marketplace.html" class="shop-btn">Browse Tradelines →</a>
+</div>
+
+<!-- CHECKOUT LAYOUT -->
+<div class="checkout-wrap" id="checkoutWrap">
+  <div class="checkout-main">
+
+    <!-- LOGIN GATE BANNER -->
+    <div id="loginGateBanner" style="display:none;background:var(--gold-light);border:1px solid rgba(240,165,0,0.35);border-radius:12px;padding:18px 20px;margin-bottom:24px">
+      <div style="font-weight:700;font-size:14.5px;margin-bottom:4px">🔒 Sign in to complete checkout</div>
+      <div style="font-size:13px;color:var(--ink-light);margin-bottom:12px">You can review your cart freely, but you'll need an account to enter authorized user details and pay. It only takes a minute.</div>
+      <a href="account.html?redirect=cart" class="coupon-btn" style="display:inline-block;text-decoration:none">Sign In / Create Account →</a>
+    </div>
+
+    <!-- STEP 1: CART REVIEW -->
+    <div class="step-section">
+      <div class="step-section-title"><div class="step-section-icon">🛒</div>Review Your Cart</div>
+      <div id="cartItemsDisplay"></div>
+      <div style="margin-top:20px;padding-top:20px;border-top:1px solid var(--border)">
+        <div style="font-size:13px;font-weight:600;margin-bottom:8px">Have a discount code?</div>
+        <div class="coupon-row">
+          <input class="coupon-input" type="text" id="couponInput" placeholder="e.g. SCORE15 or PKGDEAL">
+          <button class="coupon-btn" onclick="applyCoupon()">Apply</button>
+        </div>
+        <div class="coupon-success" id="couponSuccess">✓ Discount applied!</div>
+      </div>
+    </div>
+
+    <!-- STEP 2: CRYPTO PAYMENT -->
+    <div class="step-section">
+      <div class="step-section-title"><div class="step-section-icon" style="background:rgba(247,147,26,0.12)">₿</div>Crypto Payment</div>
+
+      <!-- Info banner -->
+      <div style="background:linear-gradient(135deg,rgba(247,147,26,0.08),rgba(98,126,234,0.08));border:1px solid rgba(247,147,26,0.25);border-radius:12px;padding:16px 18px;margin-bottom:22px;font-size:13.5px;color:var(--ink-light);line-height:1.6">
+        🔐 <strong style="color:var(--ink)">We accept cryptocurrency payments only.</strong> Select your preferred coin below, send the exact amount to the wallet address shown, then paste your transaction hash to confirm. Orders are processed once the payment is verified on-chain (typically 10–30 minutes).
+      </div>
+
+      <!-- Crypto selector tabs -->
+      <div class="crypto-tabs">
+        <div class="crypto-tab btc active" id="tabBTC" onclick="selectCrypto('BTC')">
+          <span class="crypto-tab-icon">₿</span>
+          <span class="crypto-tab-name">Bitcoin</span>
+          <span class="crypto-tab-ticker">BTC</span>
+        </div>
+        <div class="crypto-tab eth" id="tabETH" onclick="selectCrypto('ETH')">
+          <span class="crypto-tab-icon">Ξ</span>
+          <span class="crypto-tab-name">Ethereum</span>
+          <span class="crypto-tab-ticker">ETH</span>
+        </div>
+        <div class="crypto-tab usdt" id="tabUSDT" onclick="selectCrypto('USDT')">
+          <span class="crypto-tab-icon">₮</span>
+          <span class="crypto-tab-name">Tether</span>
+          <span class="crypto-tab-ticker">USDT</span>
+        </div>
+        <div class="crypto-tab sol" id="tabSOL" onclick="selectCrypto('SOL')">
+          <span class="crypto-tab-icon">◎</span>
+          <span class="crypto-tab-name">Solana</span>
+          <span class="crypto-tab-ticker">SOL</span>
+        </div>
+      </div>
+
+      <!-- BTC Panel -->
+      <div class="crypto-wallet-panel active" id="panelBTC">
+        <div class="crypto-amount-row">
+          <div class="crypto-amount-box">
+            <div class="crypto-amount-label">Amount to send</div>
+            <div class="crypto-amount-val" id="btcAmount">—</div>
+            <div class="crypto-amount-usd" id="btcAmountUsd">Calculating…</div>
+          </div>
+        </div>
+        <div class="wallet-address-box">
+          <div class="wallet-address-label">₿ Bitcoin Wallet Address <span style="background:rgba(247,147,26,0.15);color:#c47a14;font-size:10px;padding:2px 8px;border-radius:50px">BTC Network</span></div>
+          <div class="wallet-qr">QR Code<br>Scan to pay<br><br>bc1q…</div>
+          <div class="wallet-address" id="btcAddress">bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh</div>
+          <button class="copy-btn" id="copyBTC" onclick="copyAddress('btcAddress','copyBTC')">📋 Copy BTC Address</button>
+        </div>
+        <div class="crypto-note">⚠️ Send <strong>only BTC</strong> to this address on the <strong>Bitcoin (BTC) network</strong>. Sending any other coin or using the wrong network will result in permanent loss of funds.</div>
+      </div>
+
+      <!-- ETH Panel -->
+      <div class="crypto-wallet-panel" id="panelETH">
+        <div class="crypto-amount-row">
+          <div class="crypto-amount-box">
+            <div class="crypto-amount-label">Amount to send</div>
+            <div class="crypto-amount-val" id="ethAmount">—</div>
+            <div class="crypto-amount-usd" id="ethAmountUsd">Calculating…</div>
+          </div>
+        </div>
+        <div class="wallet-address-box">
+          <div class="wallet-address-label">Ξ Ethereum Wallet Address <span class="network-badge eth-net">ERC-20</span></div>
+          <div class="wallet-qr">QR Code<br>Scan to pay<br><br>0x4B…</div>
+          <div class="wallet-address" id="ethAddress">0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db</div>
+          <button class="copy-btn" id="copyETH" onclick="copyAddress('ethAddress','copyETH')">📋 Copy ETH Address</button>
+        </div>
+        <div class="crypto-note">⚠️ Send <strong>only ETH</strong> on the <strong>Ethereum (ERC-20) network</strong>. Do not send from an exchange without confirming ERC-20 support.</div>
+      </div>
+
+      <!-- USDT Panel -->
+      <div class="crypto-wallet-panel" id="panelUSDT">
+        <div class="crypto-amount-row">
+          <div class="crypto-amount-box">
+            <div class="crypto-amount-label">Amount to send</div>
+            <div class="crypto-amount-val" id="usdtAmount">—</div>
+            <div class="crypto-amount-usd" id="usdtAmountUsd">Calculating…</div>
+          </div>
+        </div>
+        <div style="margin-bottom:12px">
+          <div style="font-size:13px;font-weight:600;margin-bottom:8px">Select USDT Network:</div>
+          <div style="display:flex;gap:8px">
+            <button class="coupon-btn" style="flex:1" id="netTRC20" onclick="setUsdtNet('TRC20')" class="active">TRC-20 (TRON)</button>
+            <button class="coupon-btn" style="flex:1" id="netERC20" onclick="setUsdtNet('ERC20')">ERC-20 (ETH)</button>
+            <button class="coupon-btn" style="flex:1" id="netBEP20" onclick="setUsdtNet('BEP20')">BEP-20 (BSC)</button>
+          </div>
+        </div>
+        <div class="wallet-address-box">
+          <div class="wallet-address-label">₮ USDT Wallet Address <span class="network-badge tron" id="usdtNetBadge">TRC-20</span></div>
+          <div class="wallet-qr">QR Code<br>Scan to pay<br><br>T9…</div>
+          <div class="wallet-address" id="usdtAddress">TQn9Y2khEsLJW1ChVWFMSMeRDow5KcbLSE</div>
+          <button class="copy-btn" id="copyUSDT" onclick="copyAddress('usdtAddress','copyUSDT')">📋 Copy USDT Address</button>
+        </div>
+        <div class="crypto-note">⚠️ Make sure your selected network above matches what you send. Sending USDT on the wrong network results in permanent loss.</div>
+      </div>
+
+      <!-- SOL Panel -->
+      <div class="crypto-wallet-panel" id="panelSOL">
+        <div class="crypto-amount-row">
+          <div class="crypto-amount-box">
+            <div class="crypto-amount-label">Amount to send</div>
+            <div class="crypto-amount-val" id="solAmount">—</div>
+            <div class="crypto-amount-usd" id="solAmountUsd">Calculating…</div>
+          </div>
+        </div>
+        <div class="wallet-address-box">
+          <div class="wallet-address-label">◎ Solana Wallet Address <span style="background:rgba(153,69,255,0.15);color:#7a34cc;font-size:10px;padding:2px 8px;border-radius:50px">SOL Network</span></div>
+          <div class="wallet-qr">QR Code<br>Scan to pay<br><br>5Hb…</div>
+          <div class="wallet-address" id="solAddress">5HbGQd2eBriB2ULXZ74YoTNWxMpnuVLqDaEFrZ88oNqA</div>
+          <button class="copy-btn" id="copySOL" onclick="copyAddress('solAddress','copySOL')">📋 Copy SOL Address</button>
+        </div>
+        <div class="crypto-note">⚠️ Send <strong>only SOL</strong> on the <strong>Solana network</strong>. Ensure your wallet or exchange supports Solana SPL transfers.</div>
+      </div>
+
+      <!-- TX Hash confirmation -->
+      <div class="tx-hash-row" style="margin-top:20px;padding-top:20px;border-top:1px solid var(--border)">
+        <label class="tx-hash-label">📨 Paste Your Transaction Hash / TXID</label>
+        <input class="tx-hash-input" type="text" id="txHashInput" placeholder="e.g. 3a1b9c2d…">
+        <div class="tx-hash-hint">After sending, copy the transaction ID from your wallet or exchange and paste it here. This allows us to verify your payment on-chain.</div>
+      </div>
+
+      <!-- Store Credit option -->
+      <div style="margin-top:20px;padding-top:20px;border-top:1px solid var(--border)">
+        <div style="font-size:13px;font-weight:600;margin-bottom:10px">Or use Store Credit</div>
+        <div class="store-credit-panel">
+          <div style="font-size:14px;color:var(--ink-light);margin-bottom:8px">Available store credit</div>
+          <div style="font-family:'Sora',sans-serif;font-size:32px;font-weight:800;color:var(--sky)">$250.00</div>
+          <div style="font-size:13px;color:var(--ink-light);margin-top:8px">Store credit can cover part or all of your order. Any remaining balance is due via crypto.</div>
+          <label style="display:flex;align-items:center;gap:8px;margin-top:12px;font-size:13.5px;font-weight:600;cursor:pointer">
+            <input type="checkbox" id="useCreditCheck" onchange="toggleCredit(this)"> Apply my $250.00 store credit
+          </label>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SIDEBAR: ORDER SUMMARY -->
+  <div class="checkout-aside">
+    <div class="summary-card">
+      <div class="summary-title">Order Summary</div>
+      <div id="summaryLines"></div>
+      <div class="summary-total">
+        <div class="summary-total-label">Total Due</div>
+        <div class="summary-total-value" id="summaryTotal">$0</div>
+      </div>
+      <button class="place-order-btn" id="placeOrderBtn" onclick="placeOrder()">
+        🔒 Confirm Crypto Order
+      </button>
+      <div class="security-note">🔒 Orders are processed after on-chain payment confirmation. No personal documents required.</div>
+      <div class="guarantee-list">
+        <div class="guarantee-item">Guaranteed to post to 2+ bureaus</div>
+        <div class="guarantee-item">Full refund if tradeline doesn't post</div>
+        <div class="guarantee-item">No identity documents needed</div>
+        <div class="guarantee-item">Anonymous crypto checkout</div>
+        <div class="guarantee-item">No sales to Georgia</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:14px">
+      <a href="marketplace.html" style="color:var(--sky);font-size:13.5px;font-weight:600">← Continue Shopping</a>
+    </div>
+  </div>
+</div>
+
+<a href="https://wa.me/12625837916" target="_blank" rel="noopener" class="sticky-phone" style="background:#25D366">💬 WhatsApp Us</a>
+
+<footer>
+  <div class="footer-bottom">
+    <div>©2026 TradeLine Marketplace LLC. All Rights Reserved.</div>
+    <div style="display:flex;gap:20px">
+      <a href="legal.html#privacy">Privacy</a>
+      <a href="legal.html#terms">Terms</a>
+      <a href="contact.html">Support</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function openMenu(){document.getElementById('mobileNav').classList.add('open');document.body.style.overflow='hidden'}
+function closeMenu(){document.getElementById('mobileNav').classList.remove('open');document.body.style.overflow=''}
+
+let cart = JSON.parse(localStorage.getItem('tlmCart')||'[]');
+let discount = 0;
+let creditApplied = false;
+let currentCrypto = 'BTC';
+
+// Approximate rates (demo)
+const cryptoRates = { BTC: 67500, ETH: 3400, USDT: 1, SOL: 165 };
+
+const bankEmoji = b => ({Chase:'🏦',Discover:'🔶',Barclays:'🌐','Bank of America':'🏛️',Elan:'💜','Capital One':'🟢'}[b]||'💳');
+
+function renderCart(){
+  const wrap = document.getElementById('checkoutWrap');
+  const empty = document.getElementById('emptyCart');
+  const user = JSON.parse(localStorage.getItem('tlmUser')||'null');
+  document.getElementById('loginGateBanner').style.display = user ? 'none' : 'block';
+  if(!cart.length){
+    wrap.style.display='none';
+    empty.style.display='block';
+    document.getElementById('progressBar').style.display='none';
+    return;
+  }
+  document.getElementById('cartItemsDisplay').innerHTML = cart.map(item=>`
+    <div class="cart-item">
+      <div class="cart-item-bank">${bankEmoji(item.bank)}</div>
+      <div class="cart-item-info">
+        <div class="cart-item-title">${item.bank} #${item.id}</div>
+        <div class="cart-item-meta">
+          <span>Limit: <strong>$${item.limit.toLocaleString()}</strong></span>
+          <span>Age: <strong>${item.age} yrs</strong></span>
+          <span>Reports: <strong>${item.reports}</strong></span>
+          <span>Deadline: <strong>${item.deadline}</strong></span>
+        </div>
+        ${item.au?`<div class="cart-item-au">AU: <strong>${item.au.first} ${item.au.last}</strong> · DOB: ${item.au.dob} · SSN: ••••${item.au.ssn}</div>`:''}
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+        <div class="cart-item-price">$${item.price.toLocaleString()}</div>
+        <button class="remove-btn" onclick="removeItem('${item.id}')">✕ Remove</button>
+      </div>
+    </div>
+  `).join('');
+
+  updateSummary();
+  updateCryptoAmount();
+}
+
+function updateSummary(){
+  const subtotal = cart.reduce((s,i)=>s+i.price,0);
+  const creditDeduction = creditApplied ? Math.min(250, subtotal) : 0;
+  const total = Math.max(0, subtotal - discount - creditDeduction);
+  document.getElementById('summaryLines').innerHTML = `
+    ${cart.map(i=>`<div class="summary-line"><span class="summary-line-label">${i.bank} #${i.id}</span><span class="summary-line-value">$${i.price.toLocaleString()}</span></div>`).join('')}
+    <div class="summary-line"><span class="summary-line-label">Subtotal</span><span class="summary-line-value">$${subtotal.toLocaleString()}</span></div>
+    ${discount>0?`<div class="summary-line"><span class="summary-line-label" style="color:var(--mint)">Discount</span><span class="summary-line-value" style="color:var(--mint)">−$${discount}</span></div>`:''}
+    ${creditDeduction>0?`<div class="summary-line"><span class="summary-line-label" style="color:var(--sky)">Store Credit</span><span class="summary-line-value" style="color:var(--sky)">−$${creditDeduction}</span></div>`:''}
+    <div class="summary-line"><span class="summary-line-label">Processing Fee</span><span class="summary-line-value">$0</span></div>
+  `;
+  document.getElementById('summaryTotal').textContent = '$'+total.toLocaleString();
+}
+
+function getTotal(){
+  const subtotal = cart.reduce((s,i)=>s+i.price,0);
+  const creditDeduction = creditApplied ? Math.min(250, subtotal) : 0;
+  return Math.max(0, subtotal - discount - creditDeduction);
+}
+
+function updateCryptoAmount(){
+  const total = getTotal();
+  const coins = ['BTC','ETH','USDT','SOL'];
+  coins.forEach(c=>{
+    const rate = cryptoRates[c];
+    const amt = (total/rate).toFixed(c==='USDT'?2:6);
+    document.getElementById(c.toLowerCase()+'Amount').textContent = amt + ' ' + c;
+    document.getElementById(c.toLowerCase()+'AmountUsd').textContent = '≈ $' + total.toLocaleString() + ' USD (live rate estimate)';
+  });
+}
+
+function selectCrypto(coin){
+  currentCrypto = coin;
+  ['BTC','ETH','USDT','SOL'].forEach(c=>{
+    document.getElementById('tab'+c).classList.remove('active');
+    document.getElementById('panel'+c).classList.remove('active');
+  });
+  document.getElementById('tab'+coin).classList.add('active');
+  document.getElementById('panel'+coin).classList.add('active');
+}
+
+const usdtAddresses = {
+  TRC20: 'TQn9Y2khEsLJW1ChVWFMSMeRDow5KcbLSE',
+  ERC20: '0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db',
+  BEP20: '0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A4'
+};
+const usdtNetLabels = { TRC20:'TRC-20', ERC20:'ERC-20', BEP20:'BEP-20' };
+
+function setUsdtNet(net){
+  document.getElementById('usdtAddress').textContent = usdtAddresses[net];
+  document.getElementById('usdtNetBadge').textContent = usdtNetLabels[net];
+}
+
+function copyAddress(addrId, btnId){
+  const addr = document.getElementById(addrId).textContent;
+  navigator.clipboard.writeText(addr).then(()=>{
+    const btn = document.getElementById(btnId);
+    btn.classList.add('copied');
+    btn.textContent = '✓ Copied!';
+    setTimeout(()=>{ btn.classList.remove('copied'); btn.innerHTML = '📋 Copy Address'; }, 2000);
+  });
+}
+
+function toggleCredit(cb){
+  creditApplied = cb.checked;
+  updateSummary();
+  updateCryptoAmount();
+}
+
+function removeItem(id){
+  cart = cart.filter(i=>i.id!==id);
+  localStorage.setItem('tlmCart',JSON.stringify(cart));
+  renderCart();
+}
+
+function applyCoupon(){
+  const code = document.getElementById('couponInput').value.trim().toUpperCase();
+  const subtotal = cart.reduce((s,i)=>s+i.price,0);
+  const codes = { 'SCORE15': 15, 'PKGDEAL': cart.length>=2 ? Math.round(subtotal*0.05) : 0 };
+  if(codes[code]!==undefined && codes[code]>0){
+    discount = codes[code];
+    document.getElementById('couponSuccess').style.display='block';
+    document.getElementById('couponSuccess').textContent = `✓ Code "${code}" applied — $${discount} off!`;
+    updateSummary(); updateCryptoAmount();
+  } else if(code==='PKGDEAL' && cart.length<2){
+    alert('PKGDEAL requires 2 or more tradelines in your cart.');
+  } else {
+    alert('Invalid or expired coupon code.');
+  }
+}
+
+function placeOrder(){
+  const user = JSON.parse(localStorage.getItem('tlmUser')||'null');
+  if(!user){
+    if(confirm('You need to sign in or create an account before completing checkout. Go to My Account now?')){
+      location.href = 'account.html?redirect=cart';
+    }
+    return;
+  }
+  const txHash = document.getElementById('txHashInput').value.trim();
+  if(!txHash){
+    alert('Please paste your transaction hash / TXID to confirm your crypto payment.');return;
+  }
+  if(txHash.length < 20){
+    alert('Transaction hash appears too short. Please double-check and paste the full TXID.');return;
+  }
+  const orderNum = 'TLM-' + (Math.floor(Math.random()*90000)+10000);
+  const total = getTotal();
+  const rate = cryptoRates[currentCrypto];
+  const cryptoAmt = (total/rate).toFixed(currentCrypto==='USDT'?2:6);
+
+  document.getElementById('successDetails').innerHTML = `
+    <div class="success-row"><span>Order Number</span><span>#${orderNum}</span></div>
+    <div class="success-row"><span>Tradelines Purchased</span><span>${cart.length}</span></div>
+    <div class="success-row"><span>Amount Paid</span><span>${cryptoAmt} ${currentCrypto} ($${total.toLocaleString()})</span></div>
+    <div class="success-row"><span>Transaction ID</span><span style="font-family:monospace;font-size:12px">${txHash.slice(0,16)}…</span></div>
+    <div class="success-row"><span>Next Report Window</span><span>${cart[0]?.reports||'See confirmation email'}</span></div>
+    <div class="success-row"><span>Confirmation Email</span><span>Sent to your account email</span></div>
+  `;
+
+  localStorage.removeItem('tlmCart');
+  cart = [];
+
+  document.getElementById('progressBar').style.display='none';
+  document.getElementById('checkoutWrap').style.display='none';
+  document.getElementById('orderSuccess').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+renderCart();
+</script>
+<script src="images.js"></script>
+<script>
+(function(){
+  // Cart page: no page hero, but we can add a subtle background to the progress bar
+  var pb = document.getElementById('progressBar');
+  if(pb && typeof IMG_CART !== 'undefined'){
+    pb.style.backgroundImage='url('+IMG_CART+')';
+    pb.style.backgroundSize='cover';
+    pb.style.backgroundPosition='center';
+    pb.style.backgroundRepeat='no-repeat';
+  }
+})();
+</script>
+</body>
+</html>

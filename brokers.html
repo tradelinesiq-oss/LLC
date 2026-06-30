@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Join TradeLine Marketplace's broker program. Resell tradelines at your own markup, access wholesale pricing, and build a credit services business.">
+<title>Broker Program | TradeLine Marketplace</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+  --ink:#0F1117;--ink-2:#374151;--ink-3:#6B7280;
+  --sky:#2563EB;--sky-pale:#EFF6FF;
+  --blue:#2563EB;--blue-d:#1D4ED8;--blue-l:#EFF6FF;
+  --gold:#D97706;--gold-light:#FEF3C7;--gold-b:#F59E0B;
+  --mint:#059669;--green-l:#ECFDF5;
+  --surface:#F9FAFB;--white:#FFFFFF;--border:#E5E7EB;--border-2:#D1D5DB;
+  --radius:10px;--radius-lg:16px;--radius-xl:24px;
+  --shadow:0 1px 3px rgba(0,0,0,0.1),0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md:0 4px 6px rgba(0,0,0,0.07),0 2px 4px rgba(0,0,0,0.06);
+  --shadow-lg:0 10px 15px rgba(0,0,0,0.1),0 4px 6px rgba(0,0,0,0.05);
+  --shadow-xl:0 20px 25px rgba(0,0,0,0.1),0 10px 10px rgba(0,0,0,0.04);
+}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--white);line-height:1.6;font-size:15px;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{font-family:'Sora',sans-serif;line-height:1.2;letter-spacing:-0.02em}
+  a{color:inherit;text-decoration:none}
+  .topbar{background:var(--sky);color:var(--white);text-align:center;padding:9px 20px;font-size:13px;font-weight:500}
+  .topbar a{color:var(--gold);text-decoration:underline}
+  header{position:sticky;top:0;z-index:1000;background:var(--ink);border-bottom:1px solid rgba(255,255,255,0.08);box-shadow:0 2px 16px rgba(0,0,0,0.18)}
+  nav{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:68px}
+  .logo{font-family:'Sora',sans-serif;font-weight:700;font-size:22px;color:var(--white);display:flex;align-items:center;gap:8px;margin-right:auto;flex-shrink:0}
+  .logo-icon{width:34px;height:34px;background:linear-gradient(135deg,#1B4FD8 0%,#0D3BA8 100%);border-radius:9px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(27,79,216,0.35)}
+  .logo span{color:var(--gold)}
+  .nav-links{display:flex;align-items:center;gap:2px;list-style:none}
+  .nav-links a{color:rgba(255,255,255,0.75);font-size:13.5px;font-weight:500;padding:8px 14px;border-radius:7px;transition:all 0.18s;white-space:nowrap}
+  .nav-links a:hover,.nav-links .active a{color:var(--white);background:rgba(255,255,255,0.08)}
+  .has-dropdown{position:relative}
+  .has-dropdown>a::after{content:' ▾';font-size:10px}
+  .dropdown{display:none;position:absolute;top:calc(100% + 8px);left:0;background:var(--white);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-lg);min-width:220px;padding:8px;z-index:200}
+  .has-dropdown:hover .dropdown{display:block}
+  .dropdown a{display:block;color:var(--ink)!important;background:none!important;padding:9px 14px!important;font-size:13.5px!important;border-radius:7px}
+  .dropdown a:hover{background:var(--sky-pale)!important;color:var(--sky)!important}
+  .nav-cta{background:var(--gold);color:var(--ink)!important;font-weight:600!important;padding:9px 20px!important;border-radius:8px!important;margin-left:10px}
+  .cart-btn{color:rgba(255,255,255,0.75);font-size:13.5px;display:flex;align-items:center;gap:6px;padding:8px 12px;border-radius:7px;cursor:pointer;transition:all 0.18s}
+  .cart-btn:hover{background:rgba(255,255,255,0.08);color:var(--white)}
+  .cart-count{background:var(--gold);color:var(--ink);font-size:10px;font-weight:700;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;margin-left:12px}
+  .hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px}
+  .mobile-nav{display:none;position:fixed;inset:0;background:var(--ink);z-index:999;flex-direction:column;padding:80px 32px 40px;overflow-y:auto}
+  .mobile-nav.open{display:flex}
+  .mobile-nav-close{position:absolute;top:20px;right:24px;background:none;border:none;color:var(--white);font-size:28px;cursor:pointer}
+  .mobile-nav a{color:rgba(255,255,255,0.8);font-size:20px;font-family:'Sora',sans-serif;font-weight:600;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.08);display:block}
+
+  /* HERO */
+  .broker-hero{background:linear-gradient(135deg,#0D0F1A 0%,#0D2680 100%);padding:80px 24px;position:relative;overflow:hidden}
+  .broker-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(27,79,216,0.15) 1px,transparent 1px),linear-gradient(90deg,rgba(27,79,216,0.15) 1px,transparent 1px);background-size:60px 60px}
+  .broker-hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;position:relative;z-index:1}
+  .broker-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(240,165,0,0.15);border:1px solid rgba(240,165,0,0.35);color:var(--gold);font-size:12px;font-weight:700;padding:6px 14px;border-radius:50px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:20px}
+  .broker-hero h1{font-size:clamp(32px,4.5vw,56px);color:var(--white);font-weight:800;margin-bottom:20px;letter-spacing:-0.02em}
+  .broker-hero h1 em{font-style:normal;color:var(--gold)}
+  .broker-hero p{color:rgba(255,255,255,0.6);font-size:17px;line-height:1.75;margin-bottom:32px}
+  .broker-perks{display:flex;flex-direction:column;gap:12px}
+  .broker-perk{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,0.8);font-size:14px}
+  .broker-perk-icon{width:28px;height:28px;background:rgba(0,196,140,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;border:1px solid rgba(0,196,140,0.3)}
+
+  /* SIGNUP FORM CARD */
+  .signup-card{background:var(--white);border-radius:20px;padding:40px;box-shadow:var(--shadow-lg)}
+  .signup-card-title{font-family:'Sora',sans-serif;font-size:22px;font-weight:800;margin-bottom:6px}
+  .signup-card-sub{font-size:14px;color:var(--ink-light);margin-bottom:28px}
+  .form-row{margin-bottom:18px}
+  .form-label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:7px}
+  .form-input{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:9px;font-size:14px;font-family:'Inter',system-ui,sans-serif;outline:none;transition:border-color 0.15s;background:var(--white)}
+  .form-input:focus{border-color:var(--sky)}
+  .form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .consent-row{display:flex;gap:12px;align-items:flex-start;margin-bottom:20px}
+  .consent-row input{margin-top:3px;accent-color:var(--sky);width:16px;height:16px;flex-shrink:0}
+  .consent-row label{font-size:13px;color:var(--ink-light);line-height:1.5}
+  .submit-btn{width:100%;background:var(--sky);color:var(--white);border:none;padding:15px;border-radius:10px;font-weight:700;font-size:15px;cursor:pointer;font-family:'Sora',sans-serif;transition:all 0.15s}
+  .submit-btn:hover{background:#1642B8;transform:translateY(-1px)}
+  .form-success{display:none;text-align:center;padding:32px 0}
+  .form-success-icon{font-size:52px;margin-bottom:16px}
+  .form-success h3{font-size:22px;margin-bottom:8px}
+  .form-success p{font-size:14px;color:var(--ink-light)}
+
+  /* SECTIONS */
+  .section{padding:100px 24px}
+  .section-inner{max-width:1200px;margin:0 auto}
+  .section-tag{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--sky);margin-bottom:12px;display:block}
+  .section-title{font-size:clamp(28px,3.5vw,44px);font-weight:800;color:var(--ink);margin-bottom:16px;letter-spacing:-0.02em}
+  .section-sub{font-size:17px;color:var(--ink-light);max-width:560px;line-height:1.7}
+  .section-header{margin-bottom:56px}
+  .surface-section{background:var(--surface)}
+  .dark-section{background:var(--ink)}
+  .dark-section .section-title{color:var(--white)}
+  .dark-section .section-sub{color:rgba(255,255,255,0.55)}
+  .dark-section .section-tag{color:var(--gold)}
+
+  /* HOW BROKER WORKS */
+  .broker-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .broker-step{text-align:center;padding:40px 28px}
+  .broker-step-num{width:64px;height:64px;background:var(--sky);color:var(--white);font-family:'Sora',sans-serif;font-weight:800;font-size:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;position:relative}
+  .broker-step-num::after{content:'';position:absolute;width:100%;height:100%;border-radius:50%;background:var(--sky);opacity:0.2;transform:scale(1.35)}
+  .broker-step h3{font-size:19px;font-weight:700;margin-bottom:12px}
+  .broker-step p{font-size:14px;color:var(--ink-light);line-height:1.7}
+
+  /* EARNINGS TABLE */
+  .earnings-table{width:100%;border-collapse:collapse;background:var(--white);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-top:40px}
+  .earnings-table thead{background:var(--ink)}
+  .earnings-table thead th{color:var(--white);font-size:13px;font-weight:600;padding:14px 20px;text-align:left}
+  .earnings-table tbody td{padding:14px 20px;font-size:14px;border-bottom:1px solid var(--border)}
+  .earnings-table tbody tr:last-child td{border-bottom:none}
+  .earnings-table tbody tr:hover{background:var(--sky-pale)}
+  .earnings-highlight{background:rgba(240,165,0,0.08)!important;font-weight:600}
+  .earnings-table .profit{color:var(--mint);font-weight:700}
+
+  /* VIDEOS */
+  .videos-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+  .video-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:16px;overflow:hidden;transition:border-color 0.2s}
+  .video-card:hover{border-color:rgba(27,79,216,0.5)}
+  .video-thumb{background:rgba(27,79,216,0.15);height:180px;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;overflow:hidden}
+  .video-thumb::before{content:'▶';font-size:42px;color:var(--white);opacity:0.9;z-index:1;position:relative}
+  .video-thumb .vt-label{position:absolute;bottom:12px;left:12px;background:rgba(0,0,0,0.5);color:var(--white);font-size:11px;padding:4px 10px;border-radius:20px}
+  .video-body{padding:20px}
+  .video-title{font-weight:700;font-size:15px;color:var(--white);margin-bottom:8px}
+  .video-desc{font-size:13.5px;color:rgba(255,255,255,0.5);line-height:1.6}
+
+  /* TIERS */
+  .tiers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .tier-card{border:2px solid var(--border);border-radius:20px;padding:36px 28px;text-align:center;transition:all 0.2s;position:relative}
+  .tier-card:hover{border-color:var(--sky);box-shadow:var(--shadow)}
+  .tier-card.popular{border-color:var(--sky);background:var(--sky-pale)}
+  .tier-pop-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--sky);color:var(--white);font-size:11px;font-weight:700;padding:5px 16px;border-radius:50px;white-space:nowrap}
+  .tier-icon{font-size:44px;margin-bottom:16px}
+  .tier-name{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--sky);margin-bottom:8px}
+  .tier-title{font-size:22px;font-weight:800;margin-bottom:12px}
+  .tier-desc{font-size:13.5px;color:var(--ink-light);line-height:1.7;margin-bottom:24px}
+  .tier-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px;text-align:left}
+  .tier-features li{font-size:13.5px;color:var(--ink);display:flex;gap:10px;align-items:center}
+  .tier-features li::before{content:'✓';color:var(--mint);font-weight:700;flex-shrink:0}
+  .tier-cta{display:block;background:var(--sky);color:var(--white);padding:13px 24px;border-radius:10px;font-weight:700;font-size:14px;transition:all 0.15s}
+  .tier-cta:hover{background:#1642B8;transform:translateY(-1px)}
+
+  /* TESTIMONIALS */
+  .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .test-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:box-shadow 0.2s}
+  .test-card:hover{box-shadow:var(--shadow)}
+  .test-quote{font-size:15px;color:var(--ink-light);line-height:1.7;margin-bottom:20px;font-style:italic}
+  .test-author{display:flex;align-items:center;gap:12px}
+  .test-avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+  .test-name{font-weight:700;font-size:14px;color:var(--ink)}
+  .test-role{font-size:12px;color:var(--ink-light)}
+  .test-stars{color:var(--gold);font-size:13px;margin-bottom:16px}
+
+  /* FAQ */
+  .faq-list{display:flex;flex-direction:column;gap:12px}
+  .faq-item{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+  .faq-q{padding:18px 24px;font-weight:600;font-size:15px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:var(--white);transition:background 0.15s;user-select:none}
+  .faq-q:hover{background:var(--surface)}
+  .faq-q.open{background:var(--sky-pale);color:var(--sky)}
+  .faq-arrow{font-size:18px;transition:transform 0.2s;flex-shrink:0}
+  .faq-q.open .faq-arrow{transform:rotate(180deg)}
+  .faq-a{display:none;padding:0 24px 20px;font-size:14px;color:var(--ink-light);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
+  .faq-a.open{display:block}
+
+  .sticky-phone{position:fixed;bottom:24px;right:24px;background:var(--sky);color:var(--white);border-radius:50px;padding:14px 22px;display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px;box-shadow:var(--shadow-lg);z-index:900;transition:transform 0.15s}
+  .sticky-phone:hover{transform:translateY(-2px)}
+  footer{background:#080A14;color:rgba(255,255,255,0.6);padding:70px 24px 32px}
+  .footer-inner{max-width:1200px;margin:0 auto}
+  .footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:60px}
+  .footer-brand p{font-size:14px;line-height:1.7;color:rgba(255,255,255,0.45);margin-top:14px}
+  .footer-contact{margin-top:20px;font-size:13.5px}
+  .footer-contact div{margin-bottom:6px;color:rgba(255,255,255,0.5)}
+  .footer-contact strong{color:rgba(255,255,255,0.8)}
+  .footer-col h4{font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--white);margin-bottom:18px}
+  .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .footer-col ul li a{font-size:13.5px;color:rgba(255,255,255,0.45);transition:color 0.15s}
+  .footer-col ul li a:hover{color:var(--white)}
+  .footer-socials{display:flex;gap:12px;margin-top:20px}
+  .social-btn{width:36px;height:36px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;transition:all 0.15s}
+  .social-btn:hover{background:var(--sky)}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:13px}
+  .footer-bottom a{color:rgba(255,255,255,0.45)}
+  .footer-bottom a:hover{color:var(--white)}
+
+  @media(max-width:1024px){.broker-hero-inner{grid-template-columns:1fr}.broker-steps{grid-template-columns:1fr 1fr}.tiers-grid{grid-template-columns:1fr 1fr}.videos-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr;gap:28px}}
+  @media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}.broker-steps{grid-template-columns:1fr}.tiers-grid{grid-template-columns:1fr}.test-grid{grid-template-columns:1fr}.form-row-2{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr}}
+
+  .page-hero{position:relative;overflow:hidden}
+  .page-hero-img{position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat}
+  .page-hero-dim{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,12,20,0.88) 0%,rgba(10,12,20,0.7) 100%)}
+  .page-hero-inner{position:relative;z-index:2}
+
+/* ── GLOBAL MOBILE RESPONSIVE ── */
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none!important}
+  .hamburger{display:flex!important}
+  .section{padding:56px 18px!important}
+  .page-hero{padding:44px 18px 40px!important}
+  .steps-grid,.opp-grid,.why-grid,.uses-grid,.articles-grid,.opp-grid,.footer-top{grid-template-columns:1fr!important}
+  .footer-top{gap:24px!important}
+  .hero-inner{grid-template-columns:1fr!important;gap:40px}
+  .hero h1{font-size:32px!important}
+  .hero-btns{flex-direction:column;gap:10px}
+  .hero-btns .btn-primary,.hero-btns .btn-outline{width:100%;justify-content:center}
+  .hero-stats{flex-wrap:wrap;gap:18px!important}
+  .hero-cards{display:none!important}
+  .tradeline-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .main-layout{grid-template-columns:1fr!important}
+  .filter-sidebar{position:static!important}
+  .checkout-wrap{grid-template-columns:1fr!important}
+  .crypto-tabs{grid-template-columns:repeat(2,1fr)!important}
+  .modal{padding:24px 18px!important;border-radius:16px 16px 0 0!important;position:fixed;bottom:0;left:0;right:0;max-height:90vh;overflow-y:auto;max-width:100%!important}
+  .modal-overlay{align-items:flex-end!important}
+  .cart-drawer{width:100%!important}
+  .profile-grid,.guarantees-grid,.stats-row,.credit-pkgs{grid-template-columns:1fr!important}
+  .form-row-2,.form-row-3{grid-template-columns:1fr!important}
+  .res-tabs-inner{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .dash-layout{grid-template-columns:1fr!important}
+  .dash-sidebar{position:static!important}
+  .img-section{min-height:300px!important}
+  .img-section-content{padding:40px 18px!important;margin-left:0!important;text-align:left!important}
+  .broker-grid,.sell-grid,.contact-grid,.about-grid{grid-template-columns:1fr!important}
+  .cta-band{padding:56px 18px!important}
+  .sticky-phone span:not(.phone-icon){display:none}
+  .floating-cta .float-btn span{display:none}
+  table{font-size:12.5px}
+  th,td{padding:10px 10px!important}
+}
+@media(max-width:480px){
+  .hero h1{font-size:27px!important}
+  .section-title{font-size:24px!important}
+  .auth-card{padding:28px 18px!important;border-radius:0!important;border:none!important;box-shadow:none!important;max-width:100%!important}
+  .auth-wrap{align-items:flex-start!important;padding:0!important}
+  .topbar{font-size:11.5px!important;padding:8px 14px!important}
+}
+
+
+  /* Hero background image support */
+  .page-hero{position:relative;overflow:hidden;background-size:cover;background-position:center;background-repeat:no-repeat}
+  .page-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,12,20,0.88) 0%,rgba(10,12,20,0.72) 100%);z-index:1}
+  .page-hero-inner{position:relative;z-index:2!important}
+  .breadcrumb{position:relative;z-index:2}
+  .page-hero h1,.page-hero p{position:relative;z-index:2}
+
+</style>
+</head>
+<body>
+
+<div class="topbar">📲 Questions? Chat with us on <a href="https://wa.me/12625837916" target="_blank" rel="noopener">WhatsApp</a> or <a href="https://t.me/TradeIQ_Plug1" target="_blank" rel="noopener">Telegram</a></div>
+
+<header>
+  <nav>
+    <a href="index.html" class="logo"><div class="logo-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 2L3 5V10C3 13.87 6.13 17.48 10 18C13.87 17.48 17 13.87 17 10V5L10 2Z" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="1.4" stroke-linejoin="round"/><path d="M7 11.5L9.5 8.5L10 10L12.5 7" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12.5" cy="7" r="1" fill="white"/></svg></div>TradeLine <span>Marketplace</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="marketplace.html">Buy Tradelines</a></li>
+      <li><a href="sell.html">Sell Tradelines</a></li>
+      <li class="active"><a href="brokers.html">Brokers</a></li>
+      <li class="has-dropdown"><a href="#">Resources</a>
+        <div class="dropdown">
+          <a href="resources.html#what-is">What Is a Tradeline?</a>
+          <a href="resources.html#guide">Buyer's Guide</a>
+          <a href="calculator.html">Tradeline Calculator</a>
+          <a href="resources.html#faq">FAQs</a>
+          <a href="resources.html#guarantees">Our Guarantees</a>
+          <a href="blog.html">Knowledge Center</a>
+        </div>
+      </li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="account.html">My Account</a></li>
+    </ul>
+    <a href="marketplace.html" class="cart-btn">🛒 <span class="cart-count" id="cartCount">0</span></a>
+    <a href="marketplace.html" class="nav-cta">View Tradelines →</a>
+    <div class="hamburger" onclick="openMenu()"><span></span><span></span><span></span></div>
+  </nav>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" onclick="closeMenu()">✕</button>
+  <a href="index.html">Home</a><a href="marketplace.html">Buy Tradelines</a>
+  <a href="sell.html">Sell Tradelines</a><a href="brokers.html">Brokers</a>
+  <a href="blog.html">Knowledge Center</a><a href="resources.html#faq">FAQs</a>
+  <a href="about.html">About</a><a href="contact.html">Contact</a>
+</div>
+
+<!-- BROKER HERO -->
+<section class="broker-hero">
+  <div class="broker-hero-inner">
+    <div>
+      <div class="broker-tag">💼 Broker Program</div>
+      <h1>Build a <em>profitable</em> credit business — on your terms</h1>
+      <p>Access TradeLine Marketplace's wholesale tradeline inventory at discounted rates, set your own markup, and resell to your clients under your brand. Full backend. Zero overhead.</p>
+      <div class="broker-perks">
+        <div class="broker-perk"><div class="broker-perk-icon">✓</div>Wholesale rates — save up to 40% off retail prices</div>
+        <div class="broker-perk"><div class="broker-perk-icon">✓</div>Real-time inventory access — same live vault your clients see</div>
+        <div class="broker-perk"><div class="broker-perk-icon">✓</div>White-label friendly — use your own business name</div>
+        <div class="broker-perk"><div class="broker-perk-icon">✓</div>Dedicated broker support — direct line, no ticket queue</div>
+        <div class="broker-perk"><div class="broker-perk-icon">✓</div>No monthly fees — pay only when you buy</div>
+      </div>
+    </div>
+    <div id="signup">
+      <div class="signup-card">
+        <div id="formContent">
+          <div class="signup-card-title">Apply for Broker Access</div>
+          <div class="signup-card-sub">Takes under 60 seconds. We'll review and respond within 1 business day.</div>
+          <div class="form-row-2">
+            <div class="form-row"><label class="form-label">First Name *</label><input class="form-input" type="text" id="bkFirst" placeholder="Alex"></div>
+            <div class="form-row"><label class="form-label">Last Name *</label><input class="form-input" type="text" id="bkLast" placeholder="Rivera"></div>
+          </div>
+          <div class="form-row"><label class="form-label">Email *</label><input class="form-input" type="email" id="bkEmail" placeholder="alex@mybusiness.com"></div>
+          <div class="form-row"><label class="form-label">Phone *</label><input class="form-input" type="tel" id="bkPhone" placeholder="(555) 000-0000"></div>
+          <div class="form-row"><label class="form-label">Business Name (optional)</label><input class="form-input" type="text" id="bkBiz" placeholder="My Credit Services LLC"></div>
+          <div class="form-row">
+            <label class="form-label">Estimated Monthly Volume</label>
+            <select class="form-input" id="bkVol">
+              <option value="">Select range...</option>
+              <option>1–5 tradelines/month</option>
+              <option>6–15 tradelines/month</option>
+              <option>16–30 tradelines/month</option>
+              <option>30+ tradelines/month</option>
+            </select>
+          </div>
+          <div class="consent-row">
+            <input type="checkbox" id="bkConsent">
+            <label for="bkConsent">I agree to be contacted by TradeLine Marketplace regarding the broker program. I understand this is not a commitment to purchase and I can opt out at any time.</label>
+          </div>
+          <button class="submit-btn" onclick="submitBroker()">Submit Application →</button>
+          <div style="text-align:center;font-size:12px;color:var(--ink-light);margin-top:12px">🔒 Your info is never sold or shared with third parties</div>
+        </div>
+        <div class="form-success" id="formSuccess">
+          <div class="form-success-icon">🎉</div>
+          <h3>Application received!</h3>
+          <p>We'll review your details and reach out within 1 business day at the email you provided.<br><br>In the meantime, feel free to <a href="marketplace.html" style="color:var(--sky);font-weight:600">browse the tradeline vault</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section surface-section">
+  <div class="section-inner">
+    <div class="section-header" style="text-align:center">
+      <span class="section-tag">How It Works</span>
+      <h2 class="section-title">From approved to earning in 3 steps</h2>
+    </div>
+    <div class="broker-steps">
+      <div class="broker-step">
+        <div class="broker-step-num">1</div>
+        <h3>Apply & Get Approved</h3>
+        <p>Submit your info above. We verify you're a legitimate business operator and grant access to wholesale broker pricing — typically within 24 hours.</p>
+      </div>
+      <div class="broker-step">
+        <div class="broker-step-num">2</div>
+        <h3>Buy at Wholesale</h3>
+        <p>Log into your broker dashboard and shop the same live vault as retail buyers — at significantly reduced rates. No markup limits on your end.</p>
+      </div>
+      <div class="broker-step">
+        <div class="broker-step-num">3</div>
+        <h3>Resell & Profit</h3>
+        <p>Add your margin and sell to your clients. You handle the client relationship; we handle fulfillment, posting, and AU management. Everyone wins.</p>
+      </div>
+    </div>
+
+    <div style="overflow-x:auto;margin-top:16px">
+      <table class="earnings-table">
+        <thead>
+          <tr><th>Tradeline Type</th><th>TradeLine Marketplace Retail</th><th>Your Broker Cost</th><th>Example Sell Price</th><th>Your Profit</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>5-year, $8K limit</td><td>$620</td><td>$420</td><td>$620</td><td class="profit">+$200</td></tr>
+          <tr class="earnings-highlight"><td>10-year, $18K limit</td><td>$950</td><td>$640</td><td>$950</td><td class="profit">+$310 ★</td></tr>
+          <tr><td>15-year, $28K limit</td><td>$1,250</td><td>$840</td><td>$1,250</td><td class="profit">+$410</td></tr>
+          <tr><td>20-year, $40K+ limit</td><td>$1,780</td><td>$1,190</td><td>$1,780</td><td class="profit">+$590</td></tr>
+          <tr style="background:rgba(240,165,0,0.05)"><td><strong>10 tradelines/month avg</strong></td><td>—</td><td>~$7,300</td><td>~$9,500</td><td class="profit"><strong>+$2,200+/mo</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12px;color:var(--ink-light);margin-top:12px;text-align:center">* Example pricing for illustration. Actual rates vary by tradeline. Broker rates disclosed after application approval.</p>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section class="section dark-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Video Resources</span>
+      <h2 class="section-title">Learn the broker playbook</h2>
+      <p class="section-sub">Watch our training videos to get up to speed on how to run a successful tradeline resale business.</p>
+    </div>
+    <div class="videos-grid">
+      <div class="video-card">
+        <div class="video-thumb" onclick="alert('Video: Getting Started as a TradeLine Marketplace Broker')">
+          <div class="vt-label">📹 8:24</div>
+        </div>
+        <div class="video-body">
+          <div class="video-title">Getting Started as a Broker</div>
+          <div class="video-desc">A complete walkthrough of the broker portal, how to place orders on behalf of clients, and how to communicate reporting windows.</div>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-thumb" onclick="alert('Video: How to Price Tradelines for Your Clients')">
+          <div class="vt-label">📹 5:48</div>
+        </div>
+        <div class="video-body">
+          <div class="video-title">How to Price Tradelines for Your Clients</div>
+          <div class="video-desc">Margins, volume discounts, package deals, and the psychology of pricing — how experienced brokers structure their service offerings.</div>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-thumb" onclick="alert('Video: How to Explain Tradelines to Clients')">
+          <div class="vt-label">📹 6:12</div>
+        </div>
+        <div class="video-body">
+          <div class="video-title">How to Explain Tradelines to Clients</div>
+          <div class="video-desc">Scripts, analogies, and clear language for educating clients on how authorized user tradelines work and what to expect.</div>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-thumb" onclick="alert('Video: Compliance & Staying Protected')">
+          <div class="vt-label">📹 9:03</div>
+        </div>
+        <div class="video-body">
+          <div class="video-title">Compliance & Staying Protected</div>
+          <div class="video-desc">What brokers need to know about FCRA, state regulations, and how to run a compliant credit services operation.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIERS -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header" style="text-align:center">
+      <span class="section-tag">Broker Tiers</span>
+      <h2 class="section-title">Pricing scales with your volume</h2>
+      <p class="section-sub" style="margin:0 auto">The more you sell, the deeper your wholesale discount.</p>
+    </div>
+    <div class="tiers-grid">
+      <div class="tier-card">
+        <div class="tier-icon">🌱</div>
+        <div class="tier-name">Starter</div>
+        <div class="tier-title">New Broker</div>
+        <p class="tier-desc">For those just building their credit services practice. Access to our full inventory at a solid wholesale rate.</p>
+        <ul class="tier-features">
+          <li>Up to 10 tradelines/month</li>
+          <li>15% off retail pricing</li>
+          <li>Full inventory access</li>
+          <li>Email broker support</li>
+          <li>Broker resource library</li>
+        </ul>
+        <a href="#signup" class="tier-cta">Apply Now →</a>
+      </div>
+      <div class="tier-card popular">
+        <div class="tier-pop-badge">⭐ Most Popular</div>
+        <div class="tier-icon">🚀</div>
+        <div class="tier-name">Pro</div>
+        <div class="tier-title">Active Broker</div>
+        <p class="tier-desc">For established credit professionals who move consistent volume and want bigger margins on every deal.</p>
+        <ul class="tier-features">
+          <li>11–30 tradelines/month</li>
+          <li>25% off retail pricing</li>
+          <li>Priority order fulfillment</li>
+          <li>Dedicated support rep</li>
+          <li>Custom package deals</li>
+          <li>Client order portal access</li>
+        </ul>
+        <a href="#signup" class="tier-cta">Apply Now →</a>
+      </div>
+      <div class="tier-card">
+        <div class="tier-icon">🏆</div>
+        <div class="tier-name">Elite</div>
+        <div class="tier-title">High-Volume Broker</div>
+        <p class="tier-desc">For agencies, credit repair firms, and power users who need maximum pricing leverage and direct integration.</p>
+        <ul class="tier-features">
+          <li>30+ tradelines/month</li>
+          <li>Up to 40% off retail pricing</li>
+          <li>API inventory access</li>
+          <li>White-label portal option</li>
+          <li>Account manager dedicated</li>
+          <li>Volume guarantee pricing</li>
+        </ul>
+        <a href="contact.html" class="tier-cta" style="background:var(--gold);color:var(--ink)">Contact Us →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section surface-section">
+  <div class="section-inner">
+    <div class="section-header" style="text-align:center">
+      <span class="section-tag">Broker Voices</span>
+      <h2 class="section-title">What our brokers are saying</h2>
+    </div>
+    <div class="test-grid">
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-quote">"Switched to TradeLine Marketplace after getting burned by another supplier. Night and day difference — tradelines post consistently, support is responsive, and the broker pricing actually makes sense."</p>
+        <div class="test-author">
+          <div class="test-avatar" style="background:var(--sky-pale)">👩</div>
+          <div><div class="test-name">Danielle M.</div><div class="test-role">Credit Repair Specialist, Atlanta GA</div></div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-quote">"I was doing about 8 tradelines a month from my credit coaching business. Now I'm at 22, and the Pro tier pricing means I'm keeping a significantly larger margin. The portal is clean and easy."</p>
+        <div class="test-author">
+          <div class="test-avatar" style="background:var(--gold-light)">👨</div>
+          <div><div class="test-name">Marcus T.</div><div class="test-role">Financial Coach, Houston TX</div></div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★☆</div>
+        <p class="test-quote">"The video training library is actually useful — I've shared the client education videos with my own customers and it saves me hours of explanation calls. The posting guarantee is what closed me."</p>
+        <div class="test-author">
+          <div class="test-avatar" style="background:rgba(0,196,140,0.1)">👩</div>
+          <div><div class="test-name">Priya K.</div><div class="test-role">Credit Consultant, Fremont CA</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header" style="text-align:center">
+      <span class="section-tag">Broker FAQs</span>
+      <h2 class="section-title">Common questions answered</h2>
+    </div>
+    <div class="faq-list" style="max-width:760px;margin:0 auto">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is there an application fee or monthly cost? <span class="faq-arrow">▾</span></div>
+        <div class="faq-a">No. There are no application fees, monthly platform fees, or minimums. You pay only for the tradelines you purchase at your wholesale rate. Broker access is free to maintain.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Can I use my own business name with clients? <span class="faq-arrow">▾</span></div>
+        <div class="faq-a">Yes. TradeLine Marketplace is a white-label-friendly supplier. You can present tradeline services to your clients entirely under your own brand. We don't require you to disclose TradeLine Marketplace as your backend provider.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How do I place orders for my clients? <span class="faq-arrow">▾</span></div>
+        <div class="faq-a">After approval, you receive access to a broker dashboard where you can place orders on behalf of your clients. You'll enter the authorized user information for each client and select the tradeline from the live vault. Orders are processed the same way as retail.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What happens if a tradeline doesn't post? <span class="faq-arrow">▾</span></div>
+        <div class="faq-a">The same guarantee that applies to retail buyers applies to broker purchases. If a tradeline fails to post to at least 2 major bureaus within the stated reporting period, we'll issue a full credit to your broker account. See our Guarantees page for full terms.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How quickly are broker applications reviewed? <span class="faq-arrow">▾</span></div>
+        <div class="faq-a">Most applications are reviewed within 1 business day. We'll contact you at the email you provided with next steps, your wholesale rate tier, and login credentials for the broker portal.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Do you offer co-branded or affiliate options? <span class="faq-arrow">▾</span></div>
+        <div class="faq-a">Yes. For Elite-tier brokers and referral partners, we offer co-branded portals and a formal affiliate program with commission tracking. Contact us directly to discuss options for your business model.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<a href="https://wa.me/12625837916" target="_blank" rel="noopener" class="sticky-phone" style="background:#25D366">💬 WhatsApp Us</a>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" style="color:var(--white)"><div class="logo-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 2L3 5V10C3 13.87 6.13 17.48 10 18C13.87 17.48 17 13.87 17 10V5L10 2Z" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="1.4" stroke-linejoin="round"/><path d="M7 11.5L9.5 8.5L10 10L12.5 7" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12.5" cy="7" r="1" fill="white"/></svg></div>TradeLine <span>Marketplace</span></a>
+        <p>TradeLine Marketplace is a fintech platform dedicated to equal credit access. Licensed · Compliant · Transparent.</p>
+        <div class="footer-contact">
+          <div>📍 <strong>1800 Vine St, Suite 220, Los Angeles, CA 90028</strong></div>
+          <div>💬 WhatsApp: <strong><a href="https://wa.me/12625837916" target="_blank" style="color:inherit">+1 (262) 583-7916</a></strong></div><div>✈️ Telegram: <strong><a href="https://t.me/TradeIQ_Plug1" target="_blank" style="color:inherit">@TradeIQ_Plug1</a></strong></div>
+          <div>✉️ <strong>marketplacetradeline@gmail.com</strong></div>
+        </div>
+        <div class="footer-socials"><div class="social-btn">▶</div><div class="social-btn">f</div><div class="social-btn">𝕏</div><div class="social-btn">📷</div></div>
+      </div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="marketplace.html">Buy Tradelines</a></li><li><a href="sell.html">Sell Tradelines</a></li><li><a href="brokers.html">Broker Program</a></li><li></li></ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul><li><a href="resources.html">What Is a Tradeline?</a></li><li><a href="resources.html">Buyer's Guide</a></li><li><a href="resources.html#faq">FAQs</a></li><li><a href="blog.html">Knowledge Center</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="legal.html#privacy">Privacy Policy</a></li><li><a href="legal.html#terms">Terms & Conditions</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <div>©2026 TradeLine Marketplace LLC. All Rights Reserved. We do not sell tradelines in Georgia.</div>
+      <div style="display:flex;gap:20px"><a href="legal.html#privacy">Privacy</a><a href="legal.html#terms">Terms</a><a href="legal.html#fraud">Fraud</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function openMenu(){document.getElementById('mobileNav').classList.add('open');document.body.style.overflow='hidden'}
+function closeMenu(){document.getElementById('mobileNav').classList.remove('open');document.body.style.overflow=''}
+function toggleFaq(el){
+  el.classList.toggle('open');
+  const a=el.nextElementSibling;
+  a.classList.toggle('open');
+}
+function submitBroker(){
+  const f=document.getElementById('bkFirst').value.trim();
+  const l=document.getElementById('bkLast').value.trim();
+  const e=document.getElementById('bkEmail').value.trim();
+  const p=document.getElementById('bkPhone').value.trim();
+  const c=document.getElementById('bkConsent').checked;
+  if(!f||!l||!e||!p){alert('Please fill in all required fields.');return;}
+  if(!c){alert('Please agree to the consent checkbox.');return;}
+  if(!e.includes('@')){alert('Please enter a valid email.');return;}
+  document.getElementById('formContent').style.display='none';
+  document.getElementById('formSuccess').style.display='block';
+}
+const cart=JSON.parse(localStorage.getItem('tlmCart')||'[]');
+document.getElementById('cartCount').textContent=cart.length;
+</script>
+
+<script src="images.js"></script>
+<script>
+(function(){
+  var hero = document.getElementById('pageHeroImg');
+  if(hero && typeof IMG_BROKER !== 'undefined') {
+    hero.style.backgroundImage = 'url('+IMG_BROKER+')';
+  }
+})();
+</script>
+</body>
+</html>
