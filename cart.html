@@ -639,11 +639,22 @@ function placeOrder(){
   document.getElementById('checkoutWrap').style.display='none';
   document.getElementById('orderSuccess').style.display='block';
   window.scrollTo({top:0,behavior:'smooth'});
+
+  // Fire order confirmation email if we know the user's address
+  if(typeof sendOrderConfirmationEmail === 'function'){
+    try{
+      const savedUser = JSON.parse(localStorage.getItem('tlmUser')||'null');
+      if(savedUser && savedUser.email){
+        sendOrderConfirmationEmail(savedUser.email, orderNum, total.toLocaleString());
+      }
+    }catch(e){ console.warn('Could not send order confirmation email:', e); }
+  }
 }
 
 renderCart();
 </script>
 <script src="images.js"></script>
+<script src="email-client.js"></script>
 <script>
 (function(){
   // Cart page: no page hero, but we can add a subtle background to the progress bar
